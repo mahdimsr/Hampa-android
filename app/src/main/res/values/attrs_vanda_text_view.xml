@@ -1,0 +1,11 @@
+<resources>
+    <declare-styleable name="VandaTextView">
+        <attr name="fontName" format="enum">
+            <enum name="iranSans" value="1" />
+            <enum name="iranSansBold" value="2" />
+            <enum name="iranSansMedium" value="3" />
+            <enum name="iranSansLight" value="4" />
+            <enum name="iranSansUltraLight" value="5" />
+        </attr>
+    </declare-styleable>
+</resources>

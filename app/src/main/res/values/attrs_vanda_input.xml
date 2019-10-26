@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="VandaInput">
+
+        <attr name="iconImage" format="reference" />
+        <attr name="hint" format="string" />
+
+    </declare-styleable>
+</resources>

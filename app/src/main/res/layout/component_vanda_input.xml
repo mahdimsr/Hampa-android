@@ -1,0 +1,26 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="12dp"
+    android:background="@drawable/bg_vanda_input">
+
+    <ImageView
+        android:id="@+id/iconImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="#fff"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="@dimen/halfSpace"
+        android:src="@mipmap/ic_launcher" />
+
+    <EditText
+        android:id="@+id/input"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="#fff"
+        android:gravity="right"
+        android:hint="اینپوت اختصاصی"
+        android:layout_toStartOf="@id/iconImage" />
+
+</RelativeLayout>

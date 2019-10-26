@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_splash"
+    android:padding="@dimen/space"
+    tools:context=".activity.AuthActivity">
+
+
+
+    <!-- card -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_margin="@dimen/space"
+        app:cardCornerRadius="@dimen/radius"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:paddingTop="@dimen/space">
+
+            <!-- tab -->
+            <LinearLayout
+                android:id="@+id/tabLayout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_auth_tab"
+                android:orientation="horizontal">
+
+                <!-- login Tab -->
+                <ir.vanda.hampa.component.VandaTextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_auth_tab_item"
+                    android:gravity="center"
+                    android:padding="@dimen/space"
+                    android:text="@string/login"
+                    android:textColor="#fff"
+                    app:fontName="iranSansMedium" />
+
+                <!-- signUp Tab -->
+                <ir.vanda.hampa.component.VandaTextView
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:padding="@dimen/space"
+                    android:text="@string/signUp"
+                    android:textColor="@color/colorTextPrimary"
+                    app:fontName="iranSansMedium" />
+
+            </LinearLayout>
+
+
+            <!-- form -->
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/viewpager"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <!-- login Form -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/space">
+
+                    <!-- username -->
+                    <ir.vanda.hampa.component.VandaInput
+                        android:id="@+id/username"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="@dimen/space"
+                        android:layout_marginEnd="@dimen/space"
+                        app:hint="ایمیل یا شماره تلفن" />
+
+                    <!-- password -->
+                    <ir.vanda.hampa.component.VandaInput
+                        android:id="@+id/password"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="@dimen/space"
+                        android:layout_marginTop="@dimen/doubleSpace"
+                        android:layout_marginEnd="@dimen/space"
+                        app:hint="رمز عبور" />
+
+
+                </LinearLayout>
+
+                <!-- signUp -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/space">
+
+                    <!-- username -->
+                    <ir.vanda.hampa.component.VandaInput
+                        android:id="@+id/usernameRegister"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="@dimen/space"
+                        android:layout_marginEnd="@dimen/space"
+                        app:hint="ایمیل یا شماره تلفن" />
+
+                    <!-- password -->
+                    <ir.vanda.hampa.component.VandaInput
+                        android:id="@+id/passwordRegister"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="@dimen/space"
+                        android:layout_marginTop="@dimen/doubleSpace"
+                        android:layout_marginEnd="@dimen/space"
+                        app:hint="رمز عبور" />
+
+                    <!-- repeat-password -->
+                    <ir.vanda.hampa.component.VandaInput
+                        android:id="@+id/repeatPasswordRegister"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginStart="@dimen/space"
+                        android:layout_marginTop="@dimen/doubleSpace"
+                        android:layout_marginEnd="@dimen/space"
+                        app:hint="تکرار رمز عبور" />
+
+
+                </LinearLayout>
+
+            </androidx.viewpager.widget.ViewPager>
+
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+    <!-- submit -->
+    <ir.vanda.hampa.component.VandaTextView
+        android:id="@+id/submit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_auth_tab_item"
+        android:textColor="#fff"
+        android:translationZ="2dp"
+        android:gravity="center"
+        android:padding="@dimen/space"
+        android:text="@string/login"
+        app:fontName="iranSansMedium"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@id/cardView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

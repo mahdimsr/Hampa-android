@@ -1,0 +1,30 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <!-- large Image Loader-->
+    <ImageView
+        android:id="@+id/largeImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_loader"/>
+
+    <!-- medium Image Loader-->
+    <ImageView
+        android:id="@+id/mediumImage"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_loader"/>
+
+    <!-- small Image Loader-->
+    <ImageView
+        android:id="@+id/smallImage"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerInParent="true"
+        android:src="@drawable/ic_loader"/>
+
+</RelativeLayout>

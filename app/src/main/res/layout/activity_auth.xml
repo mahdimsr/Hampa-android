@@ -5,10 +5,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_splash"
-    android:padding="@dimen/space"
+    android:background="#fff"
     tools:context=".activity.AuthActivity">
 
+    <!-- circles -->
+
+    <!-- light blue-->
+    <ImageView
+        android:id="@+id/circleLightBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_circle_light_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <!-- purple -->
+    <ImageView
+        android:id="@+id/circlePurple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_circle_purple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        android:translationZ="2dp"/>
+
+    <!-- small Green -->
+    <ImageView
+        android:id="@+id/circleSmallGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_circle_green_small"
+        app:layout_constraintEnd_toStartOf="@id/circlePurple"
+        app:layout_constraintStart_toStartOf="@id/circlePurple"
+        app:layout_constraintBottom_toTopOf="@id/cardView"/>
 
 
     <!-- card -->
@@ -153,16 +183,17 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_auth_tab_item"
-        android:textColor="#fff"
-        android:translationZ="2dp"
         android:gravity="center"
         android:padding="@dimen/space"
         android:text="@string/login"
-        app:fontName="iranSansMedium"
+        android:textColor="#fff"
         android:textSize="18sp"
+        android:translationZ="2dp"
+        app:fontName="iranSansMedium"
         app:layout_constraintBottom_toBottomOf="@id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

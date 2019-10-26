@@ -11,10 +11,13 @@ import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
-import java.io.Console;
+
+import java.util.Random;
 
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.VandaTextView;
@@ -30,6 +33,9 @@ public class AuthActivity extends AppCompatActivity
     private FormAdapter formAdapter;
 
     private String state = "login"; // login or signUp
+
+
+    private ImageView smallGreen, lightBlue, purple;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -95,8 +101,6 @@ public class AuthActivity extends AppCompatActivity
                 }
 
 
-
-
                 //config submit button
                 configSubmit(state);
 
@@ -117,7 +121,6 @@ public class AuthActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                Toast.makeText(AuthActivity.this, state, Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -128,6 +131,14 @@ public class AuthActivity extends AppCompatActivity
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewpager);
         submit = findViewById(R.id.submit);
+
+        lightBlue = findViewById(R.id.circleLightBlue);
+        smallGreen = findViewById(R.id.circleSmallGreen);
+        purple = findViewById(R.id.circlePurple);
+
+        randomTransition(lightBlue);
+        randomTransition(smallGreen);
+        randomTransition(purple);
     }
 
 
@@ -240,5 +251,30 @@ public class AuthActivity extends AppCompatActivity
         {
             super.destroyItem(container, position, object);
         }
+    }
+
+
+    //circles animation
+    private void randomTransition(final View v)
+    {
+        Random random = new Random();
+
+        float randomX = random.nextFloat() * 400;
+        float randomY = random.nextFloat() * 500;
+
+        Log.i("mahdi-dev", "random: " + randomX);
+
+
+        final Animation a = new TranslateAnimation(0,randomX,0,randomY);
+
+        a.setDuration(5000);
+
+        a.setRepeatCount(Animation.INFINITE);
+
+        a.setRepeatMode(Animation.REVERSE);
+
+
+        v.startAnimation(a);
+
     }
 }

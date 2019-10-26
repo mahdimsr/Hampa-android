@@ -50,7 +50,7 @@ public class VandaInput extends RelativeLayout
         icon = findViewById(R.id.iconImage);
 
         input = findViewById(R.id.input);
-        input.setTypeface(Font.iranSans_ultraLight(getContext()));
+        input.setTypeface(Font.iranSans_light(getContext()));
 
     }
 

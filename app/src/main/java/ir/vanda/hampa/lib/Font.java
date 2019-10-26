@@ -29,7 +29,7 @@ public class Font
 
     public static Typeface iranSans_light(Context context)
     {
-        return Typeface.createFromAsset(context.getAssets(), path + "IRANSans_Light.ttf");
+        return Typeface.createFromAsset(context.getAssets(), path + "IRANSansLight.ttf");
     }
 
 }

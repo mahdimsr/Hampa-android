@@ -19,11 +19,12 @@ import android.widget.Toast;
 
 import java.util.Random;
 
+import ir.vanda.hampa.BasicActivity;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.lib.Rotate3dAnimation;
 
-public class AuthActivity extends AppCompatActivity
+public class AuthActivity extends BasicActivity
 {
     private LinearLayout tabLayout;
     private ViewPager viewPager;

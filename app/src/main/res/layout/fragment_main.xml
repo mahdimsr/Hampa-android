@@ -8,20 +8,73 @@
     tools:context=".fragment.MainFragment">
 
     <!-- statusBar -->
-    <ir.vanda.hampa.component.StatusBar
-        android:id="@+id/statusBar"
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/test"
-        app:layout_constraintTop_toBottomOf="@id/statusBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="test"/>
+        <ir.vanda.hampa.component.StatusBar
+            android:id="@+id/statusBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </ir.vanda.hampa.component.StatusBar>
+
+        <Button
+            android:id="@+id/test"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/dashboard_content"
+            android:textSize="24dp" />
+
+        <RelativeLayout
+        android:layout_width="150dp"
+        android:layout_height="250dp"
+        android:layout_marginRight="5dp"
+        android:layout_gravity="right">
 
 
-    
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"
+                android:background="@drawable/dashboard_content_item"
+                android:src="@drawable/pic" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="14dp"
+            android:layout_marginTop="214dp"
+            android:layout_marginEnd="90dp"
+            android:layout_marginBottom="17dp"
+            android:text="@string/dashboard_content_text"
+            android:textColor="#fff"
+            android:textStyle="bold" />
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,6 @@
 package ir.vanda.hampa.activity;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
@@ -14,16 +13,16 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
 
 import java.util.Random;
 
+import ir.vanda.hampa.BasicActivity;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.lib.Rotate3dAnimation;
 
-public class AuthActivity extends AppCompatActivity
+public class AuthActivity extends BasicActivity
 {
     private LinearLayout tabLayout;
     private ViewPager viewPager;
@@ -102,7 +101,7 @@ public class AuthActivity extends AppCompatActivity
 
 
                 //config submit button
-                configSubmit(state);
+                rotateSubmit(state);
 
                 Log.i("mahdi-dev", "state : " + state);
             }
@@ -155,14 +154,16 @@ public class AuthActivity extends AppCompatActivity
     }
 
     //config submit button
-    private void configSubmit(String state)
+    private void rotateSubmit(String state)
     {
+        int duration = 300;
+
         if (state.equals("login"))
         {
             //rotate -180
             Animation a = new Rotate3dAnimation(0, -180, submit.getWidth() / 2, 0, 0, true);
 
-            a.setDuration(800);
+            a.setDuration(duration);
 
             a.setAnimationListener(new Animation.AnimationListener()
             {
@@ -192,7 +193,7 @@ public class AuthActivity extends AppCompatActivity
             //rotate +180
             Animation a = new Rotate3dAnimation(0, 180, submit.getWidth() / 2, 0, 0, true);
 
-            a.setDuration(800);
+            a.setDuration(duration);
 
             a.setAnimationListener(new Animation.AnimationListener()
             {

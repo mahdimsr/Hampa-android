@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <!-- bottom Menu -->
+    <ir.vanda.hampa.component.BottomMenu
+        android:id="@+id/bottomMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- child 0-->
+        <LinearLayout
+            style="@style/bottomMenuItem">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+
+            <ir.vanda.hampa.component.VandaTextView
+                style="@style/bottomMenuItem.Text"
+                android:text="خانه" />
+
+        </LinearLayout>
+
+        <!-- child 1-->
+        <LinearLayout
+            style="@style/bottomMenuItem">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+
+            <ir.vanda.hampa.component.VandaTextView
+                style="@style/bottomMenuItem.Text"
+                android:text="خانه" />
+
+        </LinearLayout>
+
+        <!-- child 2-->
+        <LinearLayout
+            style="@style/bottomMenuItem">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+
+            <ir.vanda.hampa.component.VandaTextView
+                style="@style/bottomMenuItem.Text"
+                android:text="خانه" />
+
+        </LinearLayout>
+
+
+    </ir.vanda.hampa.component.BottomMenu>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

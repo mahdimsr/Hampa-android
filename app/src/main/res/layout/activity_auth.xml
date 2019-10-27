@@ -8,6 +8,21 @@
     android:background="#fff"
     tools:context=".activity.AuthActivity">
 
+    <!-- statusBar -->
+    <ir.vanda.hampa.component.StatusBar
+        android:id="@+id/statusBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- navigation -->
+    <ir.vanda.hampa.component.NavigationBar
+        android:id="@+id/navigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <!-- circles -->
 
     <!-- light blue-->
@@ -26,9 +41,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_circle_purple"
+        android:translationZ="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
-        android:translationZ="2dp"/>
+        app:layout_constraintStart_toEndOf="parent" />
 
     <!-- small Green -->
     <ImageView
@@ -36,9 +51,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_circle_green_small"
+        app:layout_constraintBottom_toTopOf="@id/cardView"
         app:layout_constraintEnd_toStartOf="@id/circlePurple"
-        app:layout_constraintStart_toStartOf="@id/circlePurple"
-        app:layout_constraintBottom_toTopOf="@id/cardView"/>
+        app:layout_constraintStart_toStartOf="@id/circlePurple" />
 
 
     <!-- card -->
@@ -183,6 +198,7 @@
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:background="@drawable/bg_auth_tab_item"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
         android:gravity="center"
         android:padding="@dimen/space"
         android:text="@string/login"
@@ -193,7 +209,8 @@
         app:layout_constraintBottom_toBottomOf="@id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
+        tools:ignore="UnusedAttribute" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

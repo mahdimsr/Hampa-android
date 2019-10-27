@@ -15,17 +15,25 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
+import java.util.HashMap;
 import java.util.Random;
 
 import ir.vanda.hampa.BasicActivity;
 import ir.vanda.hampa.R;
+import ir.vanda.hampa.component.VandaInput;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.lib.Rotate3dAnimation;
+import ir.vanda.hampa.retrofit.Login;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class AuthActivity extends BasicActivity
 {
     private LinearLayout tabLayout;
-    private ViewPager viewPager;
+    private ViewPager    viewPager;
+
+    private VandaInput usernameInput, passwordInput;
 
     private VandaTextView submit;
 
@@ -83,7 +91,8 @@ public class AuthActivity extends BasicActivity
                     {
                         selectTab((VandaTextView) tabLayout.getChildAt(i));
 
-                    } else
+                    }
+                    else
                     {
                         unSelectTab((VandaTextView) tabLayout.getChildAt(i));
                     }
@@ -94,7 +103,8 @@ public class AuthActivity extends BasicActivity
                 {
                     state = "login";
 
-                } else if (position == 1)
+                }
+                else if (position == 1)
                 {
                     state = "signUp";
                 }
@@ -120,6 +130,34 @@ public class AuthActivity extends BasicActivity
             @Override
             public void onClick(View v)
             {
+                if (state.equals("login"))
+                {
+                    String username = usernameInput.getInput().getText().toString().trim();
+                    String password = passwordInput.getInput().getText().toString().trim();
+
+                    HashMap<String,String> requestBody = new HashMap<>();
+
+                    requestBody.put("mobile", username);
+                    requestBody.put("password", password);
+
+
+                    Call<Login> loginCall = getService().login(requestBody);
+
+                    loginCall.enqueue(new Callback<Login>()
+                    {
+                        @Override
+                        public void onResponse(Call<Login> call, Response<Login> response)
+                        {
+                            Log.i("login", response.body().status + "");
+                        }
+
+                        @Override
+                        public void onFailure(Call<Login> call, Throwable t)
+                        {
+                            Log.i("login", "error: " + t.getMessage());
+                        }
+                    });
+                }
             }
         });
 
@@ -129,11 +167,14 @@ public class AuthActivity extends BasicActivity
     {
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewpager);
-        submit = findViewById(R.id.submit);
+        submit    = findViewById(R.id.submit);
 
-        lightBlue = findViewById(R.id.circleLightBlue);
+        usernameInput = findViewById(R.id.username);
+        passwordInput = findViewById(R.id.password);
+
+        lightBlue  = findViewById(R.id.circleLightBlue);
         smallGreen = findViewById(R.id.circleSmallGreen);
-        purple = findViewById(R.id.circlePurple);
+        purple     = findViewById(R.id.circlePurple);
 
         randomTransition(lightBlue);
         randomTransition(smallGreen);
@@ -188,7 +229,8 @@ public class AuthActivity extends BasicActivity
 
             submit.startAnimation(a);
 
-        } else if (state.equals("signUp"))
+        }
+        else if (state.equals("signUp"))
         {
             //rotate +180
             Animation a = new Rotate3dAnimation(0, 180, submit.getWidth() / 2, 0, 0, true);
@@ -266,7 +308,7 @@ public class AuthActivity extends BasicActivity
         Log.i("mahdi-dev", "random: " + randomX);
 
 
-        final Animation a = new TranslateAnimation(0,randomX,0,randomY);
+        final Animation a = new TranslateAnimation(0, randomX, 0, randomY);
 
         a.setDuration(5000);
 

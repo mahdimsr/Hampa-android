@@ -1,4 +1,10 @@
 package ir.vanda.hampa.retrofit;
 
-public interface Service {
+import retrofit2.Call;
+import retrofit2.http.GET;
+
+public interface Service
+{
+    @GET("index")
+    Call<Index> index();
 }

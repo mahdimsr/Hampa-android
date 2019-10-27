@@ -90,11 +90,6 @@ public class BottomMenu extends LinearLayout
     public void setDefaultSelected(int position)
     {
         setSelected(position, (LinearLayout) this.getChildAt(position));
-
-        if (onBottomMenuItemClick != null)
-        {
-            onBottomMenuItemClick.onItemClick(position);
-        }
     }
 
     private void setSelected(int position, LinearLayout layout)

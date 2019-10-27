@@ -100,7 +100,7 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:padding="@dimen/space"
-                    android:text="@string/signUp"
+                    android:text="@string/register"
                     android:textColor="@color/colorTextPrimary"
                     app:fontName="iranSansMedium" />
 
@@ -138,12 +138,12 @@
                         android:layout_marginStart="@dimen/space"
                         android:layout_marginTop="@dimen/doubleSpace"
                         android:layout_marginEnd="@dimen/space"
-                        app:hint="رمز عبور" />
+                        app:hint="رمزعبور" />
 
 
                 </LinearLayout>
 
-                <!-- signUp -->
+                <!-- register -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

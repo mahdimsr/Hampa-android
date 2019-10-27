@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Hampa</string>
     <string name="login">ورود</string>
-    <string name="signUp">ثبت نام</string>
+    <string name="register">ثبت نام</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>

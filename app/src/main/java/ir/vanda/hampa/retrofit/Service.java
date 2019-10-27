@@ -15,4 +15,7 @@ public interface Service
     @POST("auth/login")
     Call<Login> login(@Body HashMap<String,String> requestBody);
 
+    @POST("auth/register")
+    Call<Register> register(@Body HashMap<String,String> requestBody);
+
 }

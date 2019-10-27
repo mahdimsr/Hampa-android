@@ -36,8 +36,8 @@ public class Storage
         {
             try
             {
-                Gson gson = new Gson();
-                Object o = gson.fromJson(value, Class.forName(type));
+                Gson   gson = new Gson();
+                Object o    = gson.fromJson(value, Class.forName(type));
 
                 return o;
             }
@@ -48,6 +48,11 @@ public class Storage
         }
 
         return null;
+    }
+
+    public boolean has(String name)
+    {
+        return get(name) != null;
     }
 
 

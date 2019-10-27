@@ -4,8 +4,12 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.text.InputFilter;
+import android.text.InputType;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +27,8 @@ import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.VandaInput;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.lib.Rotate3dAnimation;
+import ir.vanda.hampa.lib.Storage;
+import ir.vanda.hampa.model.Student;
 import ir.vanda.hampa.retrofit.Login;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -33,13 +39,16 @@ public class AuthActivity extends BasicActivity
     private LinearLayout tabLayout;
     private ViewPager    viewPager;
 
-    private VandaInput usernameInput, passwordInput;
+    private VandaInput usernameLoginInput, passwordLoginInput;
 
     private VandaTextView submit;
 
+    private SharedPreferences sp;
+    private Storage           storage;
+
     private FormAdapter formAdapter;
 
-    private String state = "login"; // login or signUp
+    private String state = "login"; // login or register
 
 
     private ImageView smallGreen, lightBlue, purple;
@@ -50,6 +59,17 @@ public class AuthActivity extends BasicActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_auth);
         findViews();
+
+        sp      = getPreferences(MODE_PRIVATE);
+        storage = new Storage(sp);
+
+        if (storage.has("student"))
+        {
+            Student student = (Student) storage.get("student");
+
+            usernameLoginInput.getInput().setText(student.mobile);
+            passwordLoginInput.getInput().setText(student.password);
+        }
 
         formAdapter = new FormAdapter();
 
@@ -106,7 +126,7 @@ public class AuthActivity extends BasicActivity
                 }
                 else if (position == 1)
                 {
-                    state = "signUp";
+                    state = "register";
                 }
 
 
@@ -132,10 +152,10 @@ public class AuthActivity extends BasicActivity
             {
                 if (state.equals("login"))
                 {
-                    String username = usernameInput.getInput().getText().toString().trim();
-                    String password = passwordInput.getInput().getText().toString().trim();
+                    String username = usernameLoginInput.getInput().getText().toString().trim();
+                    String password = passwordLoginInput.getInput().getText().toString().trim();
 
-                    HashMap<String,String> requestBody = new HashMap<>();
+                    HashMap<String, String> requestBody = new HashMap<>();
 
                     requestBody.put("mobile", username);
                     requestBody.put("password", password);
@@ -148,7 +168,22 @@ public class AuthActivity extends BasicActivity
                         @Override
                         public void onResponse(Call<Login> call, Response<Login> response)
                         {
-                            Log.i("login", response.body().status + "");
+                            Response<Login> res = response;
+
+
+                            Log.i("login", res.body().status + "");
+
+
+                            if (res.body().status.equals("OK"))
+                            {
+                                Student student = res.body().student;
+                                student.access_token = res.body().access_token;
+
+                                storage.put(student, "student");
+
+                                Log.i("login", "student is : " + student.toString());
+//                                startActivity(new Intent(AuthActivity.this, MainActivity.class));
+                            }
                         }
 
                         @Override
@@ -157,6 +192,51 @@ public class AuthActivity extends BasicActivity
                             Log.i("login", "error: " + t.getMessage());
                         }
                     });
+                }
+                else if (state.equals("register"))
+                {
+                    /*String username = usernameRegisterInput.getInput().getText().toString()
+                                                           .trim();
+
+                    String password = passwordRegisterInput.getInput().getText().toString()
+                                                           .trim();
+
+                    String repeatPassword = repeatPasswordRegisterInput.getInput().getText()
+                                                                       .toString().trim();
+
+                    HashMap<String, String> requestBody = new HashMap<>();
+
+                    requestBody.put("mobile", username);
+                    requestBody.put("password", password);
+                    requestBody.put("repeatPassword", repeatPassword);
+
+                    Call<Register> registerCall = getService().register(requestBody);
+
+                    registerCall.enqueue(new Callback<Register>()
+                    {
+                        @Override
+                        public void onResponse(Call<Register> call, Response<Register> response)
+                        {
+                            Response<Register> res = response;
+
+                            Log.i("register", res.body().toString());
+
+                            if (res.body().status.equals("OK"))
+                            {
+                                Student student = res.body().student;
+                                student.access_token = res.body().access_token;
+
+                                storage.put(student, "student");
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Register> call, Throwable t)
+                        {
+                            Log.i("register", "error: " + t.getMessage());
+                        }
+                    });*/
                 }
             }
         });
@@ -169,8 +249,18 @@ public class AuthActivity extends BasicActivity
         viewPager = findViewById(R.id.viewpager);
         submit    = findViewById(R.id.submit);
 
-        usernameInput = findViewById(R.id.username);
-        passwordInput = findViewById(R.id.password);
+        usernameLoginInput = findViewById(R.id.username);
+        usernameLoginInput.getInput().setFilters(new InputFilter[]{new InputFilter.LengthFilter(25)});
+        usernameLoginInput.getInput().setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+
+        passwordLoginInput = findViewById(R.id.password);
+        passwordLoginInput.getInput().setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
+        passwordLoginInput.getInput().setInputType( InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD);
+        passwordLoginInput.getInput().setTransformationMethod(new PasswordTransformationMethod());
+
+        /*usernameRegisterInput       = findViewById(R.id.usernameRegister);
+        passwordRegisterInput       = findViewById(R.id.passwordRegister);
+        repeatPasswordRegisterInput = findViewById(R.id.repeatPasswordRegister);*/
 
         lightBlue  = findViewById(R.id.circleLightBlue);
         smallGreen = findViewById(R.id.circleSmallGreen);
@@ -248,7 +338,7 @@ public class AuthActivity extends BasicActivity
                 @Override
                 public void onAnimationEnd(Animation animation)
                 {
-                    submit.setText(getString(R.string.signUp));
+                    submit.setText(getString(R.string.register));
                 }
 
                 @Override

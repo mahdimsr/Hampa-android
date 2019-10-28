@@ -28,7 +28,7 @@
             android:id="@+id/bottomMenu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#fff">
+            android:background="@drawable/bg_bottom_menu">
 
             <!-- child 0-->
             <LinearLayout
@@ -36,12 +36,12 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_height="55dp"
+                    android:src="@drawable/ic_school_board" />
 
                 <ir.vanda.hampa.component.VandaTextView
                     style="@style/bottomMenuItem.Text"
-                    android:text="خانه" />
+                    android:text="همپا" />
 
             </LinearLayout>
 
@@ -66,12 +66,12 @@
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
+                    android:layout_height="55dp"
+                    android:src="@drawable/ic_mortarboard" />
 
                 <ir.vanda.hampa.component.VandaTextView
                     style="@style/bottomMenuItem.Text"
-                    android:text="خانه" />
+                    android:text="صفحه خودم" />
 
             </LinearLayout>
 

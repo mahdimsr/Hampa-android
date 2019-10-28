@@ -105,9 +105,9 @@ public class BottomMenu extends LinearLayout
 
             //set selected layout
 
-            ((ImageView) layout.getChildAt(0)).setColorFilter(ContextCompat.getColor(getContext(), R.color.bottomMenuSelected), PorterDuff.Mode.SRC_IN);
+            ((ImageView) layout.getChildAt(0)).animate().scaleX(1.2f).scaleY(1.2f).start();
 
-            ((TextView) layout.getChildAt(1)).setTextColor(ContextCompat.getColor(getContext(), R.color.bottomMenuSelected));
+            ((TextView) layout.getChildAt(1)).animate().scaleX(1.2f).scaleY(1.2f).start();
 
             //unSelect other layout
             for (int i = 0; i < this.getChildCount(); i++)
@@ -122,8 +122,8 @@ public class BottomMenu extends LinearLayout
 
     private void unSelected(LinearLayout layout)
     {
-        ((ImageView) layout.getChildAt(0)).setColorFilter(ContextCompat.getColor(getContext(), R.color.bottomMenuUnSelected), PorterDuff.Mode.SRC_IN);
-        ((TextView) layout.getChildAt(1)).setTextColor(ContextCompat.getColor(getContext(), R.color.bottomMenuSelected));
+        ((ImageView) layout.getChildAt(0)).animate().scaleX(1f).scaleY(1f).start();
+        ((TextView) layout.getChildAt(1)).animate().scaleX(1f).scaleY(1f).start();
     }
 
     private void init(AttributeSet attrs, int defStyle)

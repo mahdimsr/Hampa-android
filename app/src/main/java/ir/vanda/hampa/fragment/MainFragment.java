@@ -33,7 +33,6 @@ public class MainFragment extends Fragment
         // Required empty public constructor
     }
 
-    private Button        button;
     private MainActivity mainActivity;
 
     @Override
@@ -46,38 +45,13 @@ public class MainFragment extends Fragment
 
         mainActivity = ((MainActivity) getActivity());
 
-        button.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Call<Index> indexCall = mainActivity.getService().index();
-
-                indexCall.enqueue(new Callback<Index>()
-                {
-                    @Override
-                    public void onResponse(Call<Index> call, Response<Index> response)
-                    {
-                        Log.i("index", response.body() + "");
-                    }
-
-                    @Override
-                    public void onFailure(Call<Index> call, Throwable t)
-                    {
-                        Log.i("index", "error" + t.getMessage());
-                    }
-                });
-
-            }
-        });
-
 
         return v;
     }
 
     private void findView(View v)
     {
-        button = v.findViewById(R.id.test);
+
     }
 
 }

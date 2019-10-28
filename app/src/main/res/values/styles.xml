@@ -27,4 +27,51 @@
 
     </style>
 
+
+    <style name="MainMenuItem">
+
+        <item name="android:layout_marginTop">@dimen/space</item>
+        <item name="android:layout_marginBottom">@dimen/space</item>
+        <item name="android:layout_marginStart">@dimen/space</item>
+        <item name="android:layout_marginEnd">@dimen/space</item>
+
+    </style>
+
+    <style name="MainMenuItem.Image">
+
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">centerCrop</item>
+        <item name="radius">50</item>
+
+    </style>
+
+
+    <style name="MainMenuItem.Hover">
+
+        <item name="android:layout_margin">0dp</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:adjustViewBounds">true</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:src">@drawable/fg_main_item</item>
+        <item name="radius">50</item>
+
+    </style>
+
+    <style name="MainMenuItem.Title">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:gravity">center</item>
+        <item name="android:padding">@dimen/space</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#fff</item>
+        <item name="fontName">iranSansMedium</item>
+
+    </style>
+
 </resources>

@@ -12,8 +12,8 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/navigationBar"/>
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <!-- bottom Menu -->
@@ -27,7 +27,7 @@
         <ir.vanda.hampa.component.BottomMenu
             android:id="@+id/bottomMenu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="55dp"
             android:background="@drawable/bg_bottom_menu">
 
             <!-- child 0-->
@@ -35,13 +35,12 @@
                 style="@style/bottomMenuItem">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:src="@drawable/ic_school_board" />
+                    style="@style/bottomMenuItem.Icon"
+                    android:src="@drawable/ic_home"
+                    />
 
-                <ir.vanda.hampa.component.VandaTextView
-                    style="@style/bottomMenuItem.Text"
-                    android:text="همپا" />
+                <ImageView
+                   style="@style/bottomMenuItemDot"/>
 
             </LinearLayout>
 
@@ -50,13 +49,11 @@
                 style="@style/bottomMenuItem">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:src="@mipmap/ic_launcher" />
+                    style="@style/bottomMenuItem.Icon"
+                    android:src="@drawable/ic_purse"/>
 
-                <ir.vanda.hampa.component.VandaTextView
-                    style="@style/bottomMenuItem.Text"
-                    android:text="خانه" />
+                <ImageView
+                    style="@style/bottomMenuItemDot"/>
 
             </LinearLayout>
 
@@ -65,13 +62,11 @@
                 style="@style/bottomMenuItem">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:src="@drawable/ic_mortarboard" />
+                    style="@style/bottomMenuItem.Icon"
+                    android:src="@drawable/ic_user"/>
 
-                <ir.vanda.hampa.component.VandaTextView
-                    style="@style/bottomMenuItem.Text"
-                    android:text="صفحه خودم" />
+                <ImageView
+                    style="@style/bottomMenuItemDot"/>
 
             </LinearLayout>
 

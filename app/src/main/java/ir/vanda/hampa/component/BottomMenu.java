@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Drawable;
@@ -17,8 +18,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.core.content.ContextCompat;
+
+import com.airbnb.lottie.LottieAnimationView;
+import com.airbnb.lottie.LottieDrawable;
 
 import org.w3c.dom.Text;
 
@@ -105,9 +110,18 @@ public class BottomMenu extends LinearLayout
 
             //set selected layout
 
-            ((ImageView) layout.getChildAt(0)).animate().scaleX(1.2f).scaleY(1.2f).start();
+            ImageView icon = (ImageView) layout.getChildAt(0);
+            ImageView dot = (ImageView) layout.getChildAt(1);
 
-            ((TextView) layout.getChildAt(1)).animate().scaleX(1.2f).scaleY(1.2f).start();
+            icon.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
+
+            dot.setVisibility(VISIBLE);
+            dot.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
+
+
+
+
+//            ((TextView) layout.getChildAt(1)).animate().scaleX(1.2f).scaleY(1.2f).start();
 
             //unSelect other layout
             for (int i = 0; i < this.getChildCount(); i++)
@@ -117,19 +131,29 @@ public class BottomMenu extends LinearLayout
                     unSelected((LinearLayout) this.getChildAt(i));
                 }
             }
+
+            lastClickedPosition = position;
         }
     }
 
     private void unSelected(LinearLayout layout)
     {
-        ((ImageView) layout.getChildAt(0)).animate().scaleX(1f).scaleY(1f).start();
-        ((TextView) layout.getChildAt(1)).animate().scaleX(1f).scaleY(1f).start();
+        ImageView icon = (ImageView) layout.getChildAt(0);
+        ImageView dot = (ImageView) layout.getChildAt(1);
+
+        icon.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
+
+        dot.setVisibility(GONE);
+
+
+//        ((TextView) layout.getChildAt(1)).animate().scaleX(1f).scaleY(1f).start();
     }
 
     private void init(AttributeSet attrs, int defStyle)
     {
         // Load attributes
-        final TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.BottomMenu, defStyle, 0);
+        final TypedArray typedArray = getContext()
+                .obtainStyledAttributes(attrs, R.styleable.BottomMenu, defStyle, 0);
 
 
         typedArray.recycle();

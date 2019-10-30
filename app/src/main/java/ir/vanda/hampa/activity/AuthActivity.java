@@ -320,7 +320,7 @@ public class AuthActivity extends BasicActivity
             submit.startAnimation(a);
 
         }
-        else if (state.equals("signUp"))
+        else if (state.equals("register"))
         {
             //rotate +180
             Animation a = new Rotate3dAnimation(0, 180, submit.getWidth() / 2, 0, 0, true);

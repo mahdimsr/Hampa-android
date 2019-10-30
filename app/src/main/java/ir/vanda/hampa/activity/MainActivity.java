@@ -47,7 +47,7 @@ public class MainActivity extends BasicActivity
 
                         break;
 
-                    case 1:
+                    case 2:
 
                         showFragment(profileFragment, "profileFragment");
 
@@ -58,7 +58,7 @@ public class MainActivity extends BasicActivity
             }
         });
 
-        bottomMenu.setDefaultSelected(0);
+        bottomMenu.setDefaultSelected(2);
 
     }
 

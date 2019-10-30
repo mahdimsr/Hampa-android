@@ -84,4 +84,48 @@
 
     </style>
 
+
+    <style name="ProfileItemMenu">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0.33</item>
+        <item name="android:padding">@dimen/space</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:gravity">center</item>
+
+    </style>
+
+
+    <style name="ProfileItemMenuIcon">
+
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:padding">@dimen/space</item>
+
+    </style>
+
+
+    <style name="ProfileItemMenuTitle">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="fontName">iranSansLight</item>
+        <item name="android:textColor">@color/colorTextPrimary</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingTop">@dimen/halfSpace</item>
+
+    </style>
+
+
+
+    <!-- modules -->
+    <style name="Line">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:background">#ebebeb</item>
+
+    </style>
+
 </resources>

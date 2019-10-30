@@ -15,4 +15,10 @@
     <string name="lessonExams">آزمون های درس به درس</string>
     <string name="helper_books">کتاب های کمک درسی</string>
     <string name="giftExam">آزمون های جایزه دار</string>
+    <string name="discountCodes">کدهای تخفیف</string>
+    <string name="myProfile">پروفایل من</string>
+    <string name="myExams">آزمون های من</string>
+    <string name="counterKonkurDay">روز شمار کنکور</string>
+    <string name="fullName">نام و نام خانوادگی</string>
+    <string name="location">استان . شهر</string>
 </resources>

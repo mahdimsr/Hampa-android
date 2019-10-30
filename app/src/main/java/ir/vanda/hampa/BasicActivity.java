@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
 
 import java.io.IOException;
 
@@ -63,6 +64,16 @@ public class BasicActivity extends AppCompatActivity
                                          .client(client)
                                          .build();
 
+    }
+
+    public float pxToDp (int px)
+    {
+        return px / ( (float) this.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT );
+    }
+
+    public int dpToPx (float dp)
+    {
+        return (int) ( dp * ( (float) this.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT ) );
     }
 
     public  Storage getStorage()

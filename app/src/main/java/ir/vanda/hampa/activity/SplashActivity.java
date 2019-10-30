@@ -1,10 +1,15 @@
 package ir.vanda.hampa.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.RotateAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+
+import java.util.Random;
 
 import ir.vanda.hampa.BasicActivity;
 import ir.vanda.hampa.R;
@@ -14,6 +19,7 @@ public class SplashActivity extends BasicActivity
 {
 
     private HampaLoader loader;
+    private ImageView smallGreen, lightBlue, purple,red;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -22,15 +28,53 @@ public class SplashActivity extends BasicActivity
         setContentView(R.layout.activity_splash);
 
         findViews();
-
         loader.startAnimate();
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                Intent intent = new Intent(SplashActivity.this,AuthActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        },4000);
+    }
+
+    private void randomTransition(final View v)
+    {
+        Random random = new Random();
+
+        float randomX = random.nextFloat() * 50;
+        float randomY = random.nextFloat() * 100;
+
+        Log.i("mahdi-dev", "random: " + randomX);
+
+
+        final Animation a = new TranslateAnimation(0, randomX, 0, randomY);
+
+        a.setDuration(5000);
+
+        a.setRepeatCount(Animation.INFINITE);
+
+        a.setRepeatMode(Animation.REVERSE);
+
+
+        v.startAnimation(a);
 
     }
 
-
     private void findViews()
     {
-        loader = findViewById(R.id.hampaLoader);
+        loader     = findViewById(R.id.hampaLoader);
+        lightBlue  = findViewById(R.id.circleLightBlue);
+        smallGreen = findViewById(R.id.circleSmallGreen);
+        purple     = findViewById(R.id.circlePurple);
+        red        = findViewById(R.id.circleRed);
+
+        randomTransition(lightBlue);
+        randomTransition(smallGreen);
+        randomTransition(purple);
+        randomTransition(red);
     }
 
 }

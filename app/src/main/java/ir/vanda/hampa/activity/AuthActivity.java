@@ -392,8 +392,8 @@ public class AuthActivity extends BasicActivity
     {
         Random random = new Random();
 
-        float randomX = random.nextFloat() * 400;
-        float randomY = random.nextFloat() * 500;
+        float randomX = random.nextFloat() * 200;
+        float randomY = random.nextFloat() * 200;
 
         Log.i("mahdi-dev", "random: " + randomX);
 

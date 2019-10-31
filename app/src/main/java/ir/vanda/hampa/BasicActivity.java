@@ -2,12 +2,16 @@ package ir.vanda.hampa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
+import android.widget.Toast;
 
 import java.io.IOException;
 
+import ir.vanda.hampa.activity.AuthActivity;
+import ir.vanda.hampa.activity.SplashActivity;
 import ir.vanda.hampa.lib.Storage;
 import ir.vanda.hampa.model.Student;
 import ir.vanda.hampa.retrofit.Service;
@@ -21,8 +25,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class BasicActivity extends AppCompatActivity
 {
 
-    public static Retrofit retrofit;
-    public static Storage  storage;
+    private static Retrofit retrofit;
+    private static Storage  storage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -30,13 +34,9 @@ public class BasicActivity extends AppCompatActivity
 
         super.onCreate(savedInstanceState);
 
-        SharedPreferences sp = getPreferences(MODE_PRIVATE);
+        SharedPreferences sp = getSharedPreferences("storage", MODE_PRIVATE);
 
         storage = new Storage(sp);
-
-        final Student student = (Student) storage.get("student");
-
-        final String access_token = student != null ? student.access_token : "";
 
 
         OkHttpClient.Builder httpClient = new OkHttpClient.Builder();
@@ -48,12 +48,29 @@ public class BasicActivity extends AppCompatActivity
             {
                 Request original = chain.request();
 
-                Request request = original.newBuilder()
-                                          .header("Authorization", "Bearer " + access_token)
-                                          .method(original.method(), original.body())
-                                          .build();
 
-                return chain.proceed(request);
+                if (getStorage().has("student"))
+                {
+
+                    Student student = (Student) getStorage().get("student");
+
+                    Request request = original.newBuilder()
+                                              .header("Authorization", "Bearer " + student.access_token)
+                                              .method(original.method(), original.body())
+                                              .build();
+
+                    return chain.proceed(request);
+                }
+                else
+                {
+                    Request request = original.newBuilder()
+                                              .method(original.method(), original.body())
+                                              .build();
+
+                    return chain.proceed(request);
+                }
+
+
             }
         });
 
@@ -66,22 +83,22 @@ public class BasicActivity extends AppCompatActivity
 
     }
 
-    public float pxToDp (int px)
+    public float pxToDp(int px)
     {
-        return px / ( (float) this.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT );
+        return px / ((float) this.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
     }
 
-    public int dpToPx (float dp)
+    public int dpToPx(float dp)
     {
-        return (int) ( dp * ( (float) this.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT ) );
+        return (int) (dp * ((float) this.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
-    public  Storage getStorage()
+    public Storage getStorage()
     {
         return storage;
     }
 
-    public  Service getService()
+    public Service getService()
     {
         return retrofit.create(Service.class);
     }

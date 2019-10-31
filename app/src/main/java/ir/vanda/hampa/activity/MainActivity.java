@@ -58,7 +58,7 @@ public class MainActivity extends BasicActivity
             }
         });
 
-        bottomMenu.setDefaultSelected(2);
+        bottomMenu.setDefaultSelected(0);
 
     }
 

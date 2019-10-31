@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.BasicActivity;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.activity.MainActivity;
@@ -24,7 +25,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment
+public class MainFragment extends BaseFragment
 {
 
 
@@ -44,6 +45,26 @@ public class MainFragment extends Fragment
         findView(v);
 
         mainActivity = ((MainActivity) getActivity());
+
+        Call<Index> indexCall = getService().index();
+
+        indexCall.enqueue(new Callback<Index>()
+        {
+            @Override
+            public void onResponse(Call<Index> call, Response<Index> response)
+            {
+                Response<Index> res   = response;
+                Index           index = res.body();
+
+                Log.i("indexRes",index.status+ "");
+
+            }
+            @Override
+            public void onFailure(Call<Index> call, Throwable t)
+            {
+                Log.i("indexResError", t.toString());
+            }
+        });
 
 
         return v;

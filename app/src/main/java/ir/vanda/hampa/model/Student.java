@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 
 import java.util.List;
 
+import ir.vanda.hampa.component.BottomMenu;
+
 public class Student {
 
    //Attributes
    public String  name,familyName,nationalCode,password,mobile,email,average,school,address,telePhone,parentPhone,mobileToken,emailToken,profileImage,remember_token;
-   public Integer mobileVerified,emailVerified,isActive,isComplete;
+   public Boolean mobileVerified,emailVerified,isActive,isComplete;
    public Integer id,orientationId,gradeId,cityId;
    public Float   wallet;
 

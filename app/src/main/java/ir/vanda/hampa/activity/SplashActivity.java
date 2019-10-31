@@ -1,6 +1,7 @@
 package ir.vanda.hampa.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -8,36 +9,53 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.Random;
 
 import ir.vanda.hampa.BasicActivity;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.HampaLoader;
+import ir.vanda.hampa.lib.Storage;
 
 public class SplashActivity extends BasicActivity
 {
 
     private HampaLoader loader;
-    private ImageView smallGreen, lightBlue, purple,red;
+    private ImageView   smallGreen, lightBlue, purple, red;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         findViews();
         loader.startAnimate();
 
-        new Handler().postDelayed(new Runnable() {
+
+        new Handler().postDelayed(new Runnable()
+        {
             @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this,AuthActivity.class);
-                startActivity(intent);
-                finish();
+            public void run()
+            {
+                if (getStorage().has("student"))
+                {
+                    Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+                else
+                {
+                    Intent intent = new Intent(SplashActivity.this, AuthActivity.class);
+                    startActivity(intent);
+                    finish();
+
+                }
+
+
             }
-        },4000);
+        }, 2000);
     }
 
     private void randomTransition(final View v)

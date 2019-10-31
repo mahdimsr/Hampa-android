@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,6 +18,7 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 
 import org.json.JSONException;
@@ -46,9 +48,6 @@ public class AuthActivity extends BasicActivity
 
     private VandaTextView submit, formError;
 
-    private SharedPreferences sp;
-    private Storage           storage;
-
     private FormAdapter formAdapter;
 
     private String state = "login"; // login or register
@@ -63,12 +62,9 @@ public class AuthActivity extends BasicActivity
         setContentView(R.layout.activity_auth);
         findViews();
 
-        sp      = getPreferences(MODE_PRIVATE);
-        storage = new Storage(sp);
-
-        if (storage.has("student"))
+        if (getStorage().has("student"))
         {
-            Student student = (Student) storage.get("student");
+            Student student = (Student) getStorage().get("student");
 
             usernameLoginInput.getInput().setText(student.mobile);
             passwordLoginInput.getInput().setText(student.password);
@@ -191,13 +187,28 @@ public class AuthActivity extends BasicActivity
                                 Error.setError(formError, error);
 
                             }
+                            else if (login.status.equals("OK"))
+                            {
+                                Student student = login.student;
+                                student.access_token = login.access_token;
+
+                                getStorage().put(student, "student");
+
+                                startActivity(new Intent(AuthActivity.this, MainActivity.class));
+                                finish();
+                            }
 
 
-                            //set make input normal
+                            //set make form normal
                             if (!login.status.equals("Validation"))
                             {
                                 usernameLoginInput.setNormal();
                                 passwordLoginInput.setNormal();
+                            }
+
+                            if (!login.status.equals("ERROR"))
+                            {
+                                formError.setVisibility(View.GONE);
                             }
                         }
 

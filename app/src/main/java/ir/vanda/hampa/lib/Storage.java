@@ -1,6 +1,7 @@
 package ir.vanda.hampa.lib;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.google.gson.Gson;
 
@@ -52,6 +53,8 @@ public class Storage
 
     public boolean has(String name)
     {
+        Log.e("authError", get(name) != null ? "student exists" : "not user");
+
         return get(name) != null;
     }
 

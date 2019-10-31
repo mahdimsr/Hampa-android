@@ -9,4 +9,7 @@
     <color name="bottomMenuSelected">#000</color>
     <color name="bottomMenuUnSelected">#ff0</color>
 
+    <color name="colorHasError">#E53935</color>
+    <color name="colorIsSuccess">#388E3C</color>
+
 </resources>

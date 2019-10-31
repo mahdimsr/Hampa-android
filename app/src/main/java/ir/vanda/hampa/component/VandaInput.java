@@ -14,6 +14,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.lib.Font;
 
@@ -22,8 +25,10 @@ import ir.vanda.hampa.lib.Font;
  */
 public class VandaInput extends RelativeLayout
 {
-    private ImageView icon;
-    private EditText input;
+    private ImageView      icon;
+    private EditText       input;
+    private VandaTextView  error;
+    private RelativeLayout inputLayer;
 
     public VandaInput(Context context)
     {
@@ -52,6 +57,10 @@ public class VandaInput extends RelativeLayout
         input = findViewById(R.id.input);
         input.setTypeface(Font.iranSans_light(getContext()));
 
+        error = findViewById(R.id.error);
+
+        inputLayer = findViewById(R.id.inputLayer);
+
     }
 
     public EditText getInput()
@@ -72,7 +81,7 @@ public class VandaInput extends RelativeLayout
         // Load attributes
         final TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.VandaInput, defStyle, 0);
 
-        int iconReference = typedArray.getResourceId(R.styleable.VandaInput_iconImage, 0);
+        int    iconReference = typedArray.getResourceId(R.styleable.VandaInput_iconImage, 0);
         String hintReference = typedArray.getString(R.styleable.VandaInput_hint);
 
         if (iconReference != 0)
@@ -88,4 +97,21 @@ public class VandaInput extends RelativeLayout
         typedArray.recycle();
     }
 
+
+    public void setError(String errorText)
+    {
+        error.setText(errorText);
+
+        setErrorStyle();
+    }
+
+    private void setErrorStyle()
+    {
+        YoYo.with(Techniques.Shake).duration(200).playOn(this);
+
+        error.setTextColor(getResources().getColor(R.color.colorHasError));
+        error.setVisibility(VISIBLE);
+
+        inputLayer.setBackground(getResources().getDrawable(R.drawable.bg_vanda_input_error));
+    }
 }

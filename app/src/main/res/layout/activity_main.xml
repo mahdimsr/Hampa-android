@@ -31,44 +31,34 @@
             android:background="@drawable/bg_bottom_menu">
 
             <!-- child 0-->
-            <LinearLayout
-                style="@style/bottomMenuItem">
-
-                <ImageView
-                    style="@style/bottomMenuItem.Icon"
-                    android:src="@drawable/ic_home"
-                    />
-
-                <ImageView
-                   style="@style/bottomMenuItemDot"/>
-
-            </LinearLayout>
+            <ir.vanda.hampa.component.BottomMenuItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                app:icon="@drawable/ic_home"
+                app:title="@string/mainPage"
+                />
 
             <!-- child 1-->
-            <LinearLayout
-                style="@style/bottomMenuItem">
-
-                <ImageView
-                    style="@style/bottomMenuItem.Icon"
-                    android:src="@drawable/ic_purse"/>
-
-                <ImageView
-                    style="@style/bottomMenuItemDot"/>
-
-            </LinearLayout>
+            <ir.vanda.hampa.component.BottomMenuItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                app:icon="@drawable/ic_purse"
+                app:title="@string/myWallet"
+                />
 
             <!-- child 2-->
-            <LinearLayout
-                style="@style/bottomMenuItem">
-
-                <ImageView
-                    style="@style/bottomMenuItem.Icon"
-                    android:src="@drawable/ic_user"/>
-
-                <ImageView
-                    style="@style/bottomMenuItemDot"/>
-
-            </LinearLayout>
+            <ir.vanda.hampa.component.BottomMenuItem
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="0.3"
+                android:gravity="center"
+                app:icon="@drawable/ic_user"
+                app:title="@string/myProfile"
+                />
 
 
         </ir.vanda.hampa.component.BottomMenu>

@@ -23,9 +23,10 @@
 
         <item name="android:layout_width">50dp</item>
         <item name="android:layout_height">50dp</item>
-        <item name="android:padding">5dp</item>
+        <item name="android:padding">@dimen/halfSpace</item>
 
     </style>
+
 
     <style name="bottomMenuItemDot">
 

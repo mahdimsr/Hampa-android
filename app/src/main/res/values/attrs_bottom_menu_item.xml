@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="BottomMenuItem">
+
+        <attr name="icon" format="reference" />
+        <attr name="title" format="reference|string" />
+
+    </declare-styleable>
+</resources>

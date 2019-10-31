@@ -22,4 +22,6 @@
     <string name="counterKonkurDay">روز شمار کنکور</string>
     <string name="fullName">نام و نام خانوادگی</string>
     <string name="location">استان . شهر</string>
+    <string name="myWallet">کیف پول من</string>
+    <string name="mainPage">صفحه اصلی</string>
 </resources>

@@ -82,7 +82,7 @@ public class BottomMenu extends LinearLayout
                 @Override
                 public void onClick(View v)
                 {
-                    setSelected(finalI, (LinearLayout) v);
+                    setSelected(finalI, (BottomMenuItem) v);
 
                     Log.i("mahdi-dev", "bottomMenu : " + v.getClass().getName());
                 }
@@ -94,10 +94,10 @@ public class BottomMenu extends LinearLayout
 
     public void setDefaultSelected(int position)
     {
-        setSelected(position, (LinearLayout) this.getChildAt(position));
+        setSelected(position, (BottomMenuItem) this.getChildAt(position));
     }
 
-    private void setSelected(int position, LinearLayout layout)
+    private void setSelected(int position, BottomMenuItem layout)
     {
         if (position != lastClickedPosition)
         {
@@ -109,16 +109,7 @@ public class BottomMenu extends LinearLayout
 
 
             //set selected layout
-
-            ImageView icon = (ImageView) layout.getChildAt(0);
-            ImageView dot = (ImageView) layout.getChildAt(1);
-
-            icon.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
-
-            dot.setVisibility(VISIBLE);
-            dot.setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
-
-
+            layout.active();
 
 
 //            ((TextView) layout.getChildAt(1)).animate().scaleX(1.2f).scaleY(1.2f).start();
@@ -128,7 +119,7 @@ public class BottomMenu extends LinearLayout
             {
                 if (i != position)
                 {
-                    unSelected((LinearLayout) this.getChildAt(i));
+                    unSelected((BottomMenuItem) this.getChildAt(i));
                 }
             }
 
@@ -136,17 +127,9 @@ public class BottomMenu extends LinearLayout
         }
     }
 
-    private void unSelected(LinearLayout layout)
+    private void unSelected(BottomMenuItem layout)
     {
-        ImageView icon = (ImageView) layout.getChildAt(0);
-        ImageView dot = (ImageView) layout.getChildAt(1);
-
-        icon.setColorFilter(Color.RED, PorterDuff.Mode.SRC_IN);
-
-        dot.setVisibility(GONE);
-
-
-//        ((TextView) layout.getChildAt(1)).animate().scaleX(1f).scaleY(1f).start();
+        layout.deActive();
     }
 
     private void init(AttributeSet attrs, int defStyle)

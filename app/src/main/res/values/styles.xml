@@ -129,4 +129,14 @@
 
     </style>
 
+
+    <style name="formError">
+
+        <item name="fontName">iranSansLight</item>
+        <item name="android:textColor">@color/colorHasError</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:visibility">gone</item>
+
+    </style>
+
 </resources>

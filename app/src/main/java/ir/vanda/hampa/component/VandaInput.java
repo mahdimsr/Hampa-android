@@ -100,10 +100,26 @@ public class VandaInput extends RelativeLayout
 
     public void setError(String errorText)
     {
-        error.setText(errorText);
+        if (errorText != null)
+        {
+            error.setText(errorText);
 
-        setErrorStyle();
+            setErrorStyle();
+        }
+        else
+        {
+            setNormal();
+        }
     }
+
+
+    public void setNormal()
+    {
+        inputLayer.setBackground(getResources().getDrawable(R.drawable.bg_vanda_input));
+
+        error.setVisibility(GONE);
+    }
+
 
     private void setErrorStyle()
     {

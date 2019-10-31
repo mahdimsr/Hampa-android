@@ -19,6 +19,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
+import org.json.JSONException;
+
 import java.util.HashMap;
 import java.util.Random;
 
@@ -26,6 +28,7 @@ import ir.vanda.hampa.BasicActivity;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.VandaInput;
 import ir.vanda.hampa.component.VandaTextView;
+import ir.vanda.hampa.lib.Error;
 import ir.vanda.hampa.lib.Rotate3dAnimation;
 import ir.vanda.hampa.lib.Storage;
 import ir.vanda.hampa.model.Student;
@@ -41,7 +44,7 @@ public class AuthActivity extends BasicActivity
 
     private VandaInput usernameLoginInput, passwordLoginInput;
 
-    private VandaTextView submit;
+    private VandaTextView submit, formError;
 
     private SharedPreferences sp;
     private Storage           storage;
@@ -150,7 +153,62 @@ public class AuthActivity extends BasicActivity
             @Override
             public void onClick(View v)
             {
-                usernameLoginInput.setError("آزمایش خطا");
+                if (state.equals("login"))
+                {
+
+                    final String username = usernameLoginInput.getInput().getText().toString().trim();
+                    String       password = passwordLoginInput.getInput().getText().toString().trim();
+
+                    HashMap<String, String> data = new HashMap<>();
+
+                    data.put("mobile", username);
+                    data.put("password", password);
+
+                    Call<Login> loginCall = getService().login(data);
+
+                    loginCall.enqueue(new Callback<Login>()
+                    {
+                        @Override
+                        public void onResponse(Call<Login> call, Response<Login> response)
+                        {
+                            Response<Login> res = response;
+
+                            Login login = res.body();
+
+                            if (login.status.equals("Validation"))
+                            {
+                                Error error = new Error(login.errors);
+
+                                usernameLoginInput.setError(error.get("mobile"));
+                                passwordLoginInput.setError(error.get("password"));
+
+                            }
+                            else if (login.status.equals("ERROR"))
+                            {
+
+                                String error = login.errorMessage;
+
+                                Error.setError(formError, error);
+
+                            }
+
+
+                            //set make input normal
+                            if (!login.status.equals("Validation"))
+                            {
+                                usernameLoginInput.setNormal();
+                                passwordLoginInput.setNormal();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Login> call, Throwable t)
+                        {
+                            Log.i("loginResError", t.toString());
+                        }
+                    });
+
+                }
             }
         });
 
@@ -161,14 +219,15 @@ public class AuthActivity extends BasicActivity
         tabLayout = findViewById(R.id.tabLayout);
         viewPager = findViewById(R.id.viewpager);
         submit    = findViewById(R.id.submit);
+        formError = findViewById(R.id.formError);
 
         usernameLoginInput = findViewById(R.id.username);
         usernameLoginInput.getInput().setFilters(new InputFilter[]{new InputFilter.LengthFilter(25)});
-        usernameLoginInput.getInput().setInputType(InputType.TYPE_CLASS_TEXT|InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        usernameLoginInput.getInput().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
         passwordLoginInput = findViewById(R.id.password);
-        passwordLoginInput.getInput().setFilters(new InputFilter[]{new InputFilter.LengthFilter(8)});
-        passwordLoginInput.getInput().setInputType( InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD);
+        passwordLoginInput.getInput().setFilters(new InputFilter[]{new InputFilter.LengthFilter(9)});
+        passwordLoginInput.getInput().setInputType(InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD);
         passwordLoginInput.getInput().setTransformationMethod(new PasswordTransformationMethod());
 
         /*usernameRegisterInput       = findViewById(R.id.usernameRegister);

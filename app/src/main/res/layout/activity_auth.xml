@@ -165,7 +165,7 @@
                     <ir.vanda.hampa.component.VandaInput
                         android:id="@+id/usernameRegister"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space"
                         android:layout_marginEnd="@dimen/space"
                         app:hint="ایمیل یا شماره تلفن" />
@@ -174,7 +174,7 @@
                     <ir.vanda.hampa.component.VandaInput
                         android:id="@+id/passwordRegister"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space"
                         android:layout_marginTop="@dimen/doubleSpace"
                         android:layout_marginEnd="@dimen/space"
@@ -184,7 +184,7 @@
                     <ir.vanda.hampa.component.VandaInput
                         android:id="@+id/repeatPasswordRegister"
                         android:layout_width="match_parent"
-                        android:layout_height="60dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space"
                         android:layout_marginTop="@dimen/doubleSpace"
                         android:layout_marginEnd="@dimen/space"

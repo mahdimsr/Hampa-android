@@ -35,6 +35,7 @@ import ir.vanda.hampa.lib.Rotate3dAnimation;
 import ir.vanda.hampa.lib.Storage;
 import ir.vanda.hampa.model.Student;
 import ir.vanda.hampa.retrofit.Login;
+import ir.vanda.hampa.retrofit.Register;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -45,6 +46,7 @@ public class AuthActivity extends BasicActivity
     private ViewPager    viewPager;
 
     private VandaInput usernameLoginInput, passwordLoginInput;
+    private VandaInput usernameRegister, passwordRegister, repeatPasswordRegister;
 
     private VandaTextView submit, formError;
 
@@ -220,6 +222,66 @@ public class AuthActivity extends BasicActivity
                     });
 
                 }
+                else if (state.equals("register"))
+                {
+                    String username       = usernameRegister.getInput().getText().toString().trim();
+                    String paswword       = passwordRegister.getInput().getText().toString().trim();
+                    String repeatPassword = repeatPasswordRegister.getInput().getText().toString().trim();
+
+                    HashMap<String, String> data = new HashMap<>();
+
+                    data.put("mobile", username);
+                    data.put("password", paswword);
+                    data.put("repeatPassword", repeatPassword);
+
+                    Call<Register> registerCall = getService().register(data);
+
+                    registerCall.enqueue(new Callback<Register>()
+                    {
+                        @Override
+                        public void onResponse(Call<Register> call, Response<Register> response)
+                        {
+                            Response<Register> res      = response;
+                            Register           register = res.body();
+
+                            Log.i("registerRes", res.code() + "");
+
+                            if (register.status.equals("Validation"))
+                            {
+                                Error error = new Error(register.errors);
+
+                                usernameRegister.setError(error.get("mobile"));
+                                passwordRegister.setError(error.get("password"));
+                                repeatPasswordRegister.setError(error.get("repeatPassword"));
+                            }
+                            else if (register.status.equals("OK"))
+                            {
+                                Student student = register.student;
+                                student.access_token = register.access_token;
+
+                                getStorage().put(student, "student");
+
+                                startActivity(new Intent(AuthActivity.this, MainActivity.class));
+                                finish();
+                            }
+
+                            //make normal
+                            if (!register.status.equals("Validation"))
+                            {
+                                usernameRegister.setNormal();
+                                passwordRegister.setNormal();
+                                repeatPasswordRegister.setNormal();
+                            }
+
+                        }
+
+                        @Override
+                        public void onFailure(Call<Register> call, Throwable t)
+                        {
+                            Log.e("registerResError", t.toString() + "");
+                        }
+                    });
+                }
             }
         });
 
@@ -241,9 +303,9 @@ public class AuthActivity extends BasicActivity
         passwordLoginInput.getInput().setInputType(InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD);
         passwordLoginInput.getInput().setTransformationMethod(new PasswordTransformationMethod());
 
-        /*usernameRegisterInput       = findViewById(R.id.usernameRegister);
-        passwordRegisterInput       = findViewById(R.id.passwordRegister);
-        repeatPasswordRegisterInput = findViewById(R.id.repeatPasswordRegister);*/
+        usernameRegister       = findViewById(R.id.usernameRegister);
+        passwordRegister       = findViewById(R.id.passwordRegister);
+        repeatPasswordRegister = findViewById(R.id.repeatPasswordRegister);
 
         lightBlue  = findViewById(R.id.circleLightBlue);
         smallGreen = findViewById(R.id.circleSmallGreen);

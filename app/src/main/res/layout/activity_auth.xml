@@ -31,6 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_circle_light_blue"
+        android:contentDescription="@string/circleLightBlue"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -42,8 +43,10 @@
         android:layout_height="wrap_content"
         android:src="@drawable/ic_circle_purple"
         android:translationZ="2dp"
+        android:contentDescription="@string/circlePurple"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="parent" />
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- small Green -->
     <ImageView
@@ -51,6 +54,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/ic_circle_green_small"
+        android:contentDescription="@string/circleSmallGreen"
         app:layout_constraintBottom_toTopOf="@id/cardView"
         app:layout_constraintEnd_toStartOf="@id/circlePurple"
         app:layout_constraintStart_toStartOf="@id/circlePurple" />

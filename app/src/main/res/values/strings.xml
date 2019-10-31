@@ -4,6 +4,10 @@
     <string name="register">ثبت نام</string>
     <string name="splash_text">هدف ما پیشرفت است.</string>
     <string name="splash_logo_description">لوگو</string>
+    <string name="circleSmallGreen">circleSmallGreen</string>
+    <string name="circlePurple">circlePurple</string>
+    <string name="circleRed">circleRed</string>
+    <string name="circleLightBlue">circleLightBlue</string>
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>

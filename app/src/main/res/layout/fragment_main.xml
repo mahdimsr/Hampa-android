@@ -57,7 +57,7 @@
 
     <!-- lessonExam -->
     <RelativeLayout
-        android:id="@+id/lessonExam"
+        android:id="@+id/lessonExamLayout"
         style="@style/MainMenuItem"
         android:layout_width="0dp"
         android:layout_height="200dp"
@@ -121,7 +121,7 @@
         android:layout_height="200dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/helper_books"
-        app:layout_constraintTop_toBottomOf="@id/lessonExam">
+        app:layout_constraintTop_toBottomOf="@id/lessonExamLayout">
 
 
         <ir.vanda.hampa.component.RoundedImageView

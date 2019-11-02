@@ -68,7 +68,7 @@ public class MainActivity extends BasicActivity
     }
 
 
-    private void showFragment(Fragment fragment, String tag)
+    public void showFragment(Fragment fragment, String tag)
     {
 
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();

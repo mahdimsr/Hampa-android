@@ -4,12 +4,18 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorTextPrimary">#000000</color>
+    <color name="colorTextSecondary">#757575</color>
     <color name="colorTextHint">#9E9E9E</color>
+
+    <color name="colorGrey_700">#616161</color>
 
     <color name="bottomMenuSelected">#000</color>
     <color name="bottomMenuUnSelected">#ff0</color>
 
     <color name="colorHasError">#E53935</color>
     <color name="colorIsSuccess">#388E3C</color>
+
+    <color name="colorCheckBoxDefault">#c0c0c0</color>
+    <color name="colorCheckBoxGrade">#7B1FA2</color>
 
 </resources>

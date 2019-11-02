@@ -24,4 +24,17 @@
     <string name="location">استان . شهر</string>
     <string name="myWallet">کیف پول من</string>
     <string name="mainPage">صفحه اصلی</string>
+
+    <!-- TODO: help for understand-->
+    <string name="incompleteFullName">نام و نام خانوادگیتو به ما نگفتی. از قسمت حساب کاربری بگی.</string>
+    <string name="grade">پایه</string>
+    <string name="tenth">دهم</string>
+    <string name="eleventh">یازدهم</string>
+    <string name="twelfth">دوازدهم</string>
+    <string name="orientation">گرایش</string>
+    <string name="mathematics">ریاضی فیزیک</string>
+    <string name="experimental">تجربی</string>
+    <string name="human_discipline">انسانی</string>
+
+
 </resources>

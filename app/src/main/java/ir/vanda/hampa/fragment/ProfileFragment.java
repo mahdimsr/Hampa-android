@@ -16,15 +16,17 @@ import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.activity.MainActivity;
 import ir.vanda.hampa.component.StatusBar;
 import ir.vanda.hampa.component.VandaTextView;
+import ir.vanda.hampa.model.Student;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends Fragment
+public class ProfileFragment extends BaseFragment
 {
 
 
@@ -39,6 +41,7 @@ public class ProfileFragment extends Fragment
     private VandaTextView fullNameTextView, locationTextView;
     private NestedScrollView nestedScrollView;
     private View             fgBanner, toolbarHover;
+    private Student student;
 
     //animations variables
     private int fgHoverHeight, toolbarHeight, profileLayoutHeight, statusBarHeight;
@@ -50,6 +53,24 @@ public class ProfileFragment extends Fragment
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         finViews(v);
+
+        //fill information
+        student = (Student) getStorage().get("student");
+
+        if (student.name == null || student.familyName == null)
+        {
+            fullNameTextView.setText(R.string.incompleteFullName);
+            fullNameTextView.setTextSize(15);
+        }
+        else
+        {
+            fullNameTextView.setText(student.name + " " + student.familyName);
+        }
+
+        if (student.city == null)
+        {
+            locationTextView.setVisibility(View.GONE);
+        }
 
         //scroll event
         nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener()

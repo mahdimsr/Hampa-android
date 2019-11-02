@@ -30,7 +30,7 @@
         android:paddingEnd="@dimen/space"
         android:text="عنوان"
         android:textColor="@color/colorTextSecondary"
-        android:textSize="15sp"
+        android:textSize="12sp"
         app:fontName="iranSansMedium" />
 
 </RelativeLayout>

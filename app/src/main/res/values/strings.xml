@@ -35,6 +35,7 @@
     <string name="mathematics">ریاضی فیزیک</string>
     <string name="experimental">تجربی</string>
     <string name="human_discipline">انسانی</string>
+    <string name="endOfLoadingList">بارگذاری تمام شد...</string>
 
 
 </resources>

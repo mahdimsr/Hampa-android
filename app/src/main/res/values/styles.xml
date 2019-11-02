@@ -140,7 +140,7 @@
     </style>
 
 
-    <style name="checkBoxLessonExam">
+    <style name="checkBoxGradeLessonExam">
 
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
@@ -148,6 +148,18 @@
         <item name="android:layout_margin">@dimen/halfSpace</item>
         <item name="bgDrawable">@drawable/bg_grade_checkbox</item>
         <item name="tintColor">@color/colorCheckBoxGrade</item>
+
+    </style>
+
+
+    <style name="checkBoxOrientationLessonExam">
+
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0.3</item>
+        <item name="android:layout_margin">@dimen/halfSpace</item>
+        <item name="bgDrawable">@drawable/bg_orientation_checkbox</item>
+        <item name="tintColor">@color/colorCheckBoxOrientation</item>
 
     </style>
 

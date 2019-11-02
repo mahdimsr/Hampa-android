@@ -15,7 +15,8 @@
     <color name="colorHasError">#E53935</color>
     <color name="colorIsSuccess">#388E3C</color>
 
-    <color name="colorCheckBoxDefault">#c0c0c0</color>
+    <color name="colorCheckBoxDefault">#CECECE</color>
     <color name="colorCheckBoxGrade">#7B1FA2</color>
+    <color name="colorCheckBoxOrientation">#AD1457</color>
 
 </resources>

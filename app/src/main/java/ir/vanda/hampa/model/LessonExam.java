@@ -1,16 +1,18 @@
 package ir.vanda.hampa.model;
 
+import androidx.annotation.NonNull;
+
 import java.util.Date;
 import java.util.List;
 
 public class LessonExam {
 
     //Attributes
-    Integer id,duration;
-    String  exm,title,description,answerSheet,status;
-    Float   price;
-    Boolean isPublic;
-    Date    activeDate;
+    public Integer id,duration;
+    public String  exm,title,description,answerSheet,status;
+    public Float   price;
+    public Boolean isPublic;
+    public Date    activeDate;
 
     //Relations
     public List<ExamCode> examCodes;
@@ -20,4 +22,11 @@ public class LessonExam {
     public List<QuestionExam> questionExams;
     public List<Question> questions;
 
+
+    @NonNull
+    @Override
+    public String toString()
+    {
+        return "id: " + id + " exm: " + exm ;
+    }
 }

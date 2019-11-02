@@ -52,5 +52,16 @@ public class BaseFragment extends Fragment
         ((MainActivity) getContext()).showFragment(fragment, tag);
     }
 
+    protected float pxToDp(int px)
+    {
+        return ((BasicActivity) getContext()).pxToDp(px);
+    }
+
+
+    protected int dpToPx(float dp)
+    {
+        return ((BasicActivity) getContext()).dpToPx(dp);
+    }
+
 
 }

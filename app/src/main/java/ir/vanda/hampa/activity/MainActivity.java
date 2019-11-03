@@ -97,6 +97,46 @@ public class MainActivity extends BasicActivity
 
     }
 
+
+    public void showFragmentByAnim(Fragment fragment, String tag, boolean isNewSection)
+    {
+
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
+        if (isNewSection)
+        {
+            ft.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
+        }
+        else
+        {
+            ft.setCustomAnimations(R.anim.slide_in_top, R.anim.hold, R.anim.hold, R.anim.slide_out_bottom);
+        }
+
+
+        //hide last fragment
+
+        if (getVisibleFragment() != null)
+        {
+            ft.hide(getVisibleFragment());
+        }
+
+        //show current fragment
+
+        if (fragment.isAdded())
+        {
+            ft.show(fragment);
+        }
+        else
+        {
+            ft.add(R.id.frameLayout, fragment);
+
+            ft.addToBackStack(tag);
+        }
+
+        ft.commit();
+
+    }
+
     private Fragment getVisibleFragment()
     {
         FragmentManager fm = getSupportFragmentManager();

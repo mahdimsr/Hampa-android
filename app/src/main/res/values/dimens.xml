@@ -9,4 +9,7 @@
     <dimen name="elevation">12dp</dimen>
     <dimen name="doubleRadius">24dp</dimen>
 
+
+    <integer name="fragmentTransitionSpeed">250</integer>
+
 </resources>

@@ -232,10 +232,12 @@
 
                         <!-- bottomRight -->
                         <LinearLayout
+                            android:id="@+id/myProfileLayout"
                             style="@style/ProfileItemMenu">
 
                             <ImageView
                                 style="@style/ProfileItemMenuIcon"
+                                android:tint="#ff9057"
                                 android:src="@drawable/ic_profile" />
 
                             <ir.vanda.hampa.component.VandaTextView

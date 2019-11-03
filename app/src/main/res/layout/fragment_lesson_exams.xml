@@ -81,6 +81,7 @@
 
                     <!-- checkBox -->
                     <LinearLayout
+                        android:id="@+id/gradeFilterLayout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal"
@@ -89,16 +90,19 @@
                         <ir.vanda.hampa.component.HampaCheckBox
                             android:id="@+id/tenCheckBox"
                             style="@style/checkBoxGradeLessonExam"
+                            app:value="Tenth"
                             app:titleText="@string/tenth" />
 
                         <ir.vanda.hampa.component.HampaCheckBox
                             android:id="@+id/elevenCheckBox"
                             style="@style/checkBoxGradeLessonExam"
+                            app:value="Eleventh"
                             app:titleText="@string/eleventh" />
 
                         <ir.vanda.hampa.component.HampaCheckBox
-                            android:id="@+id/twelveCheckBox"
+                            android:id="@+id/twelfthCheckBox"
                             style="@style/checkBoxGradeLessonExam"
+                            app:value="Twelfth"
                             app:titleText="@string/twelfth" />
 
                     </LinearLayout>
@@ -157,16 +161,19 @@
                         <ir.vanda.hampa.component.HampaCheckBox
                             android:id="@+id/mathCheckBox"
                             style="@style/checkBoxOrientationLessonExam"
+                            app:value="Mathematical-Physics"
                             app:titleText="@string/mathematics" />
 
                         <ir.vanda.hampa.component.HampaCheckBox
-                            android:id="@+id/experimentCheckBox"
+                            android:id="@+id/scienceCheckBox"
                             style="@style/checkBoxOrientationLessonExam"
+                            app:value="Science"
                             app:titleText="@string/experimental" />
 
                         <ir.vanda.hampa.component.HampaCheckBox
-                            android:id="@+id/humanCheckBox"
+                            android:id="@+id/literatureCheckBox"
                             style="@style/checkBoxOrientationLessonExam"
+                            app:value="Literature-and-Humanities"
                             app:titleText="@string/human_discipline" />
 
                     </LinearLayout>

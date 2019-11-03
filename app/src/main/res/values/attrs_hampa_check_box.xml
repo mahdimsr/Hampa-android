@@ -1,6 +1,7 @@
 <resources>
     <declare-styleable name="HampaCheckBox">
         <attr name="titleText" format="string|reference" />
+        <attr name="value" format="string|reference"/>
         <attr name="tintColor" format="color|reference" />
         <attr name="bgDrawable" format="reference" />
     </declare-styleable>

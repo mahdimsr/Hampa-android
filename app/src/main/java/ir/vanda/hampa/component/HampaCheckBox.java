@@ -28,8 +28,10 @@ public class HampaCheckBox extends RelativeLayout
     private RelativeLayout parent;
     private ImageView      icon;
     private VandaTextView  title;
+    private String         value;
     private Boolean        isChecked = false;
     private Drawable       activeBackground, defaultBackground;
+    private OnCheckListener onCheckListener;
 
     public HampaCheckBox(Context context)
     {
@@ -71,7 +73,12 @@ public class HampaCheckBox extends RelativeLayout
             @Override
             public void onClick(View v)
             {
-                check();
+                check(null);
+
+                if (onCheckListener != null)
+                {
+                    onCheckListener.OnCheck();
+                }
             }
         });
 
@@ -81,6 +88,8 @@ public class HampaCheckBox extends RelativeLayout
 
         String titleText = typedArray.getString(R.styleable.HampaCheckBox_titleText);
         title.setText(titleText);
+
+        value = typedArray.getString(R.styleable.HampaCheckBox_value);
 
         activeBackground = typedArray.getDrawable(R.styleable.HampaCheckBox_bgDrawable);
 
@@ -92,9 +101,12 @@ public class HampaCheckBox extends RelativeLayout
 
     }
 
-    private void check()
+    private void check(Boolean check)
     {
-        isChecked = !isChecked;
+        if (check == null)
+        {
+            isChecked = !isChecked;
+        }
 
         if (isChecked)
         {
@@ -112,7 +124,13 @@ public class HampaCheckBox extends RelativeLayout
     {
         isChecked = check;
 
-        check();
+        check(check);
+    }
+
+
+    public String getValue()
+    {
+        return value;
     }
 
     public Boolean isChecked()
@@ -120,4 +138,14 @@ public class HampaCheckBox extends RelativeLayout
         return isChecked;
     }
 
+    public void setOnCheckListener(OnCheckListener onCheckListener)
+    {
+        this.onCheckListener = onCheckListener;
+    }
+
+
+    public interface OnCheckListener
+    {
+        void OnCheck();
+    }
 }

@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import ir.vanda.hampa.BaseFragment;
@@ -21,12 +22,13 @@ import ir.vanda.hampa.R;
 import ir.vanda.hampa.activity.MainActivity;
 import ir.vanda.hampa.component.StatusBar;
 import ir.vanda.hampa.component.VandaTextView;
+import ir.vanda.hampa.fragment.profileChild.MyProfileFragment;
 import ir.vanda.hampa.model.Student;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class ProfileFragment extends BaseFragment
+public class ProfileFragment extends BaseFragment implements View.OnClickListener
 {
 
 
@@ -41,7 +43,8 @@ public class ProfileFragment extends BaseFragment
     private VandaTextView fullNameTextView, locationTextView;
     private NestedScrollView nestedScrollView;
     private View             fgBanner, toolbarHover;
-    private Student student;
+    private Student      student;
+    private LinearLayout myProfileLayout;
 
     //animations variables
     private int fgHoverHeight, toolbarHeight, profileLayoutHeight, statusBarHeight;
@@ -164,6 +167,23 @@ public class ProfileFragment extends BaseFragment
 
         fullNameTextView = v.findViewById(R.id.fullNameTextView);
         locationTextView = v.findViewById(R.id.locationTextView);
+
+        myProfileLayout = v.findViewById(R.id.myProfileLayout);
+        myProfileLayout.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.myProfileLayout:
+
+                MyProfileFragment myProfileFragment = new MyProfileFragment();
+
+                showFragmentByAnim(myProfileFragment,"myProfile",false);
+
+                break;
+        }
+    }
 }

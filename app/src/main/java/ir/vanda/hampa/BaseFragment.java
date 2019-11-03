@@ -52,6 +52,11 @@ public class BaseFragment extends Fragment
         ((MainActivity) getContext()).showFragment(fragment, tag);
     }
 
+    protected void showFragmentByAnim(Fragment fragment, String tag,boolean isNewSection)
+    {
+        ((MainActivity) getContext()).showFragmentByAnim(fragment, tag,isNewSection);
+    }
+
     protected float pxToDp(int px)
     {
         return ((BasicActivity) getContext()).pxToDp(px);

@@ -1,0 +1,36 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentLayout"
+    android:background="@drawable/bg_checkbox_default"
+    android:layout_width="wrap_content"
+    android:layout_height="40dp">
+
+    <!-- checkBox -->
+    <ImageView
+        android:id="@+id/icon"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="@dimen/halfSpace"
+        android:layout_marginStart="@dimen/halfSpace"
+        android:layout_marginTop="@dimen/halfSpace"
+        android:layout_marginBottom="@dimen/halfSpace"
+        android:background="@drawable/bg_component_check_box_icon" />
+
+    <!-- title -->
+    <ir.vanda.hampa.component.VandaTextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/icon"
+        android:gravity="center"
+        android:paddingStart="@dimen/space"
+        android:paddingEnd="@dimen/space"
+        android:text="عنوان"
+        android:textColor="@color/colorTextSecondary"
+        android:textSize="12sp"
+        app:fontName="iranSansMedium" />
+
+</RelativeLayout>

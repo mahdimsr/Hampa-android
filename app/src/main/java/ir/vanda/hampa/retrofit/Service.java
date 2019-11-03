@@ -6,6 +6,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 
 public interface Service
 {
@@ -13,9 +14,12 @@ public interface Service
     Call<Index> index();
 
     @POST("auth/login")
-    Call<Login> login(@Body HashMap<String,String> requestBody);
+    Call<Login> login(@Body HashMap<String, String> requestBody);
 
     @POST("auth/register")
-    Call<Register> register(@Body HashMap<String,String> requestBody);
+    Call<Register> register(@Body HashMap<String, String> requestBody);
 
+    //lessonExams
+    @GET("lessonExams")
+    Call<LessonExamList> lessonExams(@Query("page") int current_page);
 }

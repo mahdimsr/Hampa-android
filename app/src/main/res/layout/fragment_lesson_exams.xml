@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context=".fragment.mainChild.LessonExamsFragment">
+
+    <!-- statusBar -->
+    <ir.vanda.hampa.component.StatusBar
+        android:id="@+id/statusBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- searchView -->
+    <ir.vanda.hampa.component.HampaSearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_margin="@dimen/space"
+        app:layout_constraintTop_toBottomOf="@id/statusBar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/searchView"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <!-- filterLayer -->
+            <LinearLayout
+                android:id="@+id/filterLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/space"
+                android:orientation="vertical">
+
+                <!-- grade -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <!-- title -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/space"
+                        android:paddingEnd="@dimen/space">
+
+                        <ImageView
+                            android:id="@+id/purpleDot"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/halfSpace"
+                            android:src="@drawable/dot_purple" />
+
+                        <ir.vanda.hampa.component.VandaTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/halfSpace"
+                            android:layout_toStartOf="@+id/purpleDot"
+                            android:text="@string/grade"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="18sp"
+                            app:fontName="iranSansMedium" />
+
+                    </RelativeLayout>
+
+                    <!-- checkBox -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/halfSpace">
+
+                        <ir.vanda.hampa.component.HampaCheckBox
+                            android:id="@+id/tenCheckBox"
+                            style="@style/checkBoxGradeLessonExam"
+                            app:titleText="@string/tenth" />
+
+                        <ir.vanda.hampa.component.HampaCheckBox
+                            android:id="@+id/elevenCheckBox"
+                            style="@style/checkBoxGradeLessonExam"
+                            app:titleText="@string/eleventh" />
+
+                        <ir.vanda.hampa.component.HampaCheckBox
+                            android:id="@+id/twelveCheckBox"
+                            style="@style/checkBoxGradeLessonExam"
+                            app:titleText="@string/twelfth" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+                <View
+                    style="@style/Line"
+                    android:layout_margin="@dimen/space"
+                    />
+
+                <!-- orientation -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+
+                    <!-- title -->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/space"
+                        android:paddingEnd="@dimen/space">
+
+                        <ImageView
+                            android:id="@+id/pinkDot"
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+                            android:padding="@dimen/halfSpace"
+                            android:src="@drawable/dot_pink" />
+
+                        <ir.vanda.hampa.component.VandaTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginEnd="@dimen/halfSpace"
+                            android:layout_toStartOf="@+id/pinkDot"
+                            android:text="@string/orientation"
+                            android:textColor="@color/colorTextPrimary"
+                            android:textSize="18sp"
+                            app:fontName="iranSansMedium" />
+
+                    </RelativeLayout>
+
+                    <!-- checkBox -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:padding="@dimen/halfSpace">
+
+                        <ir.vanda.hampa.component.HampaCheckBox
+                            android:id="@+id/mathCheckBox"
+                            style="@style/checkBoxOrientationLessonExam"
+                            app:titleText="@string/mathematics" />
+
+                        <ir.vanda.hampa.component.HampaCheckBox
+                            android:id="@+id/experimentCheckBox"
+                            style="@style/checkBoxOrientationLessonExam"
+                            app:titleText="@string/experimental" />
+
+                        <ir.vanda.hampa.component.HampaCheckBox
+                            android:id="@+id/humanCheckBox"
+                            style="@style/checkBoxOrientationLessonExam"
+                            app:titleText="@string/human_discipline" />
+
+                    </LinearLayout>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- title -->
+            <ir.vanda.hampa.component.VandaTextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/space"
+                android:text="@string/lessonExams"
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="20sp"
+                app:fontName="iranSansBold" />
+
+
+            <!-- recycler -->
+            <ir.vanda.hampa.component.LessonExamRecycler
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#fff"
+                android:clipToPadding="false" />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import ir.vanda.hampa.activity.MainActivity;
+import ir.vanda.hampa.lib.Storage;
 import ir.vanda.hampa.retrofit.Service;
 
 /**
@@ -36,9 +37,31 @@ public class BaseFragment extends Fragment
     }
 
 
-    public Service getService()
+    protected Service getService()
     {
-        return ((MainActivity) getContext()).getService();
+        return ((BasicActivity) getContext()).getService();
     }
+
+    protected Storage getStorage()
+    {
+        return ((BasicActivity) getContext()).getStorage();
+    }
+
+    protected void showFragment(Fragment fragment, String tag)
+    {
+        ((MainActivity) getContext()).showFragment(fragment, tag);
+    }
+
+    protected float pxToDp(int px)
+    {
+        return ((BasicActivity) getContext()).pxToDp(px);
+    }
+
+
+    protected int dpToPx(float dp)
+    {
+        return ((BasicActivity) getContext()).dpToPx(dp);
+    }
+
 
 }

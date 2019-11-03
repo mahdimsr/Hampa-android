@@ -60,7 +60,7 @@ public class LessonExamsFragment extends BaseFragment
         View v = inflater.inflate(R.layout.fragment_lesson_exams, container, false);
         findViews(v);
 
-        final HashMap<String,String> data = new HashMap<>();
+        final HashMap<String, String> data = new HashMap<>();
 
         recycler.setOnFetch(new LessonExamRecycler.OnFetch()
         {
@@ -261,7 +261,14 @@ public class LessonExamsFragment extends BaseFragment
         {
             if (checkBox == gradeCheckBox)
             {
-                checkBox.setCheck(true);
+                if (!checkBox.isChecked())
+                {
+                    checkBox.setCheck(false);
+                }
+                else
+                {
+                    checkBox.setCheck(true);
+                }
             }
             else
             {
@@ -278,7 +285,14 @@ public class LessonExamsFragment extends BaseFragment
         {
             if (checkBox == orientationCheckBox)
             {
-                checkBox.setCheck(true);
+                if (!checkBox.isChecked())
+                {
+                    checkBox.setCheck(false);
+                }
+                else
+                {
+                    checkBox.setCheck(true);
+                }
             }
             else
             {
@@ -297,8 +311,15 @@ public class LessonExamsFragment extends BaseFragment
 
         final HashMap<String, String> data = new HashMap<>();
 
-        data.put("gradeUrl", gradeUrl);
-        data.put("orientationUrl", orientationUrl);
+        if (gradeUrl != null)
+        {
+            data.put("gradeUrl", gradeUrl);
+        }
+
+        if (orientationUrl != null)
+        {
+            data.put("orientationUrl", orientationUrl);
+        }
 
         recycler.reset();
 

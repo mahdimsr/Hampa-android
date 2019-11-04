@@ -151,4 +151,10 @@ public class MainActivity extends BasicActivity
 
         return null;
     }
+
+
+    public int getBottomMenuHeight()
+    {
+        return bottomMenu.getMeasuredHeight();
+    }
 }

@@ -83,15 +83,7 @@ public class BasicActivity extends AppCompatActivity
 
     }
 
-    public float pxToDp(int px)
-    {
-        return px / ((float) this.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT);
-    }
 
-    public int dpToPx(float dp)
-    {
-        return (int) (dp * ((float) this.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT));
-    }
 
     public Storage getStorage()
     {

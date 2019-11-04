@@ -5,8 +5,8 @@ import java.util.List;
 public class Orientation {
 
     //Attributes
-    Integer id,code;
-    String  title,url;
+    public Integer id,code;
+    public String  title,url;
 
     //Relations
     public List<GradeLesson> gradeLessons;

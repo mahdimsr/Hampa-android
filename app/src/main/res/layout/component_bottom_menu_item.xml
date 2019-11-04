@@ -31,7 +31,22 @@
             android:visibility="gone"
             app:fontName="iranSansMedium" />
 
+
+        <ir.vanda.hampa.component.VandaTextView
+            android:id="@+id/itemCount"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:textSize="16sp"
+            android:gravity="center"
+            android:textColor="#fff"
+            android:visibility="gone"
+            android:background="@drawable/bg_cart_count"
+            app:fontName="iranSansMedium"
+            android:layout_alignEnd="@id/icon"
+            android:text="5"/>
+
     </RelativeLayout>
+
 
     <!-- active dot -->
     <ImageView

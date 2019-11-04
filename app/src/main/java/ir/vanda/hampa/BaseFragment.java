@@ -21,7 +21,6 @@ public class BaseFragment extends Fragment
 {
 
 
-
     public BaseFragment()
     {
         // Required empty public constructor
@@ -64,6 +63,10 @@ public class BaseFragment extends Fragment
     }
 
 
+    protected void setCartCount(int count)
+    {
+        ((MainActivity) getContext()).setCartCount(count);
+    }
 
 
 }

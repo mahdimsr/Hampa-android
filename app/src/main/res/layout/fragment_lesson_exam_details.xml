@@ -330,8 +330,9 @@
 
                 </androidx.cardview.widget.CardView>
 
+
+
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/cartCardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="?android:selectableItemBackgroundBorderless"
@@ -343,6 +344,7 @@
                     app:cardElevation="@dimen/elevation">
 
                     <RelativeLayout
+                        android:id="@+id/addToCartLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content">
 
@@ -352,7 +354,16 @@
                             android:padding="@dimen/space"
                             android:src="@drawable/ic_cart" />
 
+
                     </RelativeLayout>
+
+                    <ir.vanda.hampa.component.HampaLoader
+                        android:id="@+id/hampaLoader"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:visibility="gone"
+                        android:gravity="center"/>
+
 
                 </androidx.cardview.widget.CardView>
 

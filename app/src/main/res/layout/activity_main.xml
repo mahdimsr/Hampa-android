@@ -42,6 +42,7 @@
 
             <!-- child 1-->
             <ir.vanda.hampa.component.BottomMenuItem
+                android:id="@+id/cartItem"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="0.3"

@@ -35,8 +35,8 @@
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_cart" />
 
@@ -64,6 +64,7 @@
                     style="@style/cartDetails"
                     android:gravity="center"
                     android:text="exm-45654"
+                    android:textSize="12sp"
                     />
 
                 <ir.vanda.hampa.component.VandaTextView
@@ -102,12 +103,12 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
             android:padding="@dimen/halfSpace">
 
             <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:layout_centerInParent="true"
                 android:padding="@dimen/halfSpace"
                 android:src="@drawable/ic_cancel"

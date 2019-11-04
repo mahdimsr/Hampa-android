@@ -10,6 +10,7 @@ import android.util.Log;
 import ir.vanda.hampa.BaseActivity;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.BottomMenu;
+import ir.vanda.hampa.component.BottomMenuItem;
 import ir.vanda.hampa.fragment.CartFragment;
 import ir.vanda.hampa.fragment.MainFragment;
 import ir.vanda.hampa.fragment.ProfileFragment;
@@ -17,7 +18,8 @@ import ir.vanda.hampa.model.Cart;
 
 public class MainActivity extends BaseActivity
 {
-    private BottomMenu bottomMenu;
+    private BottomMenu     bottomMenu;
+    private BottomMenuItem cartItem;
 
     private MainFragment    mainFragment;
     private ProfileFragment profileFragment;
@@ -73,6 +75,7 @@ public class MainActivity extends BaseActivity
     private void findViews()
     {
         bottomMenu = findViewById(R.id.bottomMenu);
+        cartItem   = findViewById(R.id.cartItem);
     }
 
 
@@ -165,4 +168,18 @@ public class MainActivity extends BaseActivity
     {
         return bottomMenu.getMeasuredHeight();
     }
+
+
+    public void setCartCount(int count)
+    {
+        if (count != 0)
+        {
+            cartItem.setItemCount(count + "");
+        }
+        else
+        {
+            cartItem.setNoCount();
+        }
+    }
+
 }

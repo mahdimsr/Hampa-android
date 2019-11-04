@@ -1,6 +1,7 @@
 package ir.vanda.hampa.fragment.mainChild;
 
 
+import android.animation.Animator;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,10 +19,15 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.daimajia.androidanimations.library.Techniques;
+import com.daimajia.androidanimations.library.YoYo;
+
+import java.util.HashMap;
 import java.util.Objects;
 
 import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
+import ir.vanda.hampa.component.HampaLoader;
 import ir.vanda.hampa.component.StatusBar;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.lib.Converter;
@@ -29,6 +35,10 @@ import ir.vanda.hampa.model.Grade;
 import ir.vanda.hampa.model.GradeLesson;
 import ir.vanda.hampa.model.Lesson;
 import ir.vanda.hampa.model.LessonExam;
+import ir.vanda.hampa.retrofit.LessonExamAdd;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,7 +58,8 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
     private NestedScrollView nestedScrollView;
     private RelativeLayout   toolbarLayout;
     private StatusBar        statusBar;
-    private CardView         cartCardView;
+    private RelativeLayout   addToCartLayout;
+    private HampaLoader      hampaLoader;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -121,9 +132,8 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
                 {
                     e.printStackTrace();
 
-                    Log.e("lessonExamDetailsError" , e.toString());
+                    Log.e("lessonExamDetailsError", e.toString());
                 }
-
 
 
                 return true;
@@ -154,8 +164,10 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
         descriptionTextView   = v.findViewById(R.id.descriptionTextView);
         priceTextView         = v.findViewById(R.id.priceTextView);
 
-        cartCardView = v.findViewById(R.id.cartCardView);
-        cartCardView.setOnClickListener(this);
+        addToCartLayout = v.findViewById(R.id.addToCartLayout);
+        addToCartLayout.setOnClickListener(this);
+
+        hampaLoader = v.findViewById(R.id.hampaLoader);
     }
 
     @Override
@@ -168,11 +180,77 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
                 getActivity().onBackPressed();
 
                 break;
-            case R.id.cartCardView:
+            case R.id.addToCartLayout:
 
-                Toast.makeText(getContext(), "cart is running", Toast.LENGTH_SHORT).show();
+                addToCart();
 
                 break;
         }
     }
+
+
+    private void addToCart()
+    {
+
+        YoYo.with(Techniques.ZoomIn).duration(400).onStart(new YoYo.AnimatorCallback()
+        {
+            @Override
+            public void call(Animator animator)
+            {
+                hampaLoader.setVisibility(View.VISIBLE);
+                hampaLoader.startAnimate();
+
+
+                addToCartLayout.setVisibility(View.GONE);
+            }
+        }).playOn(hampaLoader);
+
+        HashMap<String, String> data = new HashMap<>();
+
+        data.put("exm", lessonExam.exm);
+
+        Call<LessonExamAdd> lessonExamAddCall = getService().lessonExamsAdd(data);
+        lessonExamAddCall.enqueue(new Callback<LessonExamAdd>()
+        {
+            @Override
+            public void onResponse(Call<LessonExamAdd> call, Response<LessonExamAdd> response)
+            {
+                Response<LessonExamAdd> res  = response;
+                LessonExamAdd           body = res.body();
+
+                Log.i("lessonExamDetailsRes", res.body() + "");
+
+
+                if (body.status.equals("OK"))
+                {
+                    setCartCount(body.cartCount);
+
+                    Toast.makeText(getContext(), "آزمون به سبد خرید افزوده شد.", Toast.LENGTH_LONG).show();
+                }
+                else if (body.status.equals("ERROR"))
+                {
+                    Toast.makeText(getContext(), body.errorMessage, Toast.LENGTH_LONG).show();
+                }
+                else if (body.status.equals("Validation"))
+                {
+                    Toast.makeText(getContext(), "مشکلی در سامانه وجود دارد.", Toast.LENGTH_SHORT).show();
+                }
+
+                hampaLoader.setVisibility(View.GONE);
+
+                addToCartLayout.setVisibility(View.VISIBLE);
+
+
+            }
+
+            @Override
+            public void onFailure(Call<LessonExamAdd> call, Throwable t)
+            {
+                Log.i("lessonExamDetailsError", t.toString() + "");
+            }
+        });
+
+
+    }
+
 }

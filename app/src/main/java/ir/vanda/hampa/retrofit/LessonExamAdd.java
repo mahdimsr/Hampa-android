@@ -1,11 +1,9 @@
 package ir.vanda.hampa.retrofit;
 
-
-import ir.vanda.hampa.model.Student;
-
-public class Index
+public class LessonExamAdd
 {
     public String  status;
+    public String  errorMessage;
     public Integer cartCount;
-    public Student student;
+
 }

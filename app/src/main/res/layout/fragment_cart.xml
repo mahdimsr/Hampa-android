@@ -25,7 +25,7 @@
         android:text="@string/cart"
         android:textColor="@color/colorTextPrimary"
         android:textSize="20sp"
-        app:fontName="iranSansBold"
+        app:fontName="iranSansMedium"
         app:layout_constraintTop_toBottomOf="@id/statusBar" />
 
     <!-- recycler -->
@@ -33,9 +33,9 @@
         android:id="@+id/cartRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:paddingEnd="@dimen/halfSpace"
-        android:paddingStart="@dimen/halfSpace"
         android:clipToPadding="false"
+        android:paddingStart="@dimen/halfSpace"
+        android:paddingEnd="@dimen/halfSpace"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title" />
 
@@ -64,10 +64,13 @@
                 <EditText
                     android:id="@+id/discountInput"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
+                    android:layout_height="30dp"
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/space"
                     android:layout_marginEnd="@dimen/space"
+                    android:paddingEnd="@dimen/space"
+                    android:paddingStart="@dimen/space"
+                    android:inputType="text|textNoSuggestions"
                     android:layout_toEndOf="@id/submitDiscountCode"
                     android:background="@drawable/bg_discount_input" />
 
@@ -79,7 +82,7 @@
                     android:layout_centerVertical="true"
                     android:background="@drawable/bg_payment_button"
                     android:gravity="center"
-                    android:padding="@dimen/space"
+                    android:padding="@dimen/halfSpace"
                     android:text="@string/submit"
                     android:textColor="#fff"
                     android:textSize="15sp"
@@ -103,11 +106,13 @@
                     <ir.vanda.hampa.component.VandaTextView
                         android:id="@+id/mainPriceTextView"
                         style="@style/priceDetails"
-                        android:gravity="center"
+                        android:gravity="left"
                         android:text="5000" />
 
                     <ir.vanda.hampa.component.VandaTextView
                         style="@style/priceDetails"
+                        android:paddingStart="@dimen/space"
+                        android:paddingEnd="@dimen/space"
                         android:text="قیمت اصلی" />
 
 
@@ -123,12 +128,15 @@
                     <ir.vanda.hampa.component.VandaTextView
                         android:id="@+id/discountPriceTextView"
                         style="@style/priceDetails"
-                        android:gravity="center"
+                        android:gravity="left"
                         android:text="5000" />
 
                     <ir.vanda.hampa.component.VandaTextView
                         style="@style/priceDetails"
-                        android:text="قیمت با تخفیف" />
+                        android:text="قیمت با تخفیف"
+
+                        android:paddingStart="@dimen/space"
+                        android:paddingEnd="@dimen/space"/>
 
 
                 </LinearLayout>
@@ -152,8 +160,18 @@
         android:padding="@dimen/halfSpace"
         android:text="@string/payByWallet"
         android:textColor="#fff"
-        android:textSize="18sp"
+        android:textSize="16sp"
         app:fontName="iranSansMedium"
         app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- loader -->
+    <ir.vanda.hampa.component.HampaLoader
+        android:id="@+id/hampaLoader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

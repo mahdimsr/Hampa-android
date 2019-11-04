@@ -12,10 +12,12 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,9 +25,14 @@ import java.util.List;
 import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.adapter.CartAdapter;
+import ir.vanda.hampa.component.HampaLoader;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.lib.Converter;
 import ir.vanda.hampa.model.Cart;
+import ir.vanda.hampa.retrofit.IndexCart;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -44,7 +51,7 @@ public class CartFragment extends BaseFragment
     private CardView         cardPayment;
     private VandaTextView    payButton;
     private CartAdapter      cartAdapter;
-    private List<Cart>       cartList;
+    private HampaLoader      hampaLoader;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -54,20 +61,52 @@ public class CartFragment extends BaseFragment
         View v = inflater.inflate(R.layout.fragment_cart, container, false);
         findViews(v);
 
+        hampaLoader.startAnimate();
+
         //initialize
-        cartList = new ArrayList<>();
-
-        for (int i = 0; i < 15; i++)
+        Call<IndexCart> indexCartCall = getService().indexCart();
+        indexCartCall.enqueue(new Callback<IndexCart>()
         {
-            cartList.add(new Cart());
-        }
+            @Override
+            public void onResponse(Call<IndexCart> call, Response<IndexCart> response)
+            {
+                Response<IndexCart> res       = response;
+                IndexCart           indexCart = res.body();
 
-        cartAdapter = new CartAdapter(getContext(), cartList);
+                if (indexCart.status.equals("OK"))
+                {
+                    if (indexCart.carts.isEmpty())
+                    {
+                        Toast.makeText(getContext(), "در سبد خرید شما آزمونی وجود ندارد.", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        cartAdapter = new CartAdapter(getContext(), indexCart.carts);
 
-        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
+                        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
 
-        cartRecyclerView.setLayoutManager(layoutManager);
-        cartRecyclerView.setAdapter(cartAdapter);
+                        cartRecyclerView.setLayoutManager(layoutManager);
+                        cartRecyclerView.setAdapter(cartAdapter);
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getContext(), "مشکلی در سامانه پیش آمده.", Toast.LENGTH_SHORT).show();
+                }
+
+                hampaLoader.setVisibility(View.GONE);
+
+                Log.i("indexCartRes", indexCart.status);
+            }
+
+            @Override
+            public void onFailure(Call<IndexCart> call, Throwable t)
+            {
+                Log.i("indexCartResError", t.toString());
+            }
+        });
+
+
 
 
         return v;
@@ -92,11 +131,11 @@ public class CartFragment extends BaseFragment
                     int payButtonHeight   = payButton.getMeasuredHeight();
 
                     int parentPaddingBottom   = bottomMenuHeight;
-                    int recyclerPaddingBottom = bottomMenuHeight + cardPaymentHeight + parentPaddingBottom ;
+                    int recyclerPaddingBottom = bottomMenuHeight + cardPaymentHeight + parentPaddingBottom;
 
                     parentLayout.setPadding(0, 0, 0, parentPaddingBottom);
 
-                    cartRecyclerView.setPadding(0,0,0,recyclerPaddingBottom);
+                    cartRecyclerView.setPadding(0, 0, 0, recyclerPaddingBottom);
 
 
                 }
@@ -114,6 +153,8 @@ public class CartFragment extends BaseFragment
     private void findViews(View v)
     {
         parentLayout = v.findViewById(R.id.parentLayout);
+
+        hampaLoader = v.findViewById(R.id.hampaLoader);
 
         cartRecyclerView = v.findViewById(R.id.cartRecyclerView);
 

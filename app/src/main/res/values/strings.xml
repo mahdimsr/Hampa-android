@@ -9,6 +9,8 @@
     <string name="circleRed">circleRed</string>
     <string name="circleLightBlue">circleLightBlue</string>
     <string name="title_activity_fullscreen">FullscreenActivity</string>
+    <string name="profile_header">پروفایل من</string>
+    <string name="profile_submit">اعمال</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
 

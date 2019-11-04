@@ -202,4 +202,11 @@
 
     <!-- modules ==> end -->
 
+    <!-- profile ==> start -->
+    <style name="profile_input">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+    </style>
+    <!-- profile ==> end -->
 </resources>

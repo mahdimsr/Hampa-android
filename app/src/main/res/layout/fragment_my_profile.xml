@@ -1,15 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_splash"
     tools:context=".fragment.profileChild.MyProfileFragment">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="50sp"
-        android:text="@string/myProfile" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="match_parent"
+        android:layout_height="505dp"
+        android:layout_margin="15dp"
+        app:cardCornerRadius="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ir.vanda.hampa.component.VandaTextView
+                android:id="@+id/vandaTextView2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/profile_header"
+                android:layout_marginRight="10dp"
+                android:textColor="#0C0C0C"
+                android:textSize="25sp"
+                app:fontName="iranSansMedium"/>
+
+            <ir.vanda.hampa.component.VandaInput
+                style="@style/profile_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="نام" />
+
+            <ir.vanda.hampa.component.VandaInput
+                style="@style/profile_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="نام خانوادگی" />
+
+            <ir.vanda.hampa.component.VandaInput
+                style="@style/profile_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                app:hint="ایمیل" />
+
+            <ir.vanda.hampa.component.VandaInput
+                style="@style/profile_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="کد ملی" />
+            <ir.vanda.hampa.component.VandaInput
+                style="@style/profile_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="گرایش" />
+            <ir.vanda.hampa.component.VandaInput
+                style="@style/profile_input"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:hint="مقطع" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <ir.vanda.hampa.component.VandaTextView
+        android:id="@+id/submit"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_auth_tab_item"
+        android:foreground="?android:attr/selectableItemBackgroundBorderless"
+        android:gravity="center"
+        android:padding="@dimen/space"
+        android:text="@string/profile_submit"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:translationZ="2dp"
+        app:fontName="iranSansMedium"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        tools:ignore="UnusedAttribute" />
 </androidx.constraintlayout.widget.ConstraintLayout>

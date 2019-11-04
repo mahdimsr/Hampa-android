@@ -23,6 +23,7 @@ import ir.vanda.hampa.activity.MainActivity;
 import ir.vanda.hampa.component.StatusBar;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.fragment.profileChild.MyProfileFragment;
+import ir.vanda.hampa.lib.Converter;
 import ir.vanda.hampa.model.Student;
 
 /**
@@ -138,7 +139,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
                 Log.i("toolbar", toolbarContent.getMeasuredHeight() + "");
 
 
-                int paddingTop = statusBarHeight + ((MainActivity) getActivity()).dpToPx(getContext().getResources().getDimension(R.dimen.halfSpace));
+                int paddingTop = statusBarHeight + Converter.dpToPx(24,getContext());
 
                 toolbarContent.setPadding(0, paddingTop, 0, 0);
 

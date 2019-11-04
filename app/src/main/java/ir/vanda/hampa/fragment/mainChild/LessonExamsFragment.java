@@ -15,6 +15,7 @@ import android.view.ViewTreeObserver;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -119,7 +120,15 @@ public class LessonExamsFragment extends BaseFragment
             @Override
             public void OnClick(LessonExam lessonExam)
             {
-                Toast.makeText(getContext(), "" + lessonExam.toString(), Toast.LENGTH_SHORT).show();
+                LessonExamDetailsFragment detailsFragment = new LessonExamDetailsFragment();
+
+                Bundle b = new Bundle();
+
+                b.putSerializable("lessonExam", lessonExam);
+
+                detailsFragment.setArguments(b);
+
+                showFragmentByAnim(detailsFragment,"detailsLessonExam",false);
             }
         });
 

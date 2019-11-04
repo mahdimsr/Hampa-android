@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.mainChild.LessonExamDetailsFragment">
+
+    <!-- statusBar -->
+    <ir.vanda.hampa.component.StatusBar
+        android:id="@+id/statusBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <!-- backgroundImage -->
+    <RelativeLayout
+        android:id="@+id/bgLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.flaviofaria.kenburnsview.KenBurnsView
+            android:id="@+id/bgImageView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/lesson_exam" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#4D000000" />
+
+    </RelativeLayout>
+
+    <!-- content -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nesterScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingTop="@dimen/doubleSpace">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <!-- title -->
+            <ir.vanda.hampa.component.VandaTextView
+                android:id="@+id/titleTextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/doubleSpace"
+                android:gravity="center"
+                android:padding="@dimen/doubleSpace"
+                android:text="عنوان آزمون"
+                android:textColor="#fff"
+                android:textSize="40sp"
+                app:fontName="iranSansLight" />
+
+
+            <!-- content -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardContentLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space"
+                    android:layout_marginTop="@dimen/doubleSpace"
+                    android:layout_marginEnd="@dimen/space"
+                    android:elevation="@dimen/elevation"
+                    app:cardCornerRadius="@dimen/radius"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:paddingTop="@dimen/space"
+                        android:paddingBottom="@dimen/doubleSpace">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/doubleSpace"
+                            android:layout_marginEnd="@dimen/doubleSpace">
+
+                            <ir.vanda.hampa.component.VandaTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentEnd="true"
+                                android:layout_centerVertical="true"
+                                android:text="تاریخ انتشار"
+                                android:textColor="@color/colorTextSecondary"
+                                android:textSize="18sp"
+                                app:fontName="iranSansMedium" />
+
+                            <LinearLayout
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@drawable/ic_date" />
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    android:id="@+id/dateTextView"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/halfSpace"
+                                    android:text="دوشنبه 17 آبان"
+                                    android:textColor="@color/colorTextSecondary"
+                                    android:textSize="15sp"
+                                    app:fontName="iranSansMedium" />
+
+                            </LinearLayout>
+
+                        </RelativeLayout>
+
+                        <View
+                            style="@style/Line"
+                            android:layout_marginStart="@dimen/space"
+                            android:layout_marginTop="@dimen/space"
+                            android:layout_marginEnd="@dimen/space"
+                            />
+
+                        <!-- exmCode && orientation -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/space"
+                            android:paddingEnd="@dimen/space">
+
+                            <!-- exmCode -->
+                            <LinearLayout
+                                style="@style/column">
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    android:id="@+id/exmCodeTextView"
+                                    style="@style/title.value"
+                                    android:text="exm-1515" />
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    style="@style/title"
+                                    android:text="کدآزمون:" />
+
+                            </LinearLayout>
+
+                            <!-- orientation -->
+                            <LinearLayout
+                                style="@style/column">
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    android:id="@+id/orientationTextView"
+                                    style="@style/title.value"
+                                    android:text="ریاضی فیزیک" />
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    style="@style/title"
+                                    android:text="گرایش:" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- questionCount && duration -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/space"
+                            android:paddingEnd="@dimen/space">
+
+                            <!-- duration -->
+                            <LinearLayout
+                                style="@style/column">
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    android:id="@+id/durationTextView"
+                                    style="@style/title.value"
+                                    android:text="20" />
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    style="@style/title"
+                                    android:text="زمان:" />
+
+                            </LinearLayout>
+
+
+                            <!-- questionCount -->
+                            <LinearLayout
+                                style="@style/column">
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    android:id="@+id/questionCountTextView"
+                                    style="@style/title.value"
+                                    android:text="20" />
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    style="@style/title"
+                                    android:text="تعداد سوالات:" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <!-- grades  -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/space"
+                            android:paddingEnd="@dimen/space">
+
+                            <LinearLayout
+                                style="@style/column">
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    android:id="@+id/gradesTextView"
+                                    style="@style/title.value"
+                                    android:text="دهم، یازدهم" />
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    style="@style/title"
+                                    android:text="پایه ها:" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <!-- lessons  -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/space"
+                            android:paddingEnd="@dimen/space">
+
+                            <LinearLayout
+                                style="@style/column">
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    android:id="@+id/lessonsTextView"
+                                    style="@style/title.value"
+                                    android:text="فیزیک، ریاضی" />
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    style="@style/title"
+                                    android:text="درس ها:" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+                        <!-- description -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space"
+                            android:orientation="vertical"
+                            android:paddingStart="@dimen/space"
+                            android:paddingEnd="@dimen/space">
+
+                            <ir.vanda.hampa.component.VandaTextView
+                                style="@style/title"
+                                android:layout_width="match_parent"
+                                android:text="توضیحات:" />
+
+                            <ir.vanda.hampa.component.VandaTextView
+                                android:id="@+id/descriptionTextView"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/halfSpace"
+                                android:text="@string/lorem"
+                                android:textColor="@color/colorTextSecondary"
+                                android:textSize="14sp"
+                                app:fontName="iranSansLight" />
+
+
+                        </LinearLayout>
+
+                        <!-- price -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/space"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/space"
+                            android:paddingEnd="@dimen/space">
+
+                            <LinearLayout
+                                style="@style/column">
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    android:id="@+id/priceTextView"
+                                    style="@style/title"
+                                    android:gravity="center"
+                                    android:text="2000 ریال" />
+
+                                <ir.vanda.hampa.component.VandaTextView
+                                    style="@style/title"
+                                    android:gravity="center"
+                                    android:text="قیمت" />
+
+                            </LinearLayout>
+
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cartCardView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?android:selectableItemBackgroundBorderless"
+                    app:layout_constraintTop_toBottomOf="@id/cardContentLayout"
+                    app:layout_constraintBottom_toBottomOf="@id/cardContentLayout"
+                    app:layout_constraintStart_toStartOf="@id/cardContentLayout"
+                    android:layout_marginStart="@dimen/space"
+                    app:cardCornerRadius="@dimen/radius"
+                    app:cardElevation="@dimen/elevation">
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="60dp"
+                            android:layout_height="60dp"
+                            android:padding="@dimen/space"
+                            android:src="@drawable/ic_cart" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+    <!-- toolbar -->
+    <RelativeLayout
+        android:id="@+id/toolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space"
+        app:layout_constraintTop_toBottomOf="@id/statusBar">
+
+        <ImageView
+            android:id="@+id/closeImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="?android:selectableItemBackgroundBorderless"
+            android:padding="@dimen/space"
+            android:src="@drawable/ic_close"
+            android:tint="#fff" />
+
+    </RelativeLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

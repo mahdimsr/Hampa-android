@@ -21,6 +21,7 @@ public class BaseFragment extends Fragment
 {
 
 
+
     public BaseFragment()
     {
         // Required empty public constructor
@@ -52,21 +53,17 @@ public class BaseFragment extends Fragment
         ((MainActivity) getContext()).showFragment(fragment, tag);
     }
 
-    protected void showFragmentByAnim(Fragment fragment, String tag,boolean isNewSection)
+    protected int getBottomMenuHeight()
     {
-        ((MainActivity) getContext()).showFragmentByAnim(fragment, tag,isNewSection);
+        return ((MainActivity) getContext()).getBottomMenuHeight();
     }
 
-    protected float pxToDp(int px)
+    protected void showFragmentByAnim(Fragment fragment, String tag, boolean isNewSection)
     {
-        return ((BasicActivity) getContext()).pxToDp(px);
+        ((MainActivity) getContext()).showFragmentByAnim(fragment, tag, isNewSection);
     }
 
 
-    protected int dpToPx(float dp)
-    {
-        return ((BasicActivity) getContext()).dpToPx(dp);
-    }
 
 
 }

@@ -40,12 +40,12 @@ public class BaseFragment extends Fragment
 
     protected Service getService()
     {
-        return ((BasicActivity) getContext()).getService();
+        return ((BaseActivity) getContext()).getService();
     }
 
     protected Storage getStorage()
     {
-        return ((BasicActivity) getContext()).getStorage();
+        return ((BaseActivity) getContext()).getStorage();
     }
 
     protected void showFragment(Fragment fragment, String tag)

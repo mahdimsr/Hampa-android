@@ -1,7 +1,6 @@
 package ir.vanda.hampa.activity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
@@ -9,16 +8,14 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.Random;
 
-import ir.vanda.hampa.BasicActivity;
+import ir.vanda.hampa.BaseActivity;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.HampaLoader;
-import ir.vanda.hampa.lib.Storage;
 
-public class SplashActivity extends BasicActivity
+public class SplashActivity extends BaseActivity
 {
 
     private HampaLoader loader;

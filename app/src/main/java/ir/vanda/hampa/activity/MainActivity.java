@@ -1,26 +1,27 @@
 package ir.vanda.hampa.activity;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
 import android.util.Log;
-import android.widget.Toast;
 
-import ir.vanda.hampa.BasicActivity;
+import ir.vanda.hampa.BaseActivity;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.BottomMenu;
+import ir.vanda.hampa.fragment.CartFragment;
 import ir.vanda.hampa.fragment.MainFragment;
 import ir.vanda.hampa.fragment.ProfileFragment;
+import ir.vanda.hampa.model.Cart;
 
-public class MainActivity extends BasicActivity
+public class MainActivity extends BaseActivity
 {
     private BottomMenu bottomMenu;
 
     private MainFragment    mainFragment;
     private ProfileFragment profileFragment;
+    private CartFragment    cartFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,6 +34,7 @@ public class MainActivity extends BasicActivity
 
         mainFragment    = new MainFragment();
         profileFragment = new ProfileFragment();
+        cartFragment    = new CartFragment();
 
         bottomMenu.setOnBottomMenuItemClick(new BottomMenu.OnBottomMenuItemClick()
         {
@@ -44,6 +46,12 @@ public class MainActivity extends BasicActivity
                     case 0:
 
                         showFragment(mainFragment, "mainFragment");
+
+                        break;
+
+                    case 1:
+
+                        showFragment(cartFragment, "cartFragment");
 
                         break;
 

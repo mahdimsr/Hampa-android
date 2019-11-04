@@ -5,7 +5,6 @@ import androidx.viewpager.widget.PagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.text.InputFilter;
@@ -18,21 +17,17 @@ import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 
-
-import org.json.JSONException;
 
 import java.util.HashMap;
 import java.util.Random;
 
-import ir.vanda.hampa.BasicActivity;
+import ir.vanda.hampa.BaseActivity;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.VandaInput;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.lib.Error;
 import ir.vanda.hampa.lib.Rotate3dAnimation;
-import ir.vanda.hampa.lib.Storage;
 import ir.vanda.hampa.model.Student;
 import ir.vanda.hampa.retrofit.Login;
 import ir.vanda.hampa.retrofit.Register;
@@ -40,7 +35,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class AuthActivity extends BasicActivity
+public class AuthActivity extends BaseActivity
 {
     private LinearLayout tabLayout;
     private ViewPager    viewPager;

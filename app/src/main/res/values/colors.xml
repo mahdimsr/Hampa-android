@@ -19,4 +19,6 @@
     <color name="colorCheckBoxGrade">#7B1FA2</color>
     <color name="colorCheckBoxOrientation">#AD1457</color>
 
+    <color name="colorPaymentButton">#4CAF50</color>
+
 </resources>

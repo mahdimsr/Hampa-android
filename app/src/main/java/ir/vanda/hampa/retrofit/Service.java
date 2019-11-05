@@ -19,6 +19,10 @@ public interface Service
     @GET("cart")
     Call<IndexCart> indexCart();
 
+
+    @POST("removeCart")
+    Call<RemoveCart> removeCart(@Body HashMap<String,String> data);
+
     @POST("auth/login")
     Call<Login> login(@Body HashMap<String, String> requestBody);
 

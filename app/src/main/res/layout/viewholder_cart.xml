@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/halfSpace"
     android:orientation="vertical"
-    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardBackgroundColor="#9C27B0"
     app:cardCornerRadius="@dimen/radius">
 
     <LinearLayout
@@ -61,6 +61,7 @@
                 android:paddingBottom="@dimen/halfSpace">
 
                 <ir.vanda.hampa.component.VandaTextView
+                    android:id="@+id/exm"
                     style="@style/cartDetails"
                     android:gravity="center"
                     android:text="exm-45654"
@@ -84,6 +85,7 @@
                 android:paddingBottom="@dimen/halfSpace">
 
                 <ir.vanda.hampa.component.VandaTextView
+                    android:id="@+id/price"
                     style="@style/cartDetails"
                     android:gravity="center"
                     android:text="5000"
@@ -107,6 +109,7 @@
             android:padding="@dimen/halfSpace">
 
             <ImageView
+                android:id="@+id/remove"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_centerInParent="true"

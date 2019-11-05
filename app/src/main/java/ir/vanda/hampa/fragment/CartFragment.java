@@ -20,6 +20,7 @@ import android.view.ViewTreeObserver;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import ir.vanda.hampa.BaseFragment;
@@ -30,6 +31,7 @@ import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.lib.Converter;
 import ir.vanda.hampa.model.Cart;
 import ir.vanda.hampa.retrofit.IndexCart;
+import ir.vanda.hampa.retrofit.RemoveCart;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,6 +54,7 @@ public class CartFragment extends BaseFragment
     private VandaTextView    payButton;
     private CartAdapter      cartAdapter;
     private HampaLoader      hampaLoader;
+    private List<Cart>       cartList;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,6 +67,8 @@ public class CartFragment extends BaseFragment
         hampaLoader.startAnimate();
 
         //initialize
+        cartList = new ArrayList<>();
+
         Call<IndexCart> indexCartCall = getService().indexCart();
         indexCartCall.enqueue(new Callback<IndexCart>()
         {
@@ -81,12 +86,16 @@ public class CartFragment extends BaseFragment
                     }
                     else
                     {
-                        cartAdapter = new CartAdapter(getContext(), indexCart.carts);
+                        cartList = indexCart.carts;
+
+                        cartAdapter = new CartAdapter(getContext(), cartList);
 
                         GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
 
                         cartRecyclerView.setLayoutManager(layoutManager);
                         cartRecyclerView.setAdapter(cartAdapter);
+
+                        initializeCartAdapter();
                     }
                 }
                 else
@@ -105,8 +114,6 @@ public class CartFragment extends BaseFragment
                 Log.i("indexCartResError", t.toString());
             }
         });
-
-
 
 
         return v;
@@ -160,6 +167,63 @@ public class CartFragment extends BaseFragment
 
         cardPayment = v.findViewById(R.id.cardPayment);
         payButton   = v.findViewById(R.id.payButton);
+    }
+
+
+    private void initializeCartAdapter()
+    {
+
+        cartAdapter.setOnRemoveClickListener(new CartAdapter.OnRemoveClickListener()
+        {
+            @Override
+            public void onRemove(Cart cart, final int position)
+            {
+                hampaLoader.setVisibility(View.VISIBLE);
+                hampaLoader.startAnimate();
+
+                // remove cart
+                HashMap<String, String> data = new HashMap<>();
+
+                data.put("cartId", cart.id + "");
+
+                Call<RemoveCart> removeCartCall = getService().removeCart(data);
+                removeCartCall.enqueue(new Callback<RemoveCart>()
+                {
+                    @Override
+                    public void onResponse(Call<RemoveCart> call, Response<RemoveCart> response)
+                    {
+                        Response<RemoveCart> res  = response;
+                        RemoveCart           body = res.body();
+
+                        if (body.status.equals("OK"))
+                        {
+                            if (body.isCartRemove)
+                            {
+                                cartList.remove(position);
+                                cartAdapter.notifyItemRemoved(position);
+
+                                setCartCount(body.cartCount);
+                            }
+                        }
+                        else if (body.status.equals("ERROR"))
+                        {
+                            Toast.makeText(getContext(), body.errorMessage, Toast.LENGTH_SHORT).show();
+                        }
+
+                        hampaLoader.setVisibility(View.GONE);
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<RemoveCart> call, Throwable t)
+                    {
+                        Toast.makeText(getContext(), "درخواست به گا رفت.", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+            }
+        });
+
     }
 
 }

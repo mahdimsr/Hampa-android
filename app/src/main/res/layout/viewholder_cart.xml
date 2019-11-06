@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/halfSpace"
+    android:orientation="vertical"
+    app:cardBackgroundColor="@color/colorPrimary"
+    app:cardCornerRadius="@dimen/radius">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- title & image -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/space">
+
+            <ir.vanda.hampa.component.VandaTextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:text="عنوان آزمون"
+                android:textColor="#fff"
+                android:textSize="15sp"
+                app:fontName="iranSansMedium" />
+
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_cart" />
+
+        </RelativeLayout>
+
+
+
+        <!-- details -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/space"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/space"
+            android:paddingEnd="@dimen/space">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/halfSpace"
+                android:paddingBottom="@dimen/halfSpace">
+
+                <ir.vanda.hampa.component.VandaTextView
+                    style="@style/cartDetails"
+                    android:gravity="center"
+                    android:text="exm-45654"
+                    android:textSize="12sp"
+                    />
+
+                <ir.vanda.hampa.component.VandaTextView
+                    style="@style/cartDetails"
+                    android:text="کدآزمون:"
+                    />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/halfSpace"
+                android:paddingBottom="@dimen/halfSpace">
+
+                <ir.vanda.hampa.component.VandaTextView
+                    style="@style/cartDetails"
+                    android:gravity="center"
+                    android:text="5000"
+                    />
+
+                <ir.vanda.hampa.component.VandaTextView
+                    style="@style/cartDetails"
+                    android:text="قیمت:"
+                    />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/halfSpace">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_centerInParent="true"
+                android:padding="@dimen/halfSpace"
+                android:src="@drawable/ic_cancel"
+                android:tint="#fff" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

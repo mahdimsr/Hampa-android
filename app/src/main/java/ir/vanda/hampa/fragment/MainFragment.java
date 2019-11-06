@@ -11,9 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import java.util.List;
+
 import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.fragment.mainChild.LessonExamsFragment;
+import ir.vanda.hampa.model.Cart;
 import ir.vanda.hampa.retrofit.Index;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,6 +59,14 @@ public class MainFragment extends BaseFragment implements View.OnClickListener
                 Response<Index> res   = response;
                 Index           index = res.body();
 
+                Integer cartCount = index.cartCount;
+
+                if (cartCount != null && cartCount != 0)
+                {
+                    setCartCount(cartCount);
+                }
+
+
                 Log.i("indexRes", index.status + "");
 
             }
@@ -85,7 +96,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener
         {
             case R.id.lessonExamLayout:
 
-                showFragment(lessonExamsFragment,"lessonExamFragment");
+                showFragment(lessonExamsFragment, "lessonExamFragment");
 
                 break;
         }

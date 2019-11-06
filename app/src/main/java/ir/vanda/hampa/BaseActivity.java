@@ -22,7 +22,7 @@ import okhttp3.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class BasicActivity extends AppCompatActivity
+public class BaseActivity extends AppCompatActivity
 {
 
     private static Retrofit retrofit;
@@ -76,7 +76,7 @@ public class BasicActivity extends AppCompatActivity
 
         OkHttpClient client = httpClient.build();
 
-        retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.2/hamta/public/api/")
+        retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.5/hamta/public/api/")
                                          .addConverterFactory(GsonConverterFactory.create())
                                          .client(client)
                                          .build();

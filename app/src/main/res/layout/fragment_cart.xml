@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragment.CartFragment">
+
+    <!-- statusBar -->
+    <ir.vanda.hampa.component.StatusBar
+        android:id="@+id/statusBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- title -->
+    <ir.vanda.hampa.component.VandaTextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="@dimen/space"
+        android:text="@string/cart"
+        android:textColor="@color/colorTextPrimary"
+        android:textSize="20sp"
+        app:fontName="iranSansMedium"
+        app:layout_constraintTop_toBottomOf="@id/statusBar" />
+
+    <!-- recycler -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cartRecyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:paddingStart="@dimen/halfSpace"
+        android:paddingEnd="@dimen/halfSpace"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title" />
+
+
+    <!-- paymentCard -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardPayment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space"
+        app:cardCornerRadius="@dimen/radius"
+        app:cardElevation="@dimen/elevation"
+        app:layout_constraintBottom_toTopOf="@id/payButton">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/halfSpace"
+            android:orientation="vertical">
+
+            <!-- discountCode -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/discountInput"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_centerVertical="true"
+                    android:layout_marginStart="@dimen/space"
+                    android:layout_marginEnd="@dimen/space"
+                    android:paddingEnd="@dimen/space"
+                    android:paddingStart="@dimen/space"
+                    android:inputType="text|textNoSuggestions"
+                    android:layout_toEndOf="@id/submitDiscountCode"
+                    android:background="@drawable/bg_discount_input" />
+
+                <ir.vanda.hampa.component.VandaTextView
+                    android:id="@+id/submitDiscountCode"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/bg_payment_button"
+                    android:gravity="center"
+                    android:padding="@dimen/halfSpace"
+                    android:text="@string/submit"
+                    android:textColor="#fff"
+                    android:textSize="15sp"
+                    app:fontName="iranSansMedium" />
+
+            </RelativeLayout>
+
+            <!-- details -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- mainPrice -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space"
+                    android:orientation="horizontal">
+
+                    <ir.vanda.hampa.component.VandaTextView
+                        android:id="@+id/mainPriceTextView"
+                        style="@style/priceDetails"
+                        android:gravity="left"
+                        android:text="5000" />
+
+                    <ir.vanda.hampa.component.VandaTextView
+                        style="@style/priceDetails"
+                        android:paddingStart="@dimen/space"
+                        android:paddingEnd="@dimen/space"
+                        android:text="قیمت اصلی" />
+
+
+                </LinearLayout>
+
+                <!-- discountPrice -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/space"
+                    android:orientation="horizontal">
+
+                    <ir.vanda.hampa.component.VandaTextView
+                        android:id="@+id/discountPriceTextView"
+                        style="@style/priceDetails"
+                        android:gravity="left"
+                        android:text="5000" />
+
+                    <ir.vanda.hampa.component.VandaTextView
+                        style="@style/priceDetails"
+                        android:text="قیمت با تخفیف"
+
+                        android:paddingStart="@dimen/space"
+                        android:paddingEnd="@dimen/space"/>
+
+
+                </LinearLayout>
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <!-- paymentButton -->
+    <ir.vanda.hampa.component.VandaTextView
+        android:id="@+id/payButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/space"
+        android:background="@drawable/bg_payment_button"
+        android:gravity="center"
+        android:padding="@dimen/halfSpace"
+        android:text="@string/payByWallet"
+        android:textColor="#fff"
+        android:textSize="16sp"
+        app:fontName="iranSansMedium"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- loader -->
+    <ir.vanda.hampa.component.HampaLoader
+        android:id="@+id/hampaLoader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

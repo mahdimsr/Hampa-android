@@ -15,6 +15,10 @@ public interface Service
     @GET("index")
     Call<Index> index();
 
+
+    @GET("cart")
+    Call<IndexCart> indexCart();
+
     @POST("auth/login")
     Call<Login> login(@Body HashMap<String, String> requestBody);
 
@@ -24,5 +28,8 @@ public interface Service
 
     //lessonExams
     @GET("lessonExams")
-    Call<LessonExamList> lessonExams(@Query("page") int current_page, @QueryMap HashMap<String,String> data);
+    Call<LessonExamList> lessonExams(@Query("page") int current_page, @QueryMap HashMap<String, String> data);
+
+    @POST("lessonExams/add")
+    Call<LessonExamAdd> lessonExamsAdd(@Body HashMap<String, String> data);
 }

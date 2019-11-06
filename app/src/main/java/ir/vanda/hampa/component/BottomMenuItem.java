@@ -26,8 +26,8 @@ import ir.vanda.hampa.R;
 public class BottomMenuItem extends RelativeLayout
 {
     private ImageView icon, dot;
-    private VandaTextView title;
-    private boolean       isActive = false;
+    private VandaTextView title, itemCount;
+    private boolean isActive = false, hasCount = false;
 
     public BottomMenuItem(Context context)
     {
@@ -54,7 +54,8 @@ public class BottomMenuItem extends RelativeLayout
         icon = findViewById(R.id.icon);
         dot  = findViewById(R.id.dot);
 
-        title = findViewById(R.id.title);
+        title     = findViewById(R.id.title);
+        itemCount = findViewById(R.id.itemCount);
 
     }
 
@@ -99,6 +100,12 @@ public class BottomMenuItem extends RelativeLayout
         title.setVisibility(VISIBLE);
         dot.setVisibility(VISIBLE);
 
+        if (hasCount)
+        {
+            itemCount.setVisibility(GONE);
+        }
+
+
         if (isActive)
         {
             YoYo.with(Techniques.Wobble).duration(200).playOn(title);
@@ -116,7 +123,27 @@ public class BottomMenuItem extends RelativeLayout
         title.setVisibility(GONE);
         dot.setVisibility(GONE);
 
+        if (hasCount)
+        {
+            itemCount.setVisibility(VISIBLE);
+        }
+
+
         isActive = false;
+    }
+
+    public void setItemCount(String count)
+    {
+        itemCount.setText(count);
+        itemCount.setVisibility(VISIBLE);
+
+        hasCount = true;
+    }
+
+
+    public void setNoCount()
+    {
+        hasCount = false;
     }
 
 }

@@ -12,22 +12,30 @@ import retrofit2.http.QueryMap;
 
 public interface Service
 {
-    @GET("index")
-    Call<Index> index();
-
-
-    @GET("cart")
-    Call<IndexCart> indexCart();
-
-
-    @POST("removeCart")
-    Call<RemoveCart> removeCart(@Body HashMap<String,String> data);
+    //auth
 
     @POST("auth/login")
     Call<Login> login(@Body HashMap<String, String> requestBody);
 
     @POST("auth/register")
     Call<Register> register(@Body HashMap<String, String> requestBody);
+
+
+    @GET("index")
+    Call<Index> index();
+
+
+    //cart
+
+    @GET("cart")
+    Call<IndexCart> indexCart();
+
+    @POST("cart/remove")
+    Call<RemoveCart> removeCart(@Body HashMap<String,String> data);
+
+    @POST("cart/purchase")
+    Call<Purchase> purchase(@Body HashMap<String,List<Integer>> data);
+
 
 
     //lessonExams

@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -30,7 +31,9 @@ import ir.vanda.hampa.component.HampaLoader;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.lib.Converter;
 import ir.vanda.hampa.model.Cart;
+import ir.vanda.hampa.model.Student;
 import ir.vanda.hampa.retrofit.IndexCart;
+import ir.vanda.hampa.retrofit.Purchase;
 import ir.vanda.hampa.retrofit.RemoveCart;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -39,7 +42,7 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CartFragment extends BaseFragment
+public class CartFragment extends BaseFragment implements View.OnClickListener
 {
 
 
@@ -55,6 +58,7 @@ public class CartFragment extends BaseFragment
     private CartAdapter      cartAdapter;
     private HampaLoader      hampaLoader;
     private List<Cart>       cartList;
+    private EditText         discountInput;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -167,6 +171,9 @@ public class CartFragment extends BaseFragment
 
         cardPayment = v.findViewById(R.id.cardPayment);
         payButton   = v.findViewById(R.id.payButton);
+        payButton.setOnClickListener(this);
+
+        discountInput = v.findViewById(R.id.discountInput);
     }
 
 
@@ -226,4 +233,62 @@ public class CartFragment extends BaseFragment
 
     }
 
+    @Override
+    public void onClick(View v)
+    {
+        switch (v.getId())
+        {
+            case R.id.payButton:
+
+                HashMap<String, List<Integer>> data = new HashMap<>();
+                List<Integer> cartIdList = new ArrayList<>();
+
+                for (Cart cart : cartList)
+                {
+                    cartIdList.add(cart.id);
+                }
+
+                data.put("cartId", cartIdList);
+
+
+                Call<Purchase> purchaseCall = getService().purchase(data);
+                purchaseCall.enqueue(new Callback<Purchase>()
+                {
+                    @Override
+                    public void onResponse(Call<Purchase> call, Response<Purchase> response)
+                    {
+                        Response<Purchase> res      = response;
+                        Purchase           purchase = res.body();
+
+                        Log.i("purchaseRes", purchase.status);
+
+                        if (purchase.status.equals("OK"))
+                        {
+                            try
+                            {
+                                Toast.makeText(getContext(), "ok", Toast.LENGTH_SHORT).show();
+                            }
+                            catch (Exception e)
+                            {
+                                Log.e("purchaseResError", e.toString());
+                            }
+                        }
+                        else if (purchase.status.equals("ERROR"))
+                        {
+                            Toast.makeText(getContext(), purchase.errorMessage, Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                    @Override
+                    public void onFailure(Call<Purchase> call, Throwable t)
+                    {
+                        Log.e("purchaseResError", t.toString());
+                    }
+                });
+
+
+                break;
+        }
+    }
 }

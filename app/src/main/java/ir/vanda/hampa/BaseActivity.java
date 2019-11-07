@@ -76,7 +76,7 @@ public class BaseActivity extends AppCompatActivity
 
         OkHttpClient client = httpClient.build();
 
-        retrofit = new Retrofit.Builder().baseUrl("http://192.168.43.149/hamta/public/api/")
+        retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.2/hamta/public/api/")
                                          .addConverterFactory(GsonConverterFactory.create())
                                          .client(client)
                                          .build();

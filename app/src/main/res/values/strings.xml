@@ -46,6 +46,7 @@
     <string name="cart">سبد خرید</string>
     <string name="payByWallet">پرداخت از طریق کیف پول</string>
     <string name="submit">اعمال</string>
+    <string name="transactionsList">لیست پرداخت ها</string>
 
 
 </resources>

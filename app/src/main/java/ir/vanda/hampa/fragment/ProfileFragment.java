@@ -23,6 +23,7 @@ import ir.vanda.hampa.activity.MainActivity;
 import ir.vanda.hampa.component.StatusBar;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.fragment.profileChild.MyProfileFragment;
+import ir.vanda.hampa.fragment.profileChild.TransactionsFragment;
 import ir.vanda.hampa.lib.Converter;
 import ir.vanda.hampa.model.Student;
 
@@ -45,7 +46,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     private NestedScrollView nestedScrollView;
     private View             fgBanner, toolbarHover;
     private Student      student;
-    private LinearLayout myProfileLayout;
+    private LinearLayout myProfileLayout,transactionLayout;
 
     //animations variables
     private int fgHoverHeight, toolbarHeight, profileLayoutHeight, statusBarHeight;
@@ -171,6 +172,9 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
         myProfileLayout = v.findViewById(R.id.myProfileLayout);
         myProfileLayout.setOnClickListener(this);
+
+        transactionLayout = v.findViewById(R.id.transactionLayout);
+        transactionLayout.setOnClickListener(this);
     }
 
     @Override
@@ -183,6 +187,14 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
                 MyProfileFragment myProfileFragment = new MyProfileFragment();
 
                 showFragmentByAnim(myProfileFragment,"myProfile",false);
+
+                break;
+
+            case R.id.transactionLayout:
+
+                TransactionsFragment transactionsFragment = new TransactionsFragment();
+
+                showFragmentByAnim(transactionsFragment,"transactionFragment",false);
 
                 break;
         }

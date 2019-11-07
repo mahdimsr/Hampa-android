@@ -138,6 +138,7 @@
 
                         <!-- topLeft -->
                         <LinearLayout
+                            android:id="@+id/transactionLayout"
                             style="@style/ProfileItemMenu">
 
                             <ImageView
@@ -146,7 +147,7 @@
 
                             <ir.vanda.hampa.component.VandaTextView
                                 style="@style/ProfileItemMenuTitle"
-                                android:text="کیف پول" />
+                                android:text="پرداخت ها" />
 
                         </LinearLayout>
 

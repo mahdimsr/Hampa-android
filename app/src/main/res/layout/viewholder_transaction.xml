@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="#4c63b1"
+    android:layout_margin="@dimen/space"
+    app:cardCornerRadius="@dimen/radius">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/halfSpace"
+        android:paddingEnd="@dimen/space"
+        android:paddingStart="@dimen/space"
+        android:orientation="vertical">
+
+        <!-- Payment type -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/transactionRow"
+            android:orientation="horizontal">
+
+            <ir.vanda.hampa.component.VandaTextView
+                android:id="@+id/type"
+                style="@style/transactionItem"
+                android:gravity="left"
+                android:textSize="15sp"
+                android:text="خرید آزمون درس به درس"/>
+
+
+            <ir.vanda.hampa.component.VandaTextView
+                style="@style/transactionItem"
+                android:text="نوع پرداخت:"/>
+
+
+        </LinearLayout>
+
+
+        <!-- code -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/transactionRow"
+            android:orientation="horizontal">
+
+            <ir.vanda.hampa.component.VandaTextView
+                android:id="@+id/code"
+                style="@style/transactionItem"
+                android:gravity="left"
+                android:text="456654"/>
+
+
+            <ir.vanda.hampa.component.VandaTextView
+                style="@style/transactionItem"
+                android:text="کد فاکتور:"/>
+
+
+        </LinearLayout>
+
+
+        <!-- paymentPrice -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/transactionRow"
+            android:orientation="horizontal">
+
+            <ir.vanda.hampa.component.VandaTextView
+                style="@style/transactionItem"
+                android:gravity="left"
+                android:text="5000"/>
+
+
+            <ir.vanda.hampa.component.VandaTextView
+                android:id="@+id/paymentPrice"
+                style="@style/transactionItem"
+                android:text="قیمت پرداختی:"/>
+
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

@@ -31,11 +31,14 @@ public interface Service
     Call<IndexCart> indexCart();
 
     @POST("cart/remove")
-    Call<RemoveCart> removeCart(@Body HashMap<String,String> data);
+    Call<RemoveCart> removeCart(@Body HashMap<String, String> data);
 
     @POST("cart/purchase")
-    Call<Purchase> purchase(@Body HashMap<String,List<Integer>> data);
+    Call<Purchase> purchase(@Body HashMap<String, List<Integer>> data);
 
+
+    @GET("cart/transactions")
+    Call<TransactionsList> transactions();
 
 
     //lessonExams

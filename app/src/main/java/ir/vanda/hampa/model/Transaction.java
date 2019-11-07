@@ -1,15 +1,16 @@
 package ir.vanda.hampa.model;
 
-public class Transaction {
+public class Transaction
+{
 
     //Attributes
-    Integer id,studentId,itemId,discountId;
-    Float   price,discountPrice;
-    String  type,itemTyoe,code,status;
+    public Integer id, studentId, itemId, discountId;
+    public Float price, discountPrice;
+    public String type, itemTyoe, code, status,persian_itemType;
 
     //Relations
-    public Student student;
+    public Student    student;
     public LessonExam lessonExam;
-    public Discount discount;
+    public Discount   discount;
 }
 

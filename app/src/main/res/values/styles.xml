@@ -235,10 +235,38 @@
     <!-- modules ==> end -->
 
     <!-- profile ==> start -->
+
     <style name="profile_input">
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_marginLeft">10dp</item>
     </style>
+
     <!-- profile ==> end -->
+
+
+    <!-- transaction view holder ==> start-->
+
+    <style name="transactionRow">
+
+        <item name="android:paddingTop">@dimen/halfSpace</item>
+        <item name="android:paddingBottom">@dimen/halfSpace</item>
+
+    </style>
+
+
+    <style name="transactionItem">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0.5</item>
+        <item name="fontName">iranSansMedium</item>
+        <item name="android:textColor">#fff</item>
+        <item name="android:gravity">right</item>
+        <item name="android:textSize">18sp</item>
+
+    </style>
+
+    <!-- transaction view holder ==> end-->
+
 </resources>

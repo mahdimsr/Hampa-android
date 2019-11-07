@@ -29,6 +29,7 @@ import ir.vanda.hampa.R;
 import ir.vanda.hampa.adapter.CartAdapter;
 import ir.vanda.hampa.component.HampaLoader;
 import ir.vanda.hampa.component.VandaTextView;
+import ir.vanda.hampa.fragment.profileChild.TransactionsFragment;
 import ir.vanda.hampa.lib.Converter;
 import ir.vanda.hampa.model.Cart;
 import ir.vanda.hampa.model.Student;
@@ -264,14 +265,15 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
 
                         if (purchase.status.equals("OK"))
                         {
-                            try
-                            {
-                                Toast.makeText(getContext(), "ok", Toast.LENGTH_SHORT).show();
-                            }
-                            catch (Exception e)
-                            {
-                                Log.e("purchaseResError", e.toString());
-                            }
+
+                            Toast.makeText(getContext(), "ok", Toast.LENGTH_SHORT).show();
+
+                            TransactionsFragment transactionsFragment = new TransactionsFragment();
+
+                            showFragment(transactionsFragment,"transactionFragment");
+
+                            setCartCount(0);
+
                         }
                         else if (purchase.status.equals("ERROR"))
                         {

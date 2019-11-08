@@ -18,6 +18,7 @@
             android:layout_alignParentEnd="true"
             android:layout_marginStart="@dimen/halfSpace"
             android:background="#fff"
+            android:padding="@dimen/halfSpace"
             android:src="@mipmap/ic_launcher" />
 
         <EditText

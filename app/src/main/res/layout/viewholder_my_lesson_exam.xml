@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="@dimen/halfSpace"
+    android:background="?android:selectableItemBackgroundBorderless"
+    android:orientation="vertical">
+
+    <ir.vanda.hampa.component.RoundedImageView
+        android:id="@+id/photo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/lesson_exam" />
+
+    <ir.vanda.hampa.component.RoundedImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="#66000000" />
+
+    <ir.vanda.hampa.component.VandaTextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="@dimen/space"
+        android:text="آزمون آزمایشی"
+        android:textColor="#fff"
+        android:textSize="15sp"
+        app:fontName="iranSansMedium" />
+
+
+</RelativeLayout>

@@ -19,11 +19,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Random;
 
 import ir.vanda.hampa.BaseActivity;
 import ir.vanda.hampa.R;
+import ir.vanda.hampa.component.HampaLoader;
 import ir.vanda.hampa.component.VandaInput;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.lib.Error;
@@ -42,6 +44,7 @@ public class AuthActivity extends BaseActivity
 
     private VandaInput usernameLoginInput, passwordLoginInput;
     private VandaInput usernameRegister, passwordRegister, repeatPasswordRegister;
+    private HampaLoader hampaLoader;
 
     private VandaTextView submit, formError;
 
@@ -146,6 +149,9 @@ public class AuthActivity extends BaseActivity
             @Override
             public void onClick(View v)
             {
+                hampaLoader.setVisibility(View.VISIBLE);
+                hampaLoader.startAnimate();
+
                 if (state.equals("login"))
                 {
 
@@ -168,44 +174,60 @@ public class AuthActivity extends BaseActivity
 
                             Login login = res.body();
 
-                            if (login.status.equals("Validation"))
-                            {
-                                Error error = new Error(login.errors);
+                            hampaLoader.setVisibility(View.GONE);
 
-                                usernameLoginInput.setError(error.get("mobile"));
-                                passwordLoginInput.setError(error.get("password"));
+                            if (res.isSuccessful())
+                            {
+                                if (login.status.equals("Validation"))
+                                {
+                                    Error error = new Error(login.errors);
+
+                                    usernameLoginInput.setError(error.get("mobile"));
+                                    passwordLoginInput.setError(error.get("password"));
+
+                                }
+                                else if (login.status.equals("ERROR"))
+                                {
+
+                                    String error = login.errorMessage;
+
+                                    Error.setError(formError, error);
+
+                                }
+                                else if (login.status.equals("OK"))
+                                {
+                                    Student student = login.student;
+                                    student.access_token = login.access_token;
+
+                                    getStorage().put(student, "student");
+
+                                    startActivity(new Intent(AuthActivity.this, MainActivity.class));
+                                    finish();
+                                }
+
+
+                                //set make form normal
+                                if (!login.status.equals("Validation"))
+                                {
+                                    usernameLoginInput.setNormal();
+                                    passwordLoginInput.setNormal();
+                                }
+
+                                if (!login.status.equals("ERROR"))
+                                {
+                                    formError.setVisibility(View.GONE);
+                                }
 
                             }
-                            else if (login.status.equals("ERROR"))
+                            else
                             {
+                                Intent i = new Intent(AuthActivity.this, ErrorActivity.class);
 
-                                String error = login.errorMessage;
+                                i.putExtra("title", "خطای صفحه لاگین و ثبت نام");
+                                i.putExtra("type", res.message());
+                                i.putExtra("code", res.code());
 
-                                Error.setError(formError, error);
-
-                            }
-                            else if (login.status.equals("OK"))
-                            {
-                                Student student = login.student;
-                                student.access_token = login.access_token;
-
-                                getStorage().put(student, "student");
-
-                                startActivity(new Intent(AuthActivity.this, MainActivity.class));
-                                finish();
-                            }
-
-
-                            //set make form normal
-                            if (!login.status.equals("Validation"))
-                            {
-                                usernameLoginInput.setNormal();
-                                passwordLoginInput.setNormal();
-                            }
-
-                            if (!login.status.equals("ERROR"))
-                            {
-                                formError.setVisibility(View.GONE);
+                                startActivity(i);
                             }
                         }
 
@@ -239,33 +261,48 @@ public class AuthActivity extends BaseActivity
                             Response<Register> res      = response;
                             Register           register = res.body();
 
-                            Log.i("registerRes", res.code() + "");
+                            Log.i("registerRes", res.errorBody() + "");
 
-                            if (register.status.equals("Validation"))
+                            hampaLoader.setVisibility(View.GONE);
+
+                            if (res.isSuccessful())
                             {
-                                Error error = new Error(register.errors);
+                                if (register.status.equals("Validation"))
+                                {
+                                    Error error = new Error(register.errors);
 
-                                usernameRegister.setError(error.get("mobile"));
-                                passwordRegister.setError(error.get("password"));
-                                repeatPasswordRegister.setError(error.get("repeatPassword"));
+                                    usernameRegister.setError(error.get("mobile"));
+                                    passwordRegister.setError(error.get("password"));
+                                    repeatPasswordRegister.setError(error.get("repeatPassword"));
+                                }
+                                else if (register.status.equals("OK"))
+                                {
+                                    Student student = register.student;
+                                    student.access_token = register.access_token;
+
+                                    getStorage().put(student, "student");
+
+                                    startActivity(new Intent(AuthActivity.this, MainActivity.class));
+                                    finish();
+                                }
+
+                                //make normal
+                                if (!register.status.equals("Validation"))
+                                {
+                                    usernameRegister.setNormal();
+                                    passwordRegister.setNormal();
+                                    repeatPasswordRegister.setNormal();
+                                }
                             }
-                            else if (register.status.equals("OK"))
+                            else
                             {
-                                Student student = register.student;
-                                student.access_token = register.access_token;
+                                Intent i = new Intent(AuthActivity.this, ErrorActivity.class);
 
-                                getStorage().put(student, "student");
+                                i.putExtra("title", "خطای صفحه لاگین و ثبت نام");
+                                i.putExtra("type", res.message());
+                                i.putExtra("code", res.code());
 
-                                startActivity(new Intent(AuthActivity.this, MainActivity.class));
-                                finish();
-                            }
-
-                            //make normal
-                            if (!register.status.equals("Validation"))
-                            {
-                                usernameRegister.setNormal();
-                                passwordRegister.setNormal();
-                                repeatPasswordRegister.setNormal();
+                                startActivity(i);
                             }
 
                         }
@@ -284,23 +321,32 @@ public class AuthActivity extends BaseActivity
 
     private void findViews()
     {
-        tabLayout = findViewById(R.id.tabLayout);
-        viewPager = findViewById(R.id.viewpager);
-        submit    = findViewById(R.id.submit);
-        formError = findViewById(R.id.formError);
+        tabLayout   = findViewById(R.id.tabLayout);
+        viewPager   = findViewById(R.id.viewpager);
+        submit      = findViewById(R.id.submit);
+        formError   = findViewById(R.id.formError);
+        hampaLoader = findViewById(R.id.hampaLoader);
 
         usernameLoginInput = findViewById(R.id.username);
-        usernameLoginInput.getInput().setFilters(new InputFilter[]{new InputFilter.LengthFilter(25)});
-        usernameLoginInput.getInput().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        usernameLoginInput.getInput().setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
+        usernameLoginInput.getInput().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_NUMBER);
 
         passwordLoginInput = findViewById(R.id.password);
         passwordLoginInput.getInput().setFilters(new InputFilter[]{new InputFilter.LengthFilter(9)});
         passwordLoginInput.getInput().setInputType(InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD);
         passwordLoginInput.getInput().setTransformationMethod(new PasswordTransformationMethod());
 
-        usernameRegister       = findViewById(R.id.usernameRegister);
-        passwordRegister       = findViewById(R.id.passwordRegister);
+        usernameRegister = findViewById(R.id.usernameRegister);
+        usernameRegister.getInput().setFilters(new InputFilter[]{new InputFilter.LengthFilter(11)});
+        usernameRegister.getInput().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_NUMBER);
+
+        passwordRegister = findViewById(R.id.passwordRegister);
+        passwordRegister.getInput().setInputType(InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD);
+        passwordRegister.getInput().setTransformationMethod(new PasswordTransformationMethod());
+
         repeatPasswordRegister = findViewById(R.id.repeatPasswordRegister);
+        repeatPasswordRegister.getInput().setInputType(InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD);
+        repeatPasswordRegister.getInput().setTransformationMethod(new PasswordTransformationMethod());
 
         lightBlue  = findViewById(R.id.circleLightBlue);
         smallGreen = findViewById(R.id.circleSmallGreen);

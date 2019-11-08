@@ -3,6 +3,7 @@ package ir.vanda.hampa.retrofit;
 import java.util.HashMap;
 import java.util.List;
 
+import ir.vanda.hampa.model.LessonExam;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -23,6 +24,10 @@ public interface Service
 
     @GET("index")
     Call<Index> index();
+
+    //profile
+    @GET("profile/myExams")
+    Call<MyExams> myExams();
 
 
     //cart

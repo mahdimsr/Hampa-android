@@ -128,7 +128,7 @@ public class LessonExamsFragment extends BaseFragment
 
                 detailsFragment.setArguments(b);
 
-                showFragmentByAnim(detailsFragment,"detailsLessonExam",false);
+                showFragmentByAnim(detailsFragment, "detailsLessonExam", false);
             }
         });
 

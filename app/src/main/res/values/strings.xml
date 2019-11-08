@@ -47,6 +47,9 @@
     <string name="payByWallet">پرداخت از طریق کیف پول</string>
     <string name="submit">اعمال</string>
     <string name="transactionsList">لیست پرداخت ها</string>
+    <string name="title_activity_error">ErrorActivity</string>
+    <string name="myLessonExam">آزمون های درس به درس من</string>
+    <string name="takeExam">شرکت در آزمون</string>
 
 
 </resources>

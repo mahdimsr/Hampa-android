@@ -74,52 +74,7 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
         //initialize
         cartList = new ArrayList<>();
 
-        Call<IndexCart> indexCartCall = getService().indexCart();
-        indexCartCall.enqueue(new Callback<IndexCart>()
-        {
-            @Override
-            public void onResponse(Call<IndexCart> call, Response<IndexCart> response)
-            {
-                Response<IndexCart> res       = response;
-                IndexCart           indexCart = res.body();
-
-                if (indexCart.status.equals("OK"))
-                {
-                    if (indexCart.carts.isEmpty())
-                    {
-                        Toast.makeText(getContext(), "در سبد خرید شما آزمونی وجود ندارد.", Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                    {
-                        cartList = indexCart.carts;
-
-                        cartAdapter = new CartAdapter(getContext(), cartList);
-
-                        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
-
-                        cartRecyclerView.setLayoutManager(layoutManager);
-                        cartRecyclerView.setAdapter(cartAdapter);
-
-                        initializeCartAdapter();
-                    }
-                }
-                else
-                {
-                    Toast.makeText(getContext(), "مشکلی در سامانه پیش آمده.", Toast.LENGTH_SHORT).show();
-                }
-
-                hampaLoader.setVisibility(View.GONE);
-
-                Log.i("indexCartRes", indexCart.status);
-            }
-
-            @Override
-            public void onFailure(Call<IndexCart> call, Throwable t)
-            {
-                Log.i("indexCartResError", t.toString());
-            }
-        });
-
+        getCartList();
 
         return v;
     }
@@ -177,6 +132,69 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
         discountInput = v.findViewById(R.id.discountInput);
     }
 
+    @Override
+    public void onHiddenChanged(boolean hidden)
+    {
+        super.onHiddenChanged(hidden);
+
+        if (!hidden)
+        {
+            getCartList();
+        }
+
+    }
+
+
+    private void getCartList()
+    {
+        hampaLoader.setVisibility(View.VISIBLE);
+
+        Call<IndexCart> indexCartCall = getService().indexCart();
+        indexCartCall.enqueue(new Callback<IndexCart>()
+        {
+            @Override
+            public void onResponse(Call<IndexCart> call, Response<IndexCart> response)
+            {
+                Response<IndexCart> res       = response;
+                IndexCart           indexCart = res.body();
+
+                if (indexCart.status.equals("OK"))
+                {
+                    if (indexCart.carts.isEmpty())
+                    {
+                        Toast.makeText(getContext(), "در سبد خرید شما آزمونی وجود ندارد.", Toast.LENGTH_SHORT).show();
+                    }
+                    else
+                    {
+                        cartList = indexCart.carts;
+
+                        cartAdapter = new CartAdapter(getContext(), cartList);
+
+                        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
+
+                        cartRecyclerView.setLayoutManager(layoutManager);
+                        cartRecyclerView.setAdapter(cartAdapter);
+
+                        initializeCartAdapter();
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getContext(), "مشکلی در سامانه پیش آمده.", Toast.LENGTH_SHORT).show();
+                }
+
+                hampaLoader.setVisibility(View.GONE);
+
+                Log.i("indexCartRes", indexCart.status);
+            }
+
+            @Override
+            public void onFailure(Call<IndexCart> call, Throwable t)
+            {
+                Log.i("indexCartResError", t.toString());
+            }
+        });
+    }
 
     private void initializeCartAdapter()
     {
@@ -210,7 +228,14 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
                                 cartList.remove(position);
                                 cartAdapter.notifyItemRemoved(position);
 
-                                setCartCount(body.cartCount);
+                                if (body.cartCount != null)
+                                {
+                                    setCartCount(body.cartCount);
+                                }
+                                else
+                                {
+                                    setCartCount(0);
+                                }
                             }
                         }
                         else if (body.status.equals("ERROR"))
@@ -225,7 +250,7 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
                     @Override
                     public void onFailure(Call<RemoveCart> call, Throwable t)
                     {
-                        Toast.makeText(getContext(), "درخواست به گا رفت.", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), "درخواست به خطا دارد.", Toast.LENGTH_SHORT).show();
                     }
                 });
 
@@ -270,7 +295,7 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
 
                             TransactionsFragment transactionsFragment = new TransactionsFragment();
 
-                            showFragment(transactionsFragment,"transactionFragment");
+                            showFragment(transactionsFragment, "transactionFragment");
 
                             setCartCount(0);
 

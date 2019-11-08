@@ -142,7 +142,8 @@
                         android:layout_marginTop="@dimen/doubleSpace"
                         android:layout_marginStart="@dimen/space"
                         android:layout_marginEnd="@dimen/space"
-                        app:hint="ایمیل یا شماره تلفن" />
+                        app:iconImage="@drawable/ic_smartphone"
+                        app:hint="شماره تلفن" />
 
                     <!-- password -->
                     <ir.vanda.hampa.component.VandaInput
@@ -152,6 +153,7 @@
                         android:layout_marginStart="@dimen/space"
                         android:layout_marginTop="@dimen/doubleSpace"
                         android:layout_marginEnd="@dimen/space"
+                        app:iconImage="@drawable/ic_lock"
                         app:hint="رمزعبور" />
 
 
@@ -172,7 +174,8 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/space"
                         android:layout_marginEnd="@dimen/space"
-                        app:hint="ایمیل یا شماره تلفن" />
+                        app:iconImage="@drawable/ic_smartphone"
+                        app:hint="شماره تلفن" />
 
                     <!-- password -->
                     <ir.vanda.hampa.component.VandaInput
@@ -182,6 +185,7 @@
                         android:layout_marginStart="@dimen/space"
                         android:layout_marginTop="@dimen/doubleSpace"
                         android:layout_marginEnd="@dimen/space"
+                        app:iconImage="@drawable/ic_lock"
                         app:hint="رمز عبور" />
 
                     <!-- repeat-password -->
@@ -192,6 +196,7 @@
                         android:layout_marginStart="@dimen/space"
                         android:layout_marginTop="@dimen/doubleSpace"
                         android:layout_marginEnd="@dimen/space"
+                        app:iconImage="@drawable/ic_key"
                         app:hint="تکرار رمز عبور" />
 
 
@@ -225,6 +230,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView"
         tools:ignore="UnusedAttribute" />
+
+
+    <!-- loader -->
+    <ir.vanda.hampa.component.HampaLoader
+        android:id="@+id/hampaLoader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

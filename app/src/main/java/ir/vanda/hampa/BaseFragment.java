@@ -68,5 +68,9 @@ public class BaseFragment extends Fragment
         ((MainActivity) getContext()).setCartCount(count);
     }
 
+    protected void bottomMenuAnimate(String mode)
+    {
+        ((MainActivity) getContext()).bottomMenuAnimate(mode);
+    }
 
 }

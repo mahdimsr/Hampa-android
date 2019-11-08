@@ -55,11 +55,13 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
     private LessonExam    lessonExam;
     private ImageView     closeImageView;
     private VandaTextView titleTextView, dateTextView, orientationTextView, exmCodeTextView, questionCountTextView, durationTextView, gradesTextView, lessonsTextView, descriptionTextView, priceTextView;
+    private VandaTextView    takeExamButton;
     private NestedScrollView nestedScrollView;
     private RelativeLayout   toolbarLayout;
     private StatusBar        statusBar;
     private RelativeLayout   addToCartLayout;
     private HampaLoader      hampaLoader;
+    private CardView         cartCardView;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -73,6 +75,13 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
 
         lessonExam = (LessonExam) b.getSerializable("lessonExam");
         Log.i("lessonExam", lessonExam.toString());
+
+        boolean takeExam = b.getBoolean("takeExam", false);
+        if (takeExam)
+        {
+            cartCardView.setVisibility(View.GONE);
+            takeExamButton.setVisibility(View.VISIBLE);
+        }
 
         //initialize
         titleTextView.setText(lessonExam.title);
@@ -168,6 +177,9 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
         addToCartLayout.setOnClickListener(this);
 
         hampaLoader = v.findViewById(R.id.hampaLoader);
+
+        cartCardView   = v.findViewById(R.id.cartCardView);
+        takeExamButton = v.findViewById(R.id.takeExamButton);
     }
 
     @Override

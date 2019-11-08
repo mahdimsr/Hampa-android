@@ -331,17 +331,17 @@
                 </androidx.cardview.widget.CardView>
 
 
-
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/cartCardView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space"
                     android:background="?android:selectableItemBackgroundBorderless"
-                    app:layout_constraintTop_toBottomOf="@id/cardContentLayout"
+                    app:cardCornerRadius="@dimen/radius"
+                    app:cardElevation="@dimen/elevation"
                     app:layout_constraintBottom_toBottomOf="@id/cardContentLayout"
                     app:layout_constraintStart_toStartOf="@id/cardContentLayout"
-                    android:layout_marginStart="@dimen/space"
-                    app:cardCornerRadius="@dimen/radius"
-                    app:cardElevation="@dimen/elevation">
+                    app:layout_constraintTop_toBottomOf="@id/cardContentLayout">
 
                     <RelativeLayout
                         android:id="@+id/addToCartLayout"
@@ -361,11 +361,28 @@
                         android:id="@+id/hampaLoader"
                         android:layout_width="60dp"
                         android:layout_height="60dp"
-                        android:visibility="gone"
-                        android:gravity="center"/>
+                        android:gravity="center"
+                        android:visibility="gone" />
 
 
                 </androidx.cardview.widget.CardView>
+
+                <ir.vanda.hampa.component.VandaTextView
+                    android:id="@+id/takeExamButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/space"
+                    android:layout_marginTop="@dimen/space"
+                    android:layout_marginEnd="@dimen/space"
+                    android:background="@drawable/bg_payment_button"
+                    android:gravity="center"
+                    android:padding="@dimen/space"
+                    android:text="@string/takeExam"
+                    android:textColor="#fff"
+                    android:textSize="18sp"
+                    android:visibility="gone"
+                    app:fontName="iranSansMedium"
+                    app:layout_constraintTop_toBottomOf="@id/cardContentLayout" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

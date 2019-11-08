@@ -1,5 +1,6 @@
 package ir.vanda.hampa.component;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -40,6 +41,8 @@ public class BottomMenu extends LinearLayout
     private OnBottomMenuItemClick onBottomMenuItemClick;
 
     private int lastClickedPosition = 100;
+
+    private boolean animating = false;
 
 
     public BottomMenu(Context context)
@@ -146,6 +149,37 @@ public class BottomMenu extends LinearLayout
     public void setOnBottomMenuItemClick(OnBottomMenuItemClick onBottomMenuItemClick)
     {
         this.onBottomMenuItemClick = onBottomMenuItemClick;
+    }
+
+    public void animate (String mode)
+    {
+        Log.i("menuHeight", getHeight() + "");
+
+        animate().translationY(mode.equals("show") ? 0 : getHeight()).setDuration(200).setListener(new Animator.AnimatorListener()
+        {
+            @Override public void onAnimationStart (Animator animation)
+            {
+                animating = true;
+            }
+
+
+            @Override public void onAnimationEnd (Animator animation)
+            {
+                animating = false;
+            }
+
+
+            @Override public void onAnimationCancel (Animator animation)
+            {
+                animating = false;
+            }
+
+
+            @Override public void onAnimationRepeat (Animator animation)
+            {
+
+            }
+        });
     }
 
 

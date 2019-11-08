@@ -90,12 +90,23 @@ public class MainFragment extends BaseFragment implements View.OnClickListener
 
 
     @Override
+    public void onHiddenChanged(boolean hidden)
+    {
+        super.onHiddenChanged(hidden);
+        if (!hidden)
+        {
+            bottomMenuAnimate("show");
+        }
+    }
+
+    @Override
     public void onClick(View v)
     {
         switch (v.getId())
         {
             case R.id.lessonExamLayout:
 
+                bottomMenuAnimate("hide");
                 showFragment(lessonExamsFragment, "lessonExamFragment");
 
                 break;

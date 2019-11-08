@@ -17,11 +17,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import java.util.Objects;
+
 import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
-import ir.vanda.hampa.activity.MainActivity;
 import ir.vanda.hampa.component.StatusBar;
 import ir.vanda.hampa.component.VandaTextView;
+import ir.vanda.hampa.fragment.profileChild.MyExamFragment;
 import ir.vanda.hampa.fragment.profileChild.MyProfileFragment;
 import ir.vanda.hampa.fragment.profileChild.TransactionsFragment;
 import ir.vanda.hampa.lib.Converter;
@@ -46,7 +48,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     private NestedScrollView nestedScrollView;
     private View             fgBanner, toolbarHover;
     private Student      student;
-    private LinearLayout myProfileLayout,transactionLayout;
+    private LinearLayout myProfileLayout, transactionLayout,myExamLayout;
 
     //animations variables
     private int fgHoverHeight, toolbarHeight, profileLayoutHeight, statusBarHeight;
@@ -57,7 +59,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
-        finViews(v);
+        findViews(v);
 
         //fill information
         student = (Student) getStorage().get("student");
@@ -140,7 +142,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
                 Log.i("toolbar", toolbarContent.getMeasuredHeight() + "");
 
 
-                int paddingTop = statusBarHeight + Converter.dpToPx(24,getContext());
+                int paddingTop = statusBarHeight + Converter.dpToPx(24, Objects.requireNonNull(getContext()));
 
                 toolbarContent.setPadding(0, paddingTop, 0, 0);
 
@@ -155,7 +157,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
     }
 
-    private void finViews(View v)
+    private void findViews(View v)
     {
         statusBar        = v.findViewById(R.id.statusBar);
         toolbarLayout    = v.findViewById(R.id.toolbarLayout);
@@ -175,6 +177,20 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
         transactionLayout = v.findViewById(R.id.transactionLayout);
         transactionLayout.setOnClickListener(this);
+
+        myExamLayout = v.findViewById(R.id.myExamLayout);
+        myExamLayout.setOnClickListener(this);
+    }
+
+
+    @Override
+    public void onHiddenChanged(boolean hidden)
+    {
+        super.onHiddenChanged(hidden);
+        if (!hidden)
+        {
+            bottomMenuAnimate("show");
+        }
     }
 
     @Override
@@ -186,7 +202,8 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
                 MyProfileFragment myProfileFragment = new MyProfileFragment();
 
-                showFragmentByAnim(myProfileFragment,"myProfile",false);
+                bottomMenuAnimate("hide");
+                showFragmentByAnim(myProfileFragment, "myProfile", false);
 
                 break;
 
@@ -194,7 +211,17 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
                 TransactionsFragment transactionsFragment = new TransactionsFragment();
 
-                showFragmentByAnim(transactionsFragment,"transactionFragment",false);
+                bottomMenuAnimate("hide");
+                showFragmentByAnim(transactionsFragment, "transactionFragment", false);
+
+                break;
+
+            case R.id.myExamLayout:
+
+                MyExamFragment myExamFragment = new MyExamFragment();
+
+                bottomMenuAnimate("hide");
+                showFragmentByAnim(myExamFragment, "myExamFragment", false);
 
                 break;
         }

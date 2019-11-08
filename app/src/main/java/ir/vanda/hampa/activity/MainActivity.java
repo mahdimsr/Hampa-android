@@ -21,6 +21,9 @@ public class MainActivity extends BaseActivity
     private BottomMenu     bottomMenu;
     private BottomMenuItem cartItem;
 
+    private FragmentManager     fm;
+    private FragmentTransaction ft;
+
     private MainFragment    mainFragment;
     private ProfileFragment profileFragment;
     private CartFragment    cartFragment;
@@ -33,6 +36,9 @@ public class MainActivity extends BaseActivity
         findViews();
 
         //create objects
+
+        fm = getSupportFragmentManager();
+
 
         mainFragment    = new MainFragment();
         profileFragment = new ProfileFragment();
@@ -81,8 +87,7 @@ public class MainActivity extends BaseActivity
 
     public void showFragment(Fragment fragment, String tag)
     {
-
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft = getSupportFragmentManager().beginTransaction();
 
         //hide last fragment
 
@@ -99,10 +104,11 @@ public class MainActivity extends BaseActivity
         }
         else
         {
-            ft.add(R.id.frameLayout, fragment);
+            ft.add(R.id.frameLayout, fragment, tag);
+            ft.addToBackStack(null);
 
-            ft.addToBackStack(tag);
         }
+
 
         ft.commit();
 
@@ -112,7 +118,7 @@ public class MainActivity extends BaseActivity
     public void showFragmentByAnim(Fragment fragment, String tag, boolean isNewSection)
     {
 
-        FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+        ft = getSupportFragmentManager().beginTransaction();
 
         if (isNewSection)
         {
@@ -150,7 +156,6 @@ public class MainActivity extends BaseActivity
 
     private Fragment getVisibleFragment()
     {
-        FragmentManager fm = getSupportFragmentManager();
 
         for (Fragment fragment : fm.getFragments())
         {
@@ -180,6 +185,12 @@ public class MainActivity extends BaseActivity
         {
             cartItem.setNoCount();
         }
+    }
+
+
+    public void bottomMenuAnimate(String mode)
+    {
+        bottomMenu.animate(mode);
     }
 
 }

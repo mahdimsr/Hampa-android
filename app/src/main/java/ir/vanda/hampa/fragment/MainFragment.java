@@ -59,15 +59,29 @@ public class MainFragment extends BaseFragment implements View.OnClickListener
                 Response<Index> res   = response;
                 Index           index = res.body();
 
-                Integer cartCount = index.cartCount;
 
-                if (cartCount != null && cartCount != 0)
+
+                if (res.isSuccessful())
                 {
-                    setCartCount(cartCount);
+                    Log.i("indexRes", index.toString() + "");
+
+                    Integer cartCount = index.cartCount;
+
+                    if (cartCount != null && cartCount != 0)
+                    {
+                        setCartCount(cartCount);
+                    }
+
+                }
+                else
+                {
+
                 }
 
 
-                Log.i("indexRes", index.status + "");
+
+
+
 
             }
 

@@ -1,5 +1,7 @@
 package ir.vanda.hampa.model;
 
+import androidx.annotation.NonNull;
+
 import java.util.List;
 
 public class Grade
@@ -13,4 +15,10 @@ public class Grade
     public List<Student>     students;
     public List<GradeLesson> gradeLessons;
 
+    @NonNull
+    @Override
+    public String toString()
+    {
+        return "id: " + id + " title: " + title;
+    }
 }

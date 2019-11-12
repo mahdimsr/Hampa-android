@@ -236,6 +236,7 @@
     <!-- profile ==> start -->
 
     <style name="profile_input">
+        <item name="android:layout_height">60dp</item>
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_marginLeft">10dp</item>
@@ -266,15 +267,24 @@
 
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <!-- transaction view holder ==> end-->
+
+    <!-- dialog button ==> start -->
+
+    <style name="buttonDialog">
+
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">0.5</item>
+        <item name="android:padding">@dimen/space</item>
+        <item name="android:gravity">center</item>
+        <item name="fontName">iranSansMedium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:foreground">?selectableItemBackground</item>
+        <item name="android:layout_margin">@dimen/halfSpace</item>
+
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
-
-    <!-- transaction view holder ==> end-->
+    <!-- dialog button ==> end -->
 
 </resources>

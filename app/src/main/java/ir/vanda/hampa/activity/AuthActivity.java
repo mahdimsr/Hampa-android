@@ -155,8 +155,8 @@ public class AuthActivity extends BaseActivity
                 if (state.equals("login"))
                 {
 
-                    final String username = usernameLoginInput.getInput().getText().toString().trim();
-                    String       password = passwordLoginInput.getInput().getText().toString().trim();
+                    String username = usernameLoginInput.getInput().getText().toString().trim();
+                    String password = passwordLoginInput.getInput().getText().toString().trim();
 
                     HashMap<String, String> data = new HashMap<>();
 

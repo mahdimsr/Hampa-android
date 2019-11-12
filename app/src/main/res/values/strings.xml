@@ -50,6 +50,8 @@
     <string name="title_activity_error">ErrorActivity</string>
     <string name="myLessonExam">آزمون های درس به درس من</string>
     <string name="takeExam">شرکت در آزمون</string>
+    <string name="cartIsEmpty">در سبد خرید شما آزمونی وجود ندارد</string>
+    <string name="serverError">مشکلی در سامانه پیش آمده</string>
 
 
 </resources>

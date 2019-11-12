@@ -73,4 +73,10 @@ public class BaseFragment extends Fragment
         ((MainActivity) getContext()).bottomMenuAnimate(mode);
     }
 
+
+    protected void makeToast(String message)
+    {
+        ((MainActivity) getContext()).makeToast(message);
+    }
+
 }

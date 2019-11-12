@@ -13,6 +13,10 @@ import retrofit2.http.QueryMap;
 
 public interface Service
 {
+    //checkUpdate
+    @GET("checkUpdate")
+    Call<CheckUpdate> checkUpdate(@QueryMap HashMap<String, String> body);
+
     //auth
 
     @POST("auth/login")
@@ -29,6 +33,11 @@ public interface Service
     @GET("profile/myExams")
     Call<MyExams> myExams();
 
+    @GET("profile/myProfile")
+    Call<MyProfile> myProfile();
+
+    @POST("profile/updateMyProfile")
+    Call<UpdateMyProfile> updateMyProfile(@Body HashMap<String, String> body);
 
     //cart
 

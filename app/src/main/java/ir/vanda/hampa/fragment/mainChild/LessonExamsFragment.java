@@ -1,6 +1,7 @@
 package ir.vanda.hampa.fragment.mainChild;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,6 +23,7 @@ import java.util.List;
 
 import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
+import ir.vanda.hampa.activity.ErrorActivity;
 import ir.vanda.hampa.component.HampaCheckBox;
 import ir.vanda.hampa.component.LessonExamRecycler;
 import ir.vanda.hampa.component.VandaTextView;
@@ -82,23 +84,37 @@ public class LessonExamsFragment extends BaseFragment
 
                         Log.i("lessonExamRes", call.request().url() + "");
 
-                        if (body.status.equals("OK"))
+                        if (res.isSuccessful())
                         {
-
-                            List<LessonExam> examList = body.dataList.data;
-
-                            if (examList != null || !examList.isEmpty())
+                            if (body.status.equals("OK"))
                             {
-                                loadMore.loadMore(body.dataList.data);
+
+                                List<LessonExam> examList = body.dataList.data;
+
+                                if (examList != null || !examList.isEmpty())
+                                {
+                                    loadMore.loadMore(body.dataList.data);
+                                }
+                                else
+                                {
+                                    loadMore.complete();
+                                    Toast.makeText(getContext(), "بارگذاری کامل شد", Toast.LENGTH_SHORT).show();
+                                }
                             }
                             else
                             {
-                                loadMore.complete();
+                                Toast.makeText(getContext(), "مشکلی در سامانه وجود دارد.", Toast.LENGTH_SHORT).show();
                             }
                         }
                         else
                         {
-                            Toast.makeText(getContext(), "loading is complete", Toast.LENGTH_SHORT).show();
+                            Intent i = new Intent(getContext(), ErrorActivity.class);
+
+                            i.putExtra("title", "خطای آزمون های درس به درس");
+                            i.putExtra("type", res.message());
+                            i.putExtra("code", res.code());
+
+                            startActivity(i);
                         }
 
                     }
@@ -107,6 +123,14 @@ public class LessonExamsFragment extends BaseFragment
                     public void onFailure(Call<LessonExamList> call, Throwable t)
                     {
                         Log.i("lessonExamResError", t.toString());
+
+                        Intent i = new Intent(getContext(), ErrorActivity.class);
+
+                        i.putExtra("title", "خطای آزمون های درس به درس");
+                        i.putExtra("type", t.toString());
+                        i.putExtra("code", t.getMessage());
+
+                        startActivity(i);
                     }
                 });
             }

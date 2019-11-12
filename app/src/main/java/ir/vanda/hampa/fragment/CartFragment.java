@@ -1,6 +1,7 @@
 package ir.vanda.hampa.fragment;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ import java.util.List;
 
 import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
+import ir.vanda.hampa.activity.ErrorActivity;
 import ir.vanda.hampa.adapter.CartAdapter;
 import ir.vanda.hampa.component.HampaLoader;
 import ir.vanda.hampa.component.VandaTextView;
@@ -60,6 +63,7 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
     private HampaLoader      hampaLoader;
     private List<Cart>       cartList;
     private EditText         discountInput;
+    private LinearLayout     emptyLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -130,6 +134,7 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
         payButton.setOnClickListener(this);
 
         discountInput = v.findViewById(R.id.discountInput);
+        emptyLayout   = v.findViewById(R.id.emptyLayout);
     }
 
     @Override
@@ -158,29 +163,44 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
                 Response<IndexCart> res       = response;
                 IndexCart           indexCart = res.body();
 
-                if (indexCart.status.equals("OK"))
+                if (res.isSuccessful())
                 {
-                    if (indexCart.carts.isEmpty())
+                    if (indexCart.status.equals("OK"))
                     {
-                        Toast.makeText(getContext(), "در سبد خرید شما آزمونی وجود ندارد.", Toast.LENGTH_SHORT).show();
+                        if (indexCart.carts.isEmpty())
+                        {
+                            ifCartEmpty(true);
+                        }
+                        else
+                        {
+                            ifCartEmpty(false);
+
+                            cartList = indexCart.carts;
+
+                            cartAdapter = new CartAdapter(getContext(), cartList);
+
+                            GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
+
+                            cartRecyclerView.setLayoutManager(layoutManager);
+                            cartRecyclerView.setAdapter(cartAdapter);
+
+                            initializeCartAdapter();
+                        }
                     }
                     else
                     {
-                        cartList = indexCart.carts;
-
-                        cartAdapter = new CartAdapter(getContext(), cartList);
-
-                        GridLayoutManager layoutManager = new GridLayoutManager(getContext(), 2, LinearLayoutManager.VERTICAL, false);
-
-                        cartRecyclerView.setLayoutManager(layoutManager);
-                        cartRecyclerView.setAdapter(cartAdapter);
-
-                        initializeCartAdapter();
+                        Toast.makeText(getContext(), "مشکلی در سامانه پیش آمده.", Toast.LENGTH_SHORT).show();
                     }
                 }
                 else
                 {
-                    Toast.makeText(getContext(), "مشکلی در سامانه پیش آمده.", Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(getContext(), ErrorActivity.class);
+
+                    i.putExtra("title", "خطای سبد خرید من");
+                    i.putExtra("type", res.message());
+                    i.putExtra("code", res.code());
+
+                    startActivity(i);
                 }
 
                 hampaLoader.setVisibility(View.GONE);
@@ -192,6 +212,14 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
             public void onFailure(Call<IndexCart> call, Throwable t)
             {
                 Log.i("indexCartResError", t.toString());
+
+                Intent i = new Intent(getContext(), ErrorActivity.class);
+
+                i.putExtra("title", "خطای سبد خرید من");
+                i.putExtra("type", t.toString());
+                i.putExtra("code", t.getMessage());
+
+                startActivity(i);
             }
         });
     }
@@ -316,6 +344,27 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
 
 
                 break;
+        }
+    }
+
+
+    private void ifCartEmpty(boolean isEmpty)
+    {
+        if (isEmpty)
+        {
+            cardPayment.setVisibility(View.GONE);
+            payButton.setVisibility(View.GONE);
+            cartRecyclerView.setVisibility(View.GONE);
+
+            emptyLayout.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            cardPayment.setVisibility(View.VISIBLE);
+            payButton.setVisibility(View.VISIBLE);
+            cartRecyclerView.setVisibility(View.VISIBLE);
+
+            emptyLayout.setVisibility(View.GONE);
         }
     }
 }

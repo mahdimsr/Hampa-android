@@ -69,11 +69,11 @@
                     android:layout_centerVertical="true"
                     android:layout_marginStart="@dimen/space"
                     android:layout_marginEnd="@dimen/space"
-                    android:paddingEnd="@dimen/space"
-                    android:paddingStart="@dimen/space"
-                    android:inputType="text|textNoSuggestions"
                     android:layout_toEndOf="@id/submitDiscountCode"
-                    android:background="@drawable/bg_discount_input" />
+                    android:background="@drawable/bg_discount_input"
+                    android:inputType="text|textNoSuggestions"
+                    android:paddingStart="@dimen/space"
+                    android:paddingEnd="@dimen/space" />
 
                 <ir.vanda.hampa.component.VandaTextView
                     android:id="@+id/submitDiscountCode"
@@ -134,10 +134,10 @@
 
                     <ir.vanda.hampa.component.VandaTextView
                         style="@style/priceDetails"
-                        android:text="قیمت با تخفیف"
-
                         android:paddingStart="@dimen/space"
-                        android:paddingEnd="@dimen/space"/>
+
+                        android:paddingEnd="@dimen/space"
+                        android:text="قیمت با تخفیف" />
 
 
                 </LinearLayout>
@@ -174,5 +174,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- emptyView -->
+    <LinearLayout
+        android:id="@+id/emptyLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:src="@drawable/bg_empty_cart" />
+
+        <ir.vanda.hampa.component.VandaTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/cartIsEmpty"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="20sp"
+            android:layout_marginTop="@dimen/space"
+            app:fontName="iranSansMedium" />
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

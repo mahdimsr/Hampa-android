@@ -1,14 +1,17 @@
 package ir.vanda.hampa.activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import ir.vanda.hampa.BaseActivity;
 import ir.vanda.hampa.R;
 
-public class ErrorActivity extends AppCompatActivity
+public class ErrorActivity extends BaseActivity
 {
     Intent i;
 
@@ -22,8 +25,16 @@ public class ErrorActivity extends AppCompatActivity
         i = getIntent();
 
 
-        Toast.makeText(this, "" + i.getIntExtra("code",0), Toast.LENGTH_SHORT).show();
+    }
 
+
+    @Override
+    public void onBackPressed()
+    {
+
+        android.os.Process.killProcess(android.os.Process.myPid());
+        System.exit(1);
 
     }
+
 }

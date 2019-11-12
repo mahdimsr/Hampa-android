@@ -1,0 +1,49 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/inputLayer"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/bg_vanda_input"
+        android:padding="12dp">
+
+        <ImageView
+            android:id="@+id/iconImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginStart="@dimen/halfSpace"
+            android:background="#fff"
+            android:padding="@dimen/halfSpace"
+            android:src="@mipmap/ic_launcher" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_toStartOf="@id/iconImage"
+            android:background="#fff"
+            android:gravity="center_vertical|right"
+            android:spinnerMode="dialog"
+            android:textColorHint="@color/colorTextHint" />
+
+    </RelativeLayout>
+
+    <ir.vanda.hampa.component.VandaTextView
+        android:id="@+id/error"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/inputLayer"
+        android:paddingStart="@dimen/doubleSpace"
+        android:paddingTop="@dimen/halfSpace"
+        android:paddingEnd="@dimen/doubleSpace"
+        android:text="نمایش پیغام"
+        android:visibility="gone"
+        app:fontName="iranSansLight" />
+
+
+</RelativeLayout>

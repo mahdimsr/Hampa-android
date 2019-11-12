@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,11 +10,11 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="505dp"
-        android:layout_margin="15dp"
-        app:cardCornerRadius="14dp"
+        android:layout_height="500dp"
+        android:layout_margin="@dimen/space"
+        app:cardCornerRadius="@dimen/radius"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -28,48 +29,74 @@
                 android:id="@+id/vandaTextView2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/space"
                 android:text="@string/profile_header"
-                android:layout_marginRight="10dp"
-                android:textColor="#0C0C0C"
-                android:textSize="25sp"
-                app:fontName="iranSansMedium"/>
+                android:textColor="@color/colorTextPrimary"
+                android:textSize="20sp"
+                app:fontName="iranSansMedium" />
 
-            <ir.vanda.hampa.component.VandaInput
-                style="@style/profile_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hint="نام" />
 
-            <ir.vanda.hampa.component.VandaInput
-                style="@style/profile_input"
+            <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hint="نام خانوادگی" />
+                android:layout_height="wrap_content">
 
-            <ir.vanda.hampa.component.VandaInput
-                style="@style/profile_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                app:hint="ایمیل" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingBottom="60dp"
+                    android:orientation="vertical">
 
-            <ir.vanda.hampa.component.VandaInput
-                style="@style/profile_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hint="کد ملی" />
-            <ir.vanda.hampa.component.VandaInput
-                style="@style/profile_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hint="گرایش" />
-            <ir.vanda.hampa.component.VandaInput
-                style="@style/profile_input"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:hint="مقطع" />
+
+                    <ir.vanda.hampa.component.VandaInput
+                        android:id="@+id/name"
+                        style="@style/profile_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hint="نام" />
+
+                    <ir.vanda.hampa.component.VandaInput
+                        android:id="@+id/family"
+                        style="@style/profile_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hint="نام خانوادگی" />
+
+                    <ir.vanda.hampa.component.VandaInput
+                        android:id="@+id/email"
+                        style="@style/profile_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        app:hint="ایمیل" />
+
+                    <ir.vanda.hampa.component.VandaInput
+                        android:id="@+id/nationalCode"
+                        style="@style/profile_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hint="کد ملی" />
+
+
+                    <ir.vanda.hampa.component.VandaSelectBox
+                        android:id="@+id/gradeSelect"
+                        style="@style/profile_input"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:hint="مقطع" />
+
+
+                    <ir.vanda.hampa.component.VandaSelectBox
+                        android:id="@+id/orientationSelect"
+                        style="@style/profile_input"
+                        android:layout_width="match_parent"
+                        app:hint="گرایش" />
+
+                </LinearLayout>
+
+            </androidx.core.widget.NestedScrollView>
 
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
     <ir.vanda.hampa.component.VandaTextView
@@ -85,9 +112,22 @@
         android:textSize="18sp"
         android:translationZ="2dp"
         app:fontName="iranSansMedium"
-        app:layout_constraintBottom_toBottomOf="@+id/cardView2"
+        app:layout_constraintBottom_toBottomOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@+id/cardView"
         tools:ignore="UnusedAttribute" />
+
+
+    <ir.vanda.hampa.component.HampaLoader
+        android:id="@+id/hampaLoader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:translationZ="50dp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

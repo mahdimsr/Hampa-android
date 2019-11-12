@@ -1,0 +1,5 @@
+<resources>
+    <declare-styleable name="VandaSelectBox">
+        <attr name="hintBox" format="string|reference"/>
+    </declare-styleable>
+</resources>

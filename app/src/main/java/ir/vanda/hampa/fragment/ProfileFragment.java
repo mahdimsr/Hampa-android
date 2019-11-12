@@ -48,7 +48,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     private NestedScrollView nestedScrollView;
     private View             fgBanner, toolbarHover;
     private Student      student;
-    private LinearLayout myProfileLayout, transactionLayout,myExamLayout;
+    private LinearLayout myProfileLayout, transactionLayout, myExamLayout;
 
     //animations variables
     private int fgHoverHeight, toolbarHeight, profileLayoutHeight, statusBarHeight;
@@ -61,23 +61,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
         View v = inflater.inflate(R.layout.fragment_profile, container, false);
         findViews(v);
 
-        //fill information
-        student = (Student) getStorage().get("student");
-
-        if (student.name == null || student.familyName == null)
-        {
-            fullNameTextView.setText(R.string.incompleteFullName);
-            fullNameTextView.setTextSize(15);
-        }
-        else
-        {
-            fullNameTextView.setText(student.name + " " + student.familyName);
-        }
-
-        if (student.city == null)
-        {
-            locationTextView.setVisibility(View.GONE);
-        }
+        fillInformation();
 
         //scroll event
         nestedScrollView.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener()
@@ -191,6 +175,10 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
         {
             bottomMenuAnimate("show");
         }
+        else
+        {
+            fillInformation();
+        }
     }
 
     @Override
@@ -224,6 +212,27 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
                 showFragmentByAnim(myExamFragment, "myExamFragment", false);
 
                 break;
+        }
+    }
+
+    private void fillInformation()
+    {
+        //fill information
+        student = (Student) getStorage().get("student");
+
+        if (student.name == null || student.familyName == null)
+        {
+            fullNameTextView.setText(R.string.incompleteFullName);
+            fullNameTextView.setTextSize(15);
+        }
+        else
+        {
+            fullNameTextView.setText(student.name + " " + student.familyName);
+        }
+
+        if (student.city == null)
+        {
+            locationTextView.setVisibility(View.GONE);
         }
     }
 }

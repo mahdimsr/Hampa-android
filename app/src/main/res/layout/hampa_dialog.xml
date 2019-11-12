@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/bg"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:padding="@dimen/doubleSpace"
+            android:src="@drawable/bg_dialog" />
+
+        <ir.vanda.hampa.component.VandaTextView
+            android:id="@+id/title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_toast"
+            android:padding="@dimen/space"
+            android:text="عنوان"
+            android:textColor="#fff"
+            android:textSize="18sp"
+            app:fontName="iranSansMedium" />
+
+
+    </RelativeLayout>
+
+    <ir.vanda.hampa.component.VandaTextView
+        android:id="@+id/message"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/space"
+        android:text="@string/lorem"
+        android:textColor="#000"
+        android:textSize="15sp"
+        app:fontName="iranSansLight" />
+
+    <View
+        style="@style/Line"
+        android:layout_marginStart="@dimen/space"
+        android:layout_marginEnd="@dimen/space"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/halfSpace"
+        android:orientation="horizontal">
+
+
+        <ir.vanda.hampa.component.VandaTextView
+            android:id="@+id/cancelButton"
+            style="@style/buttonDialog"
+            android:visibility="gone"
+            android:textColor="@color/colorTextPrimary"
+            android:background="@drawable/bg_dialog_cancel_btn"
+            android:text="کنسل"/>
+
+
+        <ir.vanda.hampa.component.VandaTextView
+            android:id="@+id/defaultButton"
+            style="@style/buttonDialog"
+            android:background="@drawable/bg_dialog_default_btn"
+            android:textColor="#fff"
+            android:text="اوکی"/>
+
+
+    </LinearLayout>
+
+</LinearLayout>

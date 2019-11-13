@@ -52,6 +52,8 @@
     <string name="takeExam">شرکت در آزمون</string>
     <string name="cartIsEmpty">در سبد خرید شما آزمونی وجود ندارد</string>
     <string name="serverError">مشکلی در سامانه پیش آمده</string>
+    <string name="aboutHampa">درباه همپا</string>
+    <string name="contactUs">تماس با ما</string>
 
 
 </resources>

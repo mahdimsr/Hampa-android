@@ -70,13 +70,13 @@
             android:orientation="horizontal">
 
             <ir.vanda.hampa.component.VandaTextView
+                android:id="@+id/paymentPrice"
                 style="@style/transactionItem"
                 android:gravity="left"
                 android:text="5000"/>
 
 
             <ir.vanda.hampa.component.VandaTextView
-                android:id="@+id/paymentPrice"
                 style="@style/transactionItem"
                 android:text="قیمت پرداختی:"/>
 

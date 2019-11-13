@@ -237,15 +237,15 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
                 {
                     setCartCount(body.cartCount);
 
-                    Toast.makeText(getContext(), "آزمون به سبد خرید افزوده شد.", Toast.LENGTH_LONG).show();
+                    makeToast("آزمون به سبد خرید افزوده شد.");
                 }
                 else if (body.status.equals("ERROR"))
                 {
-                    Toast.makeText(getContext(), body.errorMessage, Toast.LENGTH_LONG).show();
+                    makeToast(body.errorMessage);
                 }
                 else if (body.status.equals("Validation"))
                 {
-                    Toast.makeText(getContext(), "مشکلی در سامانه وجود دارد.", Toast.LENGTH_SHORT).show();
+                    makeToast("مشکلی در سامانه وجود دارد.");
                 }
 
                 hampaLoader.setVisibility(View.GONE);

@@ -207,13 +207,14 @@
 
                             <ImageView
                                 style="@style/ProfileItemMenuIcon"
-                                android:src="@drawable/ic_friends" />
+                                android:src="@drawable/ic_contact_us" />
 
                             <ir.vanda.hampa.component.VandaTextView
                                 style="@style/ProfileItemMenuTitle"
-                                android:text="friends" />
+                                android:text="@string/contactUs" />
 
                         </LinearLayout>
+
 
 
                         <!-- bottomCenter -->
@@ -222,11 +223,11 @@
 
                             <ImageView
                                 style="@style/ProfileItemMenuIcon"
-                                android:src="@drawable/ic_counter" />
+                                android:src="@drawable/ic_friends" />
 
                             <ir.vanda.hampa.component.VandaTextView
                                 style="@style/ProfileItemMenuTitle"
-                                android:text="@string/counterKonkurDay" />
+                                android:text="@string/aboutHampa" />
 
                         </LinearLayout>
 

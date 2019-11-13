@@ -185,7 +185,7 @@ public class SplashActivity extends BaseActivity
                         @Override
                         public void onClick(Dialog dialog)
                         {
-                            call.clone();
+                            checkUpdateCallback();
                             dialog.dismiss();
                         }
                     });

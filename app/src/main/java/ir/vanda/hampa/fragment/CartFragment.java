@@ -58,7 +58,7 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
     private ConstraintLayout parentLayout;
     private RecyclerView     cartRecyclerView;
     private CardView         cardPayment;
-    private VandaTextView    payButton;
+    private VandaTextView    payButton,mainPriceText;
     private CartAdapter      cartAdapter;
     private HampaLoader      hampaLoader;
     private List<Cart>       cartList;
@@ -133,6 +133,8 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
         payButton   = v.findViewById(R.id.payButton);
         payButton.setOnClickListener(this);
 
+        mainPriceText = v.findViewById(R.id.mainPriceTextView);
+
         discountInput = v.findViewById(R.id.discountInput);
         emptyLayout   = v.findViewById(R.id.emptyLayout);
     }
@@ -185,6 +187,9 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
                             cartRecyclerView.setAdapter(cartAdapter);
 
                             initializeCartAdapter();
+
+                            mainPriceText.setText(indexCart.mainPrice + " تومان ");
+
                         }
                     }
                     else
@@ -268,7 +273,7 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
                         }
                         else if (body.status.equals("ERROR"))
                         {
-                            Toast.makeText(getContext(), body.errorMessage, Toast.LENGTH_SHORT).show();
+                            makeToast(body.errorMessage);
                         }
 
                         hampaLoader.setVisibility(View.GONE);
@@ -278,7 +283,7 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
                     @Override
                     public void onFailure(Call<RemoveCart> call, Throwable t)
                     {
-                        Toast.makeText(getContext(), "درخواست به خطا دارد.", Toast.LENGTH_SHORT).show();
+                        makeToast(getString(R.string.serverError));
                     }
                 });
 
@@ -330,7 +335,7 @@ public class CartFragment extends BaseFragment implements View.OnClickListener
                         }
                         else if (purchase.status.equals("ERROR"))
                         {
-                            Toast.makeText(getContext(), purchase.errorMessage, Toast.LENGTH_SHORT).show();
+                            makeToast(purchase.errorMessage);
                         }
 
                     }

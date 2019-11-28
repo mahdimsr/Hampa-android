@@ -1,6 +1,9 @@
 package ir.vanda.hampa.model;
 
-public class ExamCode {
+import java.io.Serializable;
+
+public class ExamCode implements Serializable
+{
 
     //Attributes
     Integer id,examId,discountId;

@@ -2,6 +2,7 @@ package ir.vanda.hampa.fragment.mainChild;
 
 
 import android.animation.Animator;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,7 +18,6 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Toast;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -27,12 +27,12 @@ import java.util.Objects;
 
 import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
+import ir.vanda.hampa.activity.lessonExam.QuestionActivity;
 import ir.vanda.hampa.component.HampaLoader;
 import ir.vanda.hampa.component.StatusBar;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.lib.Converter;
 import ir.vanda.hampa.model.Grade;
-import ir.vanda.hampa.model.GradeLesson;
 import ir.vanda.hampa.model.Lesson;
 import ir.vanda.hampa.model.LessonExam;
 import ir.vanda.hampa.retrofit.LessonExamAdd;
@@ -81,12 +81,13 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
         {
             cartCardView.setVisibility(View.GONE);
             takeExamButton.setVisibility(View.VISIBLE);
+
         }
 
         //initialize
         titleTextView.setText(lessonExam.title);
         dateTextView.setText(lessonExam.persianCreatedAt);
-        orientationTextView.setText(lessonExam.orientations.get(0).title);
+        orientationTextView.setText(lessonExam.orientations.title);
         exmCodeTextView.setText(lessonExam.exm);
         questionCountTextView.setText(lessonExam.questionCount + "");
         durationTextView.setText(lessonExam.duration + "");
@@ -110,6 +111,24 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
         descriptionTextView.setText(lessonExam.description);
         priceTextView.setText(lessonExam.price + "");
 
+        takeExamButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                try
+                {
+                    Intent i = new Intent(getContext(), QuestionActivity.class);
+
+                    Objects.requireNonNull(getContext()).startActivity(i);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+            }
+        });
 
         return v;
     }
@@ -180,6 +199,7 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
 
         cartCardView   = v.findViewById(R.id.cartCardView);
         takeExamButton = v.findViewById(R.id.takeExamButton);
+
     }
 
     @Override

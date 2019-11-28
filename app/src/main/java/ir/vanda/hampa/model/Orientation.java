@@ -1,8 +1,10 @@
 package ir.vanda.hampa.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Orientation {
+public class Orientation implements Serializable
+{
 
     //Attributes
     public Integer id,code;

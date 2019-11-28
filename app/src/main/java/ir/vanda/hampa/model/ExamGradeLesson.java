@@ -1,6 +1,9 @@
 package ir.vanda.hampa.model;
 
-public class ExamGradeLesson {
+import java.io.Serializable;
+
+public class ExamGradeLesson implements Serializable
+{
 
     //Attributes
     Integer id,examId,gradeLessonId;

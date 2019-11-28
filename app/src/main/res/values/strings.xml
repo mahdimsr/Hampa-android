@@ -32,7 +32,7 @@
     <string name="mainPage">صفحه اصلی</string>
 
     <!-- TODO: help for understand-->
-    <string name="incompleteFullName">نام و نام خانوادگیتو به ما نگفتی. از قسمت حساب کاربری بگی.</string>
+    <string name="incompleteFullName">نام و نام خانوادگیتو به ما نگفتی. میتونی از قسمت حساب کاربری بگی.</string>
     <string name="grade">پایه</string>
     <string name="tenth">دهم</string>
     <string name="eleventh">یازدهم</string>

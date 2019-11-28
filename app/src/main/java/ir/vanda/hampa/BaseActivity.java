@@ -91,7 +91,7 @@ public class BaseActivity extends AppCompatActivity
 
         OkHttpClient client = httpClient.build();
 
-        retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.3/hamta/public/api/")
+        retrofit = new Retrofit.Builder().baseUrl("http://192.168.1.5/hamta/public/api/")
                                          .addConverterFactory(GsonConverterFactory.create())
                                          .client(client)
                                          .build();
@@ -131,7 +131,7 @@ public class BaseActivity extends AppCompatActivity
         HampaDialog dialog = new HampaDialog(context);
         dialog.show();
 
-        dialog.setValues(R.drawable.bg_no_internet,"خطا در اتصال","مشکلی در برقراری ارتباط وجود داره. ممکنه مشکل از اینترنت شما باشه و ممکنه مشکل از سمت سامانه باشه که خیلی معذرت میخواهیم و هرچی سریع تر درستش میکنیم.","تلاش مجدد",null);
+        dialog.setValues(R.drawable.bg_no_internet,"خطا در اتصال","مشکلی در برقراری ارتباط وجود داره. ممکنه مشکل از اینترنت شما باشه.","تلاش مجدد",null);
 
         return dialog;
     }

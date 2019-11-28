@@ -1,8 +1,9 @@
 package ir.vanda.hampa.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class GradeLesson
+public class GradeLesson implements Serializable
 {
 
     //Attributes

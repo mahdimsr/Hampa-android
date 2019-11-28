@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity">
+
+    <!-- statusBar -->
+    <ir.vanda.hampa.component.StatusBar
+        android:id="@+id/statusBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- toolbar -->
+    <RelativeLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="#fff"
+        app:layout_constraintTop_toBottomOf="@id/statusBar">
+
+        <ir.vanda.hampa.component.VandaTextView
+            android:id="@+id/countDown"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical"
+            android:paddingEnd="@dimen/space"
+            android:text="زمان باقیمانده"
+            android:textColor="@color/colorTextPrimary"
+            android:textSize="18sp"
+            app:fontName="iranSansLight" />
+
+    </RelativeLayout>
+
+    <!-- questionList -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:paddingStart="@dimen/halfSpace"
+        android:visibility="gone"
+        android:paddingEnd="@dimen/halfSpace"
+        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+    <!-- navigationBar -->
+    <ir.vanda.hampa.component.NavigationBar
+        android:id="@+id/navigationBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#000"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+
+    <ir.vanda.hampa.component.HampaLoader
+        android:id="@+id/hampaLoader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

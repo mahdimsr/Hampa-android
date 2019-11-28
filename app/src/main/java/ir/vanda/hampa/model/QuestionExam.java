@@ -1,8 +1,10 @@
 package ir.vanda.hampa.model;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class QuestionExam {
+public class QuestionExam implements Serializable
+{
 
     //Attributes
     Integer id,questionId,examId;

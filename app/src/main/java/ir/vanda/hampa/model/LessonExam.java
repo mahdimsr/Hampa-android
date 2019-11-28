@@ -24,7 +24,7 @@ public class LessonExam implements Serializable
     public List<QuestionExam>    questionExams;
     public List<Question>        questions;
     public List<Grade>           grades;
-    public List<Orientation>     orientations;
+    public Orientation           orientations;
     public List<Lesson>          lessons;
 
 

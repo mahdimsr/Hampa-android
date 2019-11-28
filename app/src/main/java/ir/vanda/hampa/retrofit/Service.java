@@ -8,8 +8,10 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
+import retrofit2.http.Url;
 
 public interface Service
 {
@@ -61,4 +63,8 @@ public interface Service
 
     @POST("lessonExams/add")
     Call<LessonExamAdd> lessonExamsAdd(@Body HashMap<String, String> data);
+
+    @GET("lessonExams/questions/{lessonExamId}")
+    Call<LessonExamQuestions> lessonExamQuestions(@Path("lessonExamId") int LessonExamId);
+
 }

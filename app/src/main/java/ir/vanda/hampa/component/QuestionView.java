@@ -29,7 +29,7 @@ public class QuestionView extends RelativeLayout
     private LinearLayout  contentLayout;
     private VandaTextView questionText, questionCounter;
     private VandaTextView optionOne, optionTwo, optionThree, optionFour;
-    private Integer             answer;
+    private Integer answer, number;
     private List<VandaTextView> optionsList;
 
     public QuestionView(Context context)
@@ -146,7 +146,15 @@ public class QuestionView extends RelativeLayout
 
     public void setNumber(int number)
     {
+        this.number = number;
+
         questionCounter.setText(number + "");
+    }
+
+
+    public Integer getNumber()
+    {
+        return number;
     }
 
 
@@ -189,7 +197,13 @@ public class QuestionView extends RelativeLayout
 
     public Integer getAnswer()
     {
-        return answer;
+        return answer == null ? 0 : answer;
+    }
+
+
+    public Question getQuestion()
+    {
+        return question;
     }
 
     public void setPaddingFromHolder()

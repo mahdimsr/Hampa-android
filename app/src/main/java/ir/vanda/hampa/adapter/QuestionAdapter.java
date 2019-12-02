@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ir.vanda.hampa.component.QuestionView;
@@ -14,13 +15,16 @@ import ir.vanda.hampa.model.Question;
 
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Holder>
 {
-    private List<Question> questionList;
-    private Context        context;
+    private List<Question>     questionList;
+    private List<QuestionView> questionViewList;
+    private Context            context;
 
     public QuestionAdapter(Context context, List<Question> questionList)
     {
         this.questionList = questionList;
         this.context      = context;
+
+        questionViewList = new ArrayList<>();
     }
 
     @NonNull
@@ -55,8 +59,13 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.Holder
             super(itemView);
 
             questionView = itemView;
+            questionViewList.add(questionView);
         }
     }
 
+    public List<QuestionView> getQuestionViewList()
+    {
+        return questionViewList;
+    }
 
 }

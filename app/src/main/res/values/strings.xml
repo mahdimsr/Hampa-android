@@ -54,6 +54,10 @@
     <string name="serverError">مشکلی در سامانه پیش آمده</string>
     <string name="aboutHampa">درباه همپا</string>
     <string name="contactUs">تماس با ما</string>
+    <string name="generalExams">آزمون های جامع</string>
+    <string name="onlineBooks">کلاس های آنلاین</string>
+    <string name="discussion">بحث و گفت و گو</string>
+    <string name="doneExam">ارسال پاسخ ها و اتمام آزمون</string>
 
 
 </resources>

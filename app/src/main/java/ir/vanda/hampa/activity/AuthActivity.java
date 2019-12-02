@@ -176,6 +176,8 @@ public class AuthActivity extends BaseActivity
 
                             hampaLoader.setVisibility(View.GONE);
 
+                            Log.i("loginRes", res.toString());
+
                             if (res.isSuccessful())
                             {
                                 if (login.status.equals("Validation"))

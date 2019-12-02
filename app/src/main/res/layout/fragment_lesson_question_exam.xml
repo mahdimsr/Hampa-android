@@ -22,38 +22,35 @@
         android:background="#fff"
         app:layout_constraintTop_toBottomOf="@id/statusBar">
 
+
         <ir.vanda.hampa.component.VandaTextView
-            android:id="@+id/countDown"
+            android:id="@+id/doneButton"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentEnd="true"
-            android:gravity="center_vertical"
+            android:layout_marginEnd="@dimen/space"
+            android:background="@drawable/bg_payment_button"
+            android:gravity="center"
+            android:paddingStart="@dimen/space"
             android:paddingEnd="@dimen/space"
-            android:text="زمان باقیمانده"
+            android:text="@string/doneExam"
             android:textColor="@color/colorTextPrimary"
-            android:textSize="18sp"
+            android:textSize="15sp"
             app:fontName="iranSansLight" />
+
 
     </RelativeLayout>
 
-    <!-- questionList -->
+    <!-- getQuestionList -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:paddingStart="@dimen/halfSpace"
-        android:visibility="gone"
         android:paddingEnd="@dimen/halfSpace"
-        app:layout_constraintBottom_toTopOf="@id/navigationBar"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/toolbar" />
-
-    <!-- navigationBar -->
-    <ir.vanda.hampa.component.NavigationBar
-        android:id="@+id/navigationBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#000"
-        app:layout_constraintBottom_toBottomOf="parent" />
 
 
     <ir.vanda.hampa.component.HampaLoader

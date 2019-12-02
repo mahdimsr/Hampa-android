@@ -27,7 +27,6 @@ import java.util.Objects;
 
 import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
-import ir.vanda.hampa.activity.lessonExam.QuestionActivity;
 import ir.vanda.hampa.component.HampaLoader;
 import ir.vanda.hampa.component.StatusBar;
 import ir.vanda.hampa.component.VandaTextView;
@@ -116,16 +115,17 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
             @Override
             public void onClick(View v)
             {
-                try
-                {
-                    Intent i = new Intent(getContext(), QuestionActivity.class);
 
-                    Objects.requireNonNull(getContext()).startActivity(i);
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
+                LessonExamQuestionFragment fragment = new LessonExamQuestionFragment();
+
+                Bundle b = new Bundle();
+
+                b.putSerializable("lessonExam", lessonExam);
+
+                fragment.setArguments(b);
+
+                showFragmentByAnim(fragment, "lessonExamQuestion", true);
+
 
             }
         });

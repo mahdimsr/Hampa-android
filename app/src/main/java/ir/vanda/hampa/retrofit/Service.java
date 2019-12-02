@@ -1,9 +1,15 @@
 package ir.vanda.hampa.retrofit;
 
+import com.google.gson.JsonObject;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
 import java.util.HashMap;
 import java.util.List;
 
 import ir.vanda.hampa.model.LessonExam;
+import ir.vanda.hampa.model.Question;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -64,7 +70,7 @@ public interface Service
     @POST("lessonExams/add")
     Call<LessonExamAdd> lessonExamsAdd(@Body HashMap<String, String> data);
 
-    @GET("lessonExams/questions/{lessonExamId}")
-    Call<LessonExamQuestions> lessonExamQuestions(@Path("lessonExamId") int LessonExamId);
+    @POST("lessonExams/finishExam/{lessonExamId}")
+    Call<FinishExam> finishExam(@Path("lessonExamId") int LessonExamId,@Body JsonObject body);
 
 }

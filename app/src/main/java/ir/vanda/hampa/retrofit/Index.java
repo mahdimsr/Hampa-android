@@ -7,10 +7,16 @@ import ir.vanda.hampa.model.Student;
 
 public class Index
 {
-    public String  status;
-    public Integer cartCount;
-    public Student student;
+    public String    status;
+    public Integer   cartCount;
+    public Student   student;
+    public ItemPhoto itemPhoto;
 
+
+    public class ItemPhoto
+    {
+        public String lessonExam, giftExam, generalExam, scholarship, onlineClass, meAndThe, books, untilKonkur, teacher, discussion, game;
+    }
 
     @NonNull
     @Override

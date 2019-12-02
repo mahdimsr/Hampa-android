@@ -78,11 +78,6 @@ public class MainFragment extends BaseFragment implements View.OnClickListener
 
                 }
 
-
-
-
-
-
             }
 
             @Override

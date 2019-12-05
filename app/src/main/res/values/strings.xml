@@ -58,6 +58,14 @@
     <string name="onlineBooks">کلاس های آنلاین</string>
     <string name="discussion">بحث و گفت و گو</string>
     <string name="doneExam">ارسال پاسخ ها و اتمام آزمون</string>
+    <string name="meAndAdviser">من و مشاورم</string>
+    <string name="timeToKonkur">فرصتی تا کنکور</string>
+    <string name="teacherIntroduce">معرفی دبیر</string>
+    <string name="fun">بازی و سرگرمی</string>
+    <string name="wrongAnswers">پاسخ های نادرست</string>
+    <string name="correctAnswers">پاسخ های درست</string>
+    <string name="noAnswers">بدون پاسخ</string>
+    <string name="allQuestions">تعداد سوالات</string>
 
 
 </resources>

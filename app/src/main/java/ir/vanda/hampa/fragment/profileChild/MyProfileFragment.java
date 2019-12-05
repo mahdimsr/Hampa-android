@@ -6,16 +6,21 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.InputType;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Random;
 
 import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
@@ -56,6 +61,8 @@ public class MyProfileFragment extends BaseFragment
 
     private List<String> gradeStringList, orientationStringList;
     private HashMap<String, String> data;
+
+    private ImageView smallGreen, lightBlue, purple, red;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -311,10 +318,60 @@ public class MyProfileFragment extends BaseFragment
         submit      = v.findViewById(R.id.submit);
 
 
-        nameInput         = v.findViewById(R.id.name);
-        familyInput       = v.findViewById(R.id.family);
+        nameInput = v.findViewById(R.id.name);
+        nameInput.getInput().setSingleLine(true);
+        nameInput.getInput().setMaxLines(1);
+        nameInput.getInput().setLines(1);
+
+
+        familyInput = v.findViewById(R.id.family);
+        familyInput.getInput().setSingleLine(true);
+        familyInput.getInput().setMaxLines(1);
+        familyInput.getInput().setLines(1);
+
+
         emailInput        = v.findViewById(R.id.email);
+
         nationalCodeInput = v.findViewById(R.id.nationalCode);
+        nationalCodeInput.getInput().setSingleLine(true);
+        nationalCodeInput.getInput().setMaxLines(1);
+        nationalCodeInput.getInput().setLines(1);
+        nationalCodeInput.getInput().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_NUMBER);
+
+
+        lightBlue  = v.findViewById(R.id.circleLightBlue);
+        smallGreen = v.findViewById(R.id.circleSmallGreen);
+        purple     = v.findViewById(R.id.circlePurple);
+        red        = v.findViewById(R.id.circleRed);
+
+        randomTransition(lightBlue);
+        randomTransition(smallGreen);
+        randomTransition(purple);
+        randomTransition(red);
+
+    }
+
+
+    private void randomTransition(final View v)
+    {
+        Random random = new Random();
+
+        float randomX = random.nextFloat() * 50;
+        float randomY = random.nextFloat() * 100;
+
+        Log.i("mahdi-dev", "random: " + randomX);
+
+
+        final Animation a = new TranslateAnimation(0, randomX, 0, randomY);
+
+        a.setDuration(5000);
+
+        a.setRepeatCount(Animation.INFINITE);
+
+        a.setRepeatMode(Animation.REVERSE);
+
+
+        v.startAnimation(a);
 
     }
 }

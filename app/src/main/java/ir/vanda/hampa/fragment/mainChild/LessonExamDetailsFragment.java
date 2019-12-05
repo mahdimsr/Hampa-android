@@ -81,6 +81,15 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
             cartCardView.setVisibility(View.GONE);
             takeExamButton.setVisibility(View.VISIBLE);
 
+            if (lessonExam.hasUsed)
+            {
+                takeExamButton.setText("مشاهده نتایج");
+            }
+            else
+            {
+                takeExamButton.setText("شرکت در آزمون");
+            }
+
         }
 
         //initialize
@@ -116,16 +125,32 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
             public void onClick(View v)
             {
 
-                LessonExamQuestionFragment fragment = new LessonExamQuestionFragment();
+                if (lessonExam.hasUsed)
+                {
+                    LessonExamResultFragment fragment = new LessonExamResultFragment();
 
-                Bundle b = new Bundle();
+                    Bundle b= new Bundle();
 
-                b.putSerializable("lessonExam", lessonExam);
+                    b.putSerializable("lessonExam",lessonExam);
 
-                fragment.setArguments(b);
+                    fragment.setArguments(b);
 
-                showFragmentByAnim(fragment, "lessonExamQuestion", true);
+                    showFragmentByAnim(fragment,"resultFragment",false);
+                }
+                else
+                {
 
+                    LessonExamQuestionFragment fragment = new LessonExamQuestionFragment();
+
+                    Bundle b = new Bundle();
+
+                    b.putSerializable("lessonExam", lessonExam);
+
+                    fragment.setArguments(b);
+
+                    showFragmentByAnim(fragment, "lessonExamQuestion", true);
+
+                }
 
             }
         });

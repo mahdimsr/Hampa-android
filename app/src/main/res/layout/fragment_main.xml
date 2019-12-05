@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     tools:context=".fragment.MainFragment">
 
     <!-- statusBar -->
@@ -17,25 +18,17 @@
     </ir.vanda.hampa.component.StatusBar>
 
 
-    <!-- searchBar -->
-    <ir.vanda.hampa.component.HampaSearchView
-        android:id="@+id/searchBar"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_marginStart="@dimen/space"
-        android:layout_marginTop="@dimen/space"
-        android:layout_marginEnd="@dimen/space"
-        app:layout_constraintTop_toBottomOf="@id/statusBar" />
-
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="100dp"
+        android:clipToPadding="false"
+        android:background="#fff"
         app:layout_constraintTop_toBottomOf="@id/statusBar">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="55dp"
             android:orientation="vertical">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -53,8 +46,9 @@
 
 
                     <ir.vanda.hampa.component.RoundedImageView
+                        android:id="@+id/scholarshipsImage"
                         style="@style/MainMenuItem.Image"
-                        android:src="@drawable/scholarships" />
+                        android:src="@drawable/books" />
 
 
                     <ir.vanda.hampa.component.RoundedImageView
@@ -81,8 +75,9 @@
 
 
                     <ir.vanda.hampa.component.RoundedImageView
+                        android:id="@+id/lessonExamImage"
                         style="@style/MainMenuItem.Image"
-                        android:src="@drawable/lesson_exam" />
+                        android:src="@drawable/books" />
 
 
                     <ir.vanda.hampa.component.RoundedImageView
@@ -99,17 +94,18 @@
 
                 <!-- books -->
                 <RelativeLayout
-                    android:id="@+id/helper_books"
+                    android:id="@+id/helper_booksLayout"
                     style="@style/MainMenuItem"
                     android:layout_width="0dp"
                     android:layout_height="312dp"
                     android:layout_marginStart="@dimen/halfSpace"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/giftExam"
+                    app:layout_constraintStart_toEndOf="@id/giftExamLayout"
                     app:layout_constraintTop_toBottomOf="@id/scholarshipsLayout">
 
 
                     <ir.vanda.hampa.component.RoundedImageView
+                        android:id="@+id/helper_booksImage"
                         style="@style/MainMenuItem.Image"
                         android:src="@drawable/books" />
 
@@ -128,19 +124,20 @@
 
                 <!-- giftExam -->
                 <RelativeLayout
-                    android:id="@+id/giftExam"
+                    android:id="@+id/giftExamLayout"
                     style="@style/MainMenuItem"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
                     android:layout_marginEnd="@dimen/halfSpace"
-                    app:layout_constraintEnd_toStartOf="@id/helper_books"
+                    app:layout_constraintEnd_toStartOf="@id/helper_booksLayout"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/lessonExamLayout">
 
 
                     <ir.vanda.hampa.component.RoundedImageView
+                        android:id="@+id/giftExamImage"
                         style="@style/MainMenuItem.Image"
-                        android:src="@drawable/gift_exam" />
+                        android:src="@drawable/books" />
 
 
                     <ir.vanda.hampa.component.RoundedImageView
@@ -150,6 +147,7 @@
                     <ir.vanda.hampa.component.VandaTextView
                         style="@style/MainMenuItem.Title"
                         android:text="@string/giftExam"
+                        android:textSize="17sp"
                         />
 
 
@@ -158,19 +156,20 @@
 
                 <!-- generalExam -->
                 <RelativeLayout
-                    android:id="@+id/generalExam"
+                    android:id="@+id/generalExamLayout"
                     style="@style/MainMenuItem"
                     android:layout_width="0dp"
                     android:layout_height="150dp"
-                    android:layout_marginEnd="@dimen/space"
-                    app:layout_constraintEnd_toStartOf="@id/helper_books"
+                    android:layout_marginEnd="0dp"
+                    app:layout_constraintEnd_toEndOf="@id/giftExamLayout"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/giftExam">
+                    app:layout_constraintTop_toBottomOf="@id/giftExamLayout">
 
 
                     <ir.vanda.hampa.component.RoundedImageView
+                        android:id="@+id/generalExamImage"
                         style="@style/MainMenuItem.Image"
-                        android:src="@drawable/gift_exam" />
+                        android:src="@drawable/books" />
 
 
                     <ir.vanda.hampa.component.RoundedImageView
@@ -188,19 +187,20 @@
 
                 <!-- onlineClass -->
                 <RelativeLayout
-                    android:id="@+id/onlineClass"
+                    android:id="@+id/onlineClassLayout"
                     style="@style/MainMenuItem"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_marginEnd="@dimen/space"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/helper_books">
+                    app:layout_constraintTop_toBottomOf="@id/helper_booksLayout">
 
 
                     <ir.vanda.hampa.component.RoundedImageView
+                        android:id="@+id/onlineClassImage"
                         style="@style/MainMenuItem.Image"
-                        android:src="@drawable/gift_exam" />
+                        android:src="@drawable/books" />
 
 
                     <ir.vanda.hampa.component.RoundedImageView
@@ -218,17 +218,18 @@
 
                 <!-- meAndThe-->
                 <RelativeLayout
-                    android:id="@+id/meAndThe"
+                    android:id="@+id/meAndAdviserLayout"
                     style="@style/MainMenuItem"
                     android:layout_width="0dp"
-                    android:layout_height="250dp"
-                    android:layout_marginEnd="@dimen/space"
-                    app:layout_constraintEnd_toStartOf="@id/discussion"
+                    android:layout_height="262dp"
+                    android:layout_marginEnd="@dimen/halfSpace"
+                    app:layout_constraintEnd_toStartOf="@id/discussionLayout"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/onlineClass">
+                    app:layout_constraintTop_toBottomOf="@id/onlineClassLayout">
 
 
                     <ir.vanda.hampa.component.RoundedImageView
+                        android:id="@+id/meAndAdviserImage"
                         style="@style/MainMenuItem.Image"
                         android:src="@drawable/books" />
 
@@ -239,7 +240,7 @@
 
                     <ir.vanda.hampa.component.VandaTextView
                         style="@style/MainMenuItem.Title"
-                        android:text="@string/onlineBooks"
+                        android:text="@string/meAndAdviser"
                         />
 
 
@@ -247,17 +248,19 @@
 
                 <!-- discussion -->
                 <RelativeLayout
-                    android:id="@+id/discussion"
+                    android:id="@+id/discussionLayout"
                     style="@style/MainMenuItem"
                     android:layout_width="0dp"
                     android:layout_height="125dp"
                     android:layout_marginEnd="@dimen/space"
-                    app:layout_constraintStart_toEndOf="@id/meAndThe"
+                    android:layout_marginStart="@dimen/halfSpace"
+                    app:layout_constraintStart_toEndOf="@id/meAndAdviserLayout"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/onlineClass">
+                    app:layout_constraintTop_toBottomOf="@id/onlineClassLayout">
 
 
                     <ir.vanda.hampa.component.RoundedImageView
+                        android:id="@+id/discussionImage"
                         style="@style/MainMenuItem.Image"
                         android:src="@drawable/books" />
 
@@ -269,6 +272,98 @@
                     <ir.vanda.hampa.component.VandaTextView
                         style="@style/MainMenuItem.Title"
                         android:text="@string/discussion"
+                        />
+
+
+                </RelativeLayout>
+
+                <!-- till Konkur -->
+                <RelativeLayout
+                    android:id="@+id/toKonkurLayout"
+                    style="@style/MainMenuItem"
+                    android:layout_width="0dp"
+                    android:layout_height="125dp"
+                    android:layout_marginStart="0dp"
+                    android:layout_marginEnd="@dimen/space"
+                    app:layout_constraintStart_toStartOf="@id/discussionLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/discussionLayout">
+
+
+                    <ir.vanda.hampa.component.RoundedImageView
+                        android:id="@+id/toKonkurImage"
+                        style="@style/MainMenuItem.Image"
+                        android:src="@drawable/books" />
+
+
+                    <ir.vanda.hampa.component.RoundedImageView
+                        style="@style/MainMenuItem.Hover" />
+
+
+                    <ir.vanda.hampa.component.VandaTextView
+                        style="@style/MainMenuItem.Title"
+                        android:text="@string/timeToKonkur"
+                        />
+
+
+                </RelativeLayout>
+
+                <!-- teacher introduce -->
+                <RelativeLayout
+                    android:id="@+id/teacher_introduceLayout"
+                    style="@style/MainMenuItem"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_marginEnd="@dimen/halfSpace"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/funLayout"
+                    app:layout_constraintTop_toBottomOf="@id/meAndAdviserLayout">
+
+
+                    <ir.vanda.hampa.component.RoundedImageView
+                        android:id="@+id/teacher_introduceImage"
+                        style="@style/MainMenuItem.Image"
+                        android:src="@drawable/books" />
+
+
+                    <ir.vanda.hampa.component.RoundedImageView
+                        style="@style/MainMenuItem.Hover" />
+
+
+                    <ir.vanda.hampa.component.VandaTextView
+                        style="@style/MainMenuItem.Title"
+                        android:text="@string/teacherIntroduce"
+                        />
+
+
+                </RelativeLayout>
+
+                <!-- fun -->
+                <RelativeLayout
+                    android:id="@+id/funLayout"
+                    style="@style/MainMenuItem"
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_marginStart="@dimen/halfSpace"
+                    android:layout_marginEnd="@dimen/space"
+                    app:layout_constraintStart_toEndOf="@id/teacher_introduceLayout"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/meAndAdviserLayout">
+
+
+                    <ir.vanda.hampa.component.RoundedImageView
+                        android:id="@+id/funImage"
+                        style="@style/MainMenuItem.Image"
+                        android:src="@drawable/books" />
+
+
+                    <ir.vanda.hampa.component.RoundedImageView
+                        style="@style/MainMenuItem.Hover" />
+
+
+                    <ir.vanda.hampa.component.VandaTextView
+                        style="@style/MainMenuItem.Title"
+                        android:text="@string/fun"
                         />
 
 

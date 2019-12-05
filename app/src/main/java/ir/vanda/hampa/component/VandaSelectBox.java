@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 
@@ -29,6 +30,7 @@ public class VandaSelectBox extends RelativeLayout
     private String         hint;
     private VandaTextView  error;
     private RelativeLayout inputLayer;
+    private ImageView      iconImage;
 
     public VandaSelectBox(Context context)
     {
@@ -55,6 +57,7 @@ public class VandaSelectBox extends RelativeLayout
         spinner    = findViewById(R.id.spinner);
         error      = findViewById(R.id.error);
         inputLayer = findViewById(R.id.inputLayer);
+        iconImage  = findViewById(R.id.iconImage);
     }
 
     private void init(AttributeSet attrs, int defStyle)
@@ -66,6 +69,11 @@ public class VandaSelectBox extends RelativeLayout
         final TypedArray typedArray = getContext().obtainStyledAttributes(attrs, R.styleable.VandaSelectBox, defStyle, 0);
 
         hint = typedArray.getString(R.styleable.VandaSelectBox_hintBox);
+
+        if (typedArray.hasValue(R.styleable.VandaSelectBox_iconPhoto))
+        {
+            iconImage.setImageResource(R.styleable.VandaSelectBox_iconPhoto);
+        }
 
         typedArray.recycle();
 

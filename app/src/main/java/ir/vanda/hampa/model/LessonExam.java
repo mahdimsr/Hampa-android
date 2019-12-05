@@ -13,7 +13,7 @@ public class LessonExam implements Serializable
     public Integer id, duration, questionCount;
     public String exm, title, description, answerSheet, status, persianCreatedAt;
     public Float   price;
-    public Boolean isPublic;
+    public Boolean isPublic,hasUsed;
     public Date    activeDate;
 
     //Relations

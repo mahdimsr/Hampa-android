@@ -73,4 +73,7 @@ public interface Service
     @POST("lessonExams/finishExam/{lessonExamId}")
     Call<FinishExam> finishExam(@Path("lessonExamId") int LessonExamId,@Body JsonObject body);
 
+    @GET("lessonExams/result/{lessonExamId}")
+    Call<LessonExamResult> result(@Path("lessonExamId") int LessonExamId);
+
 }

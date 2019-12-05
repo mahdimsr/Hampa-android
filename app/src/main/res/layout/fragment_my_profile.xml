@@ -5,14 +5,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_splash"
+    android:background="#fff"
     tools:context=".fragment.profileChild.MyProfileFragment">
 
+    <!-- light blue-->
+    <ImageView
+        android:id="@+id/circleLightBlue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/circleLightBlue"
+        android:src="@drawable/ic_circle_light_blue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+    <!-- purple -->
+    <ImageView
+        android:id="@+id/circlePurple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_circle_purple"
+        android:contentDescription="@string/circlePurple"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- small Green -->
+    <ImageView
+        android:id="@+id/circleSmallGreen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
+        android:src="@drawable/ic_circle_green_small"
+        android:contentDescription="@string/circleSmallGreen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="parent" />
+
+    <!-- Red -->
+    <ImageView
+        android:id="@+id/circleRed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_circle_red"
+        android:contentDescription="@string/circleRed"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="500dp"
+        android:layout_height="450dp"
         android:layout_margin="@dimen/space"
         app:cardCornerRadius="@dimen/radius"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,6 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:paddingBottom="60dp"
+                    android:layout_gravity="center_vertical"
                     android:orientation="vertical">
 
 
@@ -52,6 +96,7 @@
                         style="@style/profile_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:iconImage="@drawable/ic_name"
                         app:hint="نام" />
 
                     <ir.vanda.hampa.component.VandaInput
@@ -59,14 +104,17 @@
                         style="@style/profile_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:iconImage="@drawable/ic_name"
                         app:hint="نام خانوادگی" />
 
                     <ir.vanda.hampa.component.VandaInput
                         android:id="@+id/email"
+                        android:visibility="gone"
                         style="@style/profile_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        app:iconImage="@drawable/ic_mail"
                         app:hint="ایمیل" />
 
                     <ir.vanda.hampa.component.VandaInput
@@ -74,6 +122,7 @@
                         style="@style/profile_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        app:iconImage="@drawable/ic_nationalcode"
                         app:hint="کد ملی" />
 
 

@@ -23,6 +23,7 @@ import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.StatusBar;
 import ir.vanda.hampa.component.VandaTextView;
+import ir.vanda.hampa.fragment.profileChild.AboutUsFragment;
 import ir.vanda.hampa.fragment.profileChild.MyExamFragment;
 import ir.vanda.hampa.fragment.profileChild.MyProfileFragment;
 import ir.vanda.hampa.fragment.profileChild.TransactionsFragment;
@@ -48,7 +49,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     private NestedScrollView nestedScrollView;
     private View             fgBanner, toolbarHover;
     private Student      student;
-    private LinearLayout myProfileLayout, transactionLayout, myExamLayout;
+    private LinearLayout myProfileLayout, transactionLayout, myExamLayout,aboutHamtaLayout;
 
     //animations variables
     private int fgHoverHeight, toolbarHeight, profileLayoutHeight, statusBarHeight;
@@ -164,6 +165,9 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
         myExamLayout = v.findViewById(R.id.myExamLayout);
         myExamLayout.setOnClickListener(this);
+
+        aboutHamtaLayout = v.findViewById(R.id.aboutHamtaLayout);
+        aboutHamtaLayout.setOnClickListener(this);
     }
 
 
@@ -210,6 +214,15 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
                 bottomMenuAnimate("hide");
                 showFragmentByAnim(myExamFragment, "myExamFragment", false);
+
+                break;
+
+            case R.id.aboutHamtaLayout:
+
+                AboutUsFragment fragment = new AboutUsFragment();
+
+                bottomMenuAnimate("hide");
+                showFragmentByAnim(fragment, "myExamFragment", false);
 
                 break;
         }

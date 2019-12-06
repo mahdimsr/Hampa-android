@@ -68,13 +68,8 @@
                 android:orientation="horizontal">
 
                 <ir.vanda.hampa.component.VandaTextView
-                    android:id="@+id/allQuestionsRowValue"
-                    style="@style/valueRow"
-                    android:text="30" />
-
-                <ir.vanda.hampa.component.VandaTextView
                     style="@style/titleRow"
-                    android:text="@string/allQuestions" />
+                    android:text="@string/result_created_at" />
 
             </LinearLayout>
 
@@ -84,31 +79,12 @@
                 android:orientation="horizontal">
 
                 <ir.vanda.hampa.component.VandaTextView
-                    android:id="@+id/correctAnswerRowValue"
-                    style="@style/valueRow"
-                    android:text="24" />
-
-                <ir.vanda.hampa.component.VandaTextView
+                    android:id="@+id/resultCreatedAt"
                     style="@style/titleRow"
                     android:text="@string/correctAnswers" />
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <ir.vanda.hampa.component.VandaTextView
-                    android:id="@+id/wrongAnswerRowValue"
-                    style="@style/valueRow"
-                    android:text="1" />
-
-                <ir.vanda.hampa.component.VandaTextView
-                    style="@style/titleRow"
-                    android:text="@string/wrongAnswers" />
-
-            </LinearLayout>
 
 
         </LinearLayout>

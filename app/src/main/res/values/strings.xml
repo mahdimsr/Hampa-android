@@ -52,7 +52,7 @@
     <string name="takeExam">شرکت در آزمون</string>
     <string name="cartIsEmpty">در سبد خرید شما آزمونی وجود ندارد</string>
     <string name="serverError">مشکلی در سامانه پیش آمده</string>
-    <string name="aboutHampa">درباه همپا</string>
+    <string name="aboutHamta">درباه همتا</string>
     <string name="contactUs">تماس با ما</string>
     <string name="generalExams">آزمون های جامع</string>
     <string name="onlineBooks">کلاس های آنلاین</string>
@@ -66,6 +66,8 @@
     <string name="correctAnswers">پاسخ های درست</string>
     <string name="noAnswers">بدون پاسخ</string>
     <string name="allQuestions">تعداد سوالات</string>
+    <string name="result_created_at">تاربخ شرکت در آزمون</string>
+    <string name="hamtaTeam">تیم همتا تشکیل شده از اساتید مجرب در زمینه کنکور هتسش.</string>
 
 
 </resources>

@@ -18,6 +18,8 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -114,6 +116,7 @@ public class LessonExamRecycler extends RecyclerView
             final LessonExam exam = examList.get(position);
 
             itemHolder.title.setText(exam.title);
+            Picasso.get().load(exam.photo).into(itemHolder.photo);
 
 
             itemHolder.itemView.setOnClickListener(new OnClickListener()

@@ -21,6 +21,8 @@ import android.widget.RelativeLayout;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
+import com.flaviofaria.kenburnsview.KenBurnsView;
+import com.squareup.picasso.Picasso;
 
 import java.util.HashMap;
 import java.util.Objects;
@@ -60,6 +62,7 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
     private StatusBar        statusBar;
     private RelativeLayout   addToCartLayout;
     private HampaLoader      hampaLoader;
+    private KenBurnsView     kenBurnsView;
     private CardView         cartCardView;
 
     @Override
@@ -129,13 +132,13 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
                 {
                     LessonExamResultFragment fragment = new LessonExamResultFragment();
 
-                    Bundle b= new Bundle();
+                    Bundle b = new Bundle();
 
-                    b.putSerializable("lessonExam",lessonExam);
+                    b.putSerializable("lessonExam", lessonExam);
 
                     fragment.setArguments(b);
 
-                    showFragmentByAnim(fragment,"resultFragment",false);
+                    showFragmentByAnim(fragment, "resultFragment", false);
                 }
                 else
                 {
@@ -154,6 +157,12 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
 
             }
         });
+
+        Log.i("photo" , lessonExam.photo);
+
+
+        Picasso.get().load(lessonExam.photo).into(kenBurnsView);
+
 
         return v;
     }
@@ -201,6 +210,8 @@ public class LessonExamDetailsFragment extends BaseFragment implements View.OnCl
         toolbarLayout = v.findViewById(R.id.toolbarLayout);
 
         nestedScrollView = v.findViewById(R.id.nesterScrollView);
+
+        kenBurnsView = v.findViewById(R.id.bgImageView);
 
 
         closeImageView = v.findViewById(R.id.closeImage);

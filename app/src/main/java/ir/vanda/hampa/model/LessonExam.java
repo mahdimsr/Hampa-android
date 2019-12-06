@@ -11,10 +11,10 @@ public class LessonExam implements Serializable
 
     //Attributes
     public Integer id, duration, questionCount;
-    public String exm, title, description, answerSheet, status, persianCreatedAt;
+    public String exm, title, description, answerSheet, photo, status, persianCreatedAt;
     public Float   price;
-    public Boolean isPublic,hasUsed;
-    public Date    activeDate;
+    public Boolean isPublic, hasUsed;
+    public Date activeDate;
 
     //Relations
     public List<ExamCode>        examCodes;

@@ -35,9 +35,11 @@ public class LessonExamResultFragment extends BaseFragment
 
     private VandaTextView wrongAnswerTitle, correctAnswerTitle, noAnswerTitle, allQuestionsTitle;
     private VandaTextView wrongAnswerValue, correctAnswerValue, noAnswerValue, allQuestionsValue;
-    private VandaTextView wrongAnswerRowValue, correctAnswerRowValue, allQuestionsRowValue;
+    private VandaTextView resultCreatedAt;
 
     private LessonExam lessonExam;
+
+    private Boolean infoIsShow = false;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -67,15 +69,13 @@ public class LessonExamResultFragment extends BaseFragment
                     LessonExamResult body   = res.body();
                     Result           result = body.result;
 
-                    wrongAnswerRowValue.setText(result.wrongAnswers + "");
-                    correctAnswerRowValue.setText(result.correctAnswers + "");
-                    allQuestionsRowValue.setText(result.getQuestionCount() + "");
 
                     wrongAnswerValue.setText(result.wrongAnswers + "");
                     correctAnswerValue.setText(result.correctAnswers + "");
-                    noAnswerTitle.setText(result.blankAnswers + "");
+                    noAnswerValue.setText(result.blankAnswers + "");
                     allQuestionsValue.setText(result.getQuestionCount() + "");
 
+                    resultCreatedAt.setText(result.persianCreatedAt);
 
                 }
                 else
@@ -109,10 +109,41 @@ public class LessonExamResultFragment extends BaseFragment
         noAnswerValue      = v.findViewById(R.id.noAnswerValue);
         allQuestionsValue  = v.findViewById(R.id.allQuestionsValue);
 
-        wrongAnswerRowValue   = v.findViewById(R.id.wrongAnswerRowValue);
-        correctAnswerRowValue = v.findViewById(R.id.correctAnswerRowValue);
-        allQuestionsRowValue  = v.findViewById(R.id.allQuestionsRowValue);
+        resultCreatedAt = v.findViewById(R.id.resultCreatedAt);
     }
 
+    private void showAndHideInfo()
+    {
+        if (infoIsShow)
+        {
+            allQuestionsValue.setVisibility(View.GONE);
+            allQuestionsTitle.setVisibility(View.VISIBLE);
+
+            correctAnswerValue.setVisibility(View.GONE);
+            correctAnswerTitle.setVisibility(View.VISIBLE);
+
+            wrongAnswerValue.setVisibility(View.GONE);
+            wrongAnswerTitle.setVisibility(View.VISIBLE);
+
+            noAnswerValue.setVisibility(View.GONE);
+            noAnswerTitle.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            allQuestionsValue.setVisibility(View.VISIBLE);
+            allQuestionsTitle.setVisibility(View.GONE);
+
+            correctAnswerValue.setVisibility(View.VISIBLE);
+            correctAnswerTitle.setVisibility(View.GONE);
+
+            wrongAnswerValue.setVisibility(View.VISIBLE);
+            wrongAnswerTitle.setVisibility(View.GONE);
+
+            noAnswerValue.setVisibility(View.VISIBLE);
+            noAnswerTitle.setVisibility(View.GONE);
+        }
+
+        infoIsShow = !infoIsShow;
+    }
 
 }

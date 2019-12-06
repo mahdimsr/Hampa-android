@@ -219,6 +219,7 @@
 
                         <!-- bottomCenter -->
                         <LinearLayout
+                            android:id="@+id/aboutHamtaLayout"
                             style="@style/ProfileItemMenu">
 
                             <ImageView
@@ -227,7 +228,7 @@
 
                             <ir.vanda.hampa.component.VandaTextView
                                 style="@style/ProfileItemMenuTitle"
-                                android:text="@string/aboutHampa" />
+                                android:text="@string/aboutHamta" />
 
                         </LinearLayout>
 

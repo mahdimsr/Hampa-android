@@ -3,8 +3,8 @@ package ir.vanda.hampa.model;
 public class Scholarship {
 
     //Attributes
-    Integer id,studentId,adminId;
-    String  url,status,stdMessage,adminMessage,verifyImage;
+    public Integer id,studentId,adminId;
+    public String  url,status,stdMessage,adminMessage,verifyImage,persian_status;
 
     //Relations
     public Student student;

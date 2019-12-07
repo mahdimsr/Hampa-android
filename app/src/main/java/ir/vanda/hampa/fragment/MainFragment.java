@@ -21,6 +21,7 @@ import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.HampaDialog;
 import ir.vanda.hampa.component.RoundedImageView;
 import ir.vanda.hampa.fragment.mainChild.LessonExamsFragment;
+import ir.vanda.hampa.fragment.profileChild.ScholarshipFragment;
 import ir.vanda.hampa.model.Cart;
 import ir.vanda.hampa.retrofit.Index;
 import retrofit2.Call;
@@ -46,6 +47,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener
 
 
     private LessonExamsFragment lessonExamsFragment;
+    private ScholarshipFragment scholarshipFragment;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,6 +58,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener
         findView(v);
 
         lessonExamsFragment = new LessonExamsFragment();
+        scholarshipFragment = new ScholarshipFragment();
 
         Call<Index> indexCall = getService().index();
 
@@ -180,6 +183,13 @@ public class MainFragment extends BaseFragment implements View.OnClickListener
 
                 break;
 
+            case R.id.scholarshipsLayout:
+
+                bottomMenuAnimate("hide");
+                showFragment(scholarshipFragment,"scholarshipFragment");
+
+                break;
+
             default:
 
                 HampaDialog dialog = new HampaDialog(getContext());
@@ -191,7 +201,7 @@ public class MainFragment extends BaseFragment implements View.OnClickListener
                     @Override
                     public void onClick(Dialog dialog)
                     {
-                            dialog.dismiss();
+                        dialog.dismiss();
                     }
                 });
         }

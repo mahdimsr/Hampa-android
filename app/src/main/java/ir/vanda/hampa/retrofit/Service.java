@@ -71,9 +71,16 @@ public interface Service
     Call<LessonExamAdd> lessonExamsAdd(@Body HashMap<String, String> data);
 
     @POST("lessonExams/finishExam/{lessonExamId}")
-    Call<FinishExam> finishExam(@Path("lessonExamId") int LessonExamId,@Body JsonObject body);
+    Call<FinishExam> finishExam(@Path("lessonExamId") int LessonExamId, @Body JsonObject body);
 
     @GET("lessonExams/result/{lessonExamId}")
     Call<LessonExamResult> result(@Path("lessonExamId") int LessonExamId);
+
+    // scholarship
+    @GET("scholarShip")
+    Call<ScholarshipCall> scholarShip();
+
+    @POST("submitScholarShip")
+    Call<ScholarshipCall> submitScholarShip(@Body HashMap<String,String> body);
 
 }

@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/space"
+    app:cardBackgroundColor="#7B1FA2"
+    app:cardCornerRadius="@dimen/doubleRadius">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/doubleSpace">
+
+
+        <!-- typeIcon -->
+        <ImageView
+            android:id="@+id/typeIconImage"
+            android:layout_width="50dp"
+            android:layout_height="0dp"
+            android:background="#ff0"
+            app:layout_constraintBottom_toBottomOf="@id/expireDateText"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- typeText -->
+        <ir.vanda.hampa.component.VandaTextView
+            android:id="@+id/typeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space"
+            android:text="نوع کد تخفیف"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            app:fontName="iranSansLight"
+            app:layout_constraintEnd_toStartOf="@id/typeIconImage"
+            app:layout_constraintTop_toTopOf="@id/typeIconImage" />
+
+        <!-- expireDateText -->
+        <ir.vanda.hampa.component.VandaTextView
+            android:id="@+id/expireDateText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space"
+            android:text="تاریخ انقضا"
+            android:textColor="#fff"
+            android:textSize="12sp"
+            app:fontName="iranSansLight"
+            app:layout_constraintEnd_toStartOf="@id/typeIconImage"
+            app:layout_constraintTop_toBottomOf="@id/typeText" />
+
+
+        <!-- codeLayout -->
+        <RelativeLayout
+            android:id="@+id/codeLayout"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/space"
+            android:background="@drawable/bg_code_layout"
+            app:layout_constraintBottom_toBottomOf="@id/codeCountLayout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/codeCountLayout"
+            app:layout_constraintTop_toTopOf="@id/codeCountLayout">
+
+
+            <ir.vanda.hampa.component.VandaTextView
+                android:id="@+id/codeText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:text="45f18"
+                android:textColor="#fff"
+                android:textSize="18sp"
+                app:fontName="iranSansMedium" />
+
+        </RelativeLayout>
+
+        <!-- codeCountLayout -->
+        <RelativeLayout
+            android:id="@+id/codeCountLayout"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_code_count"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/expireDateText">
+
+            <ir.vanda.hampa.component.VandaTextView
+                android:id="@+id/codeCountText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="5"
+                android:textColor="#fff"
+                android:textSize="25sp"
+                app:fontName="iranSansMedium" />
+
+        </RelativeLayout>
+
+        <!-- discountIcon -->
+        <ImageView
+            android:id="@+id/discountIconImage"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="@dimen/space"
+            android:background="#f00"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/codeCountLayout" />
+
+        <!-- discountValue -->
+        <ir.vanda.hampa.component.VandaTextView
+            android:id="@+id/discountValueText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/space"
+            android:text="مقدار تخفیف"
+            android:textColor="#fff"
+            android:textSize="15sp"
+            app:fontName="iranSansLight"
+            app:layout_constraintBottom_toBottomOf="@id/discountIconImage"
+            app:layout_constraintEnd_toStartOf="@id/discountIconImage"
+            app:layout_constraintTop_toTopOf="@id/discountIconImage" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

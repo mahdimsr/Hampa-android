@@ -47,6 +47,11 @@ public interface Service
     @POST("profile/updateMyProfile")
     Call<UpdateMyProfile> updateMyProfile(@Body HashMap<String, String> body);
 
+
+    //discount
+    @GET("profile/discountCodes")
+    Call<DiscountCode> discountCodes();
+
     //cart
 
     @GET("cart")
@@ -81,6 +86,7 @@ public interface Service
     Call<ScholarshipCall> scholarShip();
 
     @POST("submitScholarShip")
-    Call<ScholarshipCall> submitScholarShip(@Body HashMap<String,String> body);
+    Call<ScholarshipCall> submitScholarShip(@Body HashMap<String, String> body);
+
 
 }

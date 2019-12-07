@@ -8,12 +8,12 @@ public class Discount implements Serializable
 {
 
     //Attributes
-    Integer id,value,count;
-    String  code,type;
-    Date    endDate;
+    public Integer id, value, count;
+    public String code, type,persianEndDate,persianType;
+    public Date endDate;
 
     //Relations
     public List<StudentCode> studentCodes;
-    public List<ExamCode> examCodes;
+    public List<ExamCode>    examCodes;
 
 }

@@ -24,6 +24,7 @@ import ir.vanda.hampa.R;
 import ir.vanda.hampa.component.StatusBar;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.fragment.profileChild.AboutUsFragment;
+import ir.vanda.hampa.fragment.profileChild.DiscountFragment;
 import ir.vanda.hampa.fragment.profileChild.MyExamFragment;
 import ir.vanda.hampa.fragment.profileChild.MyProfileFragment;
 import ir.vanda.hampa.fragment.profileChild.TransactionsFragment;
@@ -49,7 +50,7 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
     private NestedScrollView nestedScrollView;
     private View             fgBanner, toolbarHover;
     private Student      student;
-    private LinearLayout myProfileLayout, transactionLayout, myExamLayout,aboutHamtaLayout;
+    private LinearLayout myProfileLayout, transactionLayout, myExamLayout,aboutHamtaLayout,discountLayout;
 
     //animations variables
     private int fgHoverHeight, toolbarHeight, profileLayoutHeight, statusBarHeight;
@@ -168,6 +169,9 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
         aboutHamtaLayout = v.findViewById(R.id.aboutHamtaLayout);
         aboutHamtaLayout.setOnClickListener(this);
+
+        discountLayout = v.findViewById(R.id.discountLayout);
+        discountLayout.setOnClickListener(this);
     }
 
 
@@ -223,6 +227,16 @@ public class ProfileFragment extends BaseFragment implements View.OnClickListene
 
                 bottomMenuAnimate("hide");
                 showFragmentByAnim(fragment, "myExamFragment", false);
+
+                break;
+
+            case R.id.discountLayout:
+
+                DiscountFragment discountFragment = new DiscountFragment();
+
+
+                bottomMenuAnimate("hide");
+                showFragmentByAnim(discountFragment, "discountFragment", false);
 
                 break;
         }

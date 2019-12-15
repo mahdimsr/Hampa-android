@@ -38,14 +38,22 @@ public class NavigationBar extends RelativeLayout
         setMinimumHeight(getNavigationBarHeight());
     }
 
+    public boolean hasNavBar()
+    {
+        int id = getResources().getIdentifier("config_showNavigationBar", "bool", "android");
+        return id > 0 && getResources().getBoolean(id);
+    }
+
     public int getNavigationBarHeight()
     {
-        int result = 0;
+        int result     = 0;
         int resourceId = getResources().getIdentifier("navigation_bar_height", "dimen", "android");
-        if (resourceId > 0)
+
+        if (hasNavBar())
         {
             result = getResources().getDimensionPixelSize(resourceId);
         }
+
         return result;
     }
 }

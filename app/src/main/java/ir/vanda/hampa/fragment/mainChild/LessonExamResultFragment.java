@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import ir.vanda.hampa.BaseFragment;
 import ir.vanda.hampa.R;
@@ -35,7 +36,9 @@ public class LessonExamResultFragment extends BaseFragment
 
     private VandaTextView wrongAnswerTitle, correctAnswerTitle, noAnswerTitle, allQuestionsTitle;
     private VandaTextView wrongAnswerValue, correctAnswerValue, noAnswerValue, allQuestionsValue;
-    private VandaTextView resultCreatedAt;
+    private VandaTextView resultCreatedAt, showResult;
+
+    private ImageView closeImage;
 
     private LessonExam lessonExam;
 
@@ -110,6 +113,26 @@ public class LessonExamResultFragment extends BaseFragment
         allQuestionsValue  = v.findViewById(R.id.allQuestionsValue);
 
         resultCreatedAt = v.findViewById(R.id.resultCreatedAt);
+        showResult      = v.findViewById(R.id.showResult);
+
+        showResult.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                showAndHideInfo();
+            }
+        });
+
+        closeImage = v.findViewById(R.id.closeImage);
+        closeImage.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                getActivity().onBackPressed();
+            }
+        });
     }
 
     private void showAndHideInfo()
@@ -127,6 +150,9 @@ public class LessonExamResultFragment extends BaseFragment
 
             noAnswerValue.setVisibility(View.GONE);
             noAnswerTitle.setVisibility(View.VISIBLE);
+
+            showResult.setText("مشاهده نتایج");
+
         }
         else
         {
@@ -141,6 +167,9 @@ public class LessonExamResultFragment extends BaseFragment
 
             noAnswerValue.setVisibility(View.VISIBLE);
             noAnswerTitle.setVisibility(View.GONE);
+
+            showResult.setText("مخفی کردن نتایج");
+
         }
 
         infoIsShow = !infoIsShow;

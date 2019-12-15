@@ -8,9 +8,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 import ir.vanda.hampa.R;
+import ir.vanda.hampa.component.RoundedImageView;
 import ir.vanda.hampa.component.VandaTextView;
 import ir.vanda.hampa.model.LessonExam;
 
@@ -40,6 +43,8 @@ public class MyExamAdapter extends RecyclerView.Adapter<MyExamAdapter.Holder>
 
         holder.title.setText(lessonExam.title);
 
+        Picasso.get().load(lessonExam.photo).into(holder.photo);
+
         holder.itemView.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -67,13 +72,16 @@ public class MyExamAdapter extends RecyclerView.Adapter<MyExamAdapter.Holder>
 
     public class Holder extends RecyclerView.ViewHolder
     {
-        public VandaTextView title;
+        public VandaTextView    title;
+        public RoundedImageView photo;
 
         public Holder(@NonNull View itemView)
         {
             super(itemView);
 
             title = itemView.findViewById(R.id.title);
+
+            photo = itemView.findViewById(R.id.photo);
 
         }
     }

@@ -334,7 +334,7 @@ public class AuthActivity extends BaseActivity
         usernameLoginInput.getInput().setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_CLASS_NUMBER);
 
         passwordLoginInput = findViewById(R.id.password);
-        passwordLoginInput.getInput().setFilters(new InputFilter[]{new InputFilter.LengthFilter(9)});
+        passwordLoginInput.getInput().setFilters(new InputFilter[]{new InputFilter.LengthFilter(12)});
         passwordLoginInput.getInput().setInputType(InputType.TYPE_TEXT_VARIATION_WEB_PASSWORD);
         passwordLoginInput.getInput().setTransformationMethod(new PasswordTransformationMethod());
 
